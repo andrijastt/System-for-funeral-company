@@ -1,1 +1,46 @@
-<p>register-user works!</p>
+<br>
+<div class="container">
+    <form>
+        <fieldset class="mb-3 row">
+            <legend class="col-form-legend col-5">Register user</legend>
+            <!-- <div class="col-8">
+                you can use radio and checkboxes here
+            </div> -->
+        </fieldset>
+        <div class="mb-3 row">
+            <mat-form-field>
+                <mat-label for="inputName" class="col-4 col-form-label">Username</mat-label>
+                <input type="text" matInput class="form-control" name="username" id="username" [(ngModel)]="username" required>                                
+            </mat-form-field>            
+        </div>
+        <div class="mb-3 row">
+            <mat-form-field>
+                <mat-label for="password" class="col-4 col-form-label">Password</mat-label>
+                <input type="password" matInput class="form-control" name="password" id="password" [(ngModel)]="password" required>
+            </mat-form-field>            
+        </div>
+        <div class="mb-3 row">
+            <mat-form-field>
+                <mat-label for="firstName" class="col-4 col-form-label">First name</mat-label>
+                <input type="text" matInput class="form-control" name="firstName" id="firstName" [(ngModel)]="firstname" required>
+            </mat-form-field>            
+        </div>
+        <div class="mb-3 row">
+            <mat-form-field>
+                <mat-label for="lastName" class="col-4 col-form-label">Last name</mat-label>
+                <input type="text" matInput class="form-control" name="lastName" id="lastName" [(ngModel)]="lastname" required>
+            </mat-form-field>            
+        </div>
+       
+        <div class="mb-3 row">
+            <div class="offset-sm-5 col-sm-8">
+                <button type="submit" mat-raised-button class="btn btn-primary" (click)="register()">Register</button>
+            </div>
+        </div>
+        <div class="mb-3 row">
+            <div class="offset-sm-5 col-sm-8">
+                {{message}}
+            </div>
+        </div>
+    </form>
+</div>
