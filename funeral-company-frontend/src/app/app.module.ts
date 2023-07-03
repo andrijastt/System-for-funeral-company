@@ -12,13 +12,15 @@ import { MatDividerModule } from '@angular/material/divider'
 import { MatFormFieldModule } from '@angular/material/form-field'
 
 import { RegisterUserComponent } from './register-user/register-user.component';
+import { HomePageComponent } from './home-page/home-page.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent,
-    RegisterUserComponent
+    RegisterUserComponent,
+    HomePageComponent
   ],
   imports: [
     BrowserModule,

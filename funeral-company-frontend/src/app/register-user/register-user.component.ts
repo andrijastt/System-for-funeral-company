@@ -24,18 +24,17 @@ export class RegisterUserComponent {
       this.message = "Fill all data"
     } else {
       this.message = ""
-    }
-
-    this.userService.register(this.username, this.password, this.firstname, this.lastname).subscribe((data: User)=>{      
-      if(data){
-        alert("User created!")  
-        this.router.navigate([''])
-      }
-    },
-    (error) =>{
-      console.error("Error Andrijaa")
-      alert("Username already taken!")
-    })
+      this.userService.register(this.username, this.password, this.firstname, this.lastname).subscribe((data: User)=>{      
+        if(data){
+          alert("User created!")  
+          this.router.navigate([''])
+        }
+      },
+      (error) =>{
+        console.error("Username already taken!")
+        alert("Username already taken!")
+      })
+    }    
 
   }  
 }

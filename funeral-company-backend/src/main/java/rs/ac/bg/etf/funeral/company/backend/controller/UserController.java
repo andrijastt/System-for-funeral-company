@@ -2,10 +2,8 @@ package rs.ac.bg.etf.funeral.company.backend.controller;
 
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.data.repository.query.Param;
+import org.springframework.web.bind.annotation.*;
 import rs.ac.bg.etf.funeral.company.backend.entity.User;
 import rs.ac.bg.etf.funeral.company.backend.service.UserService;
 
@@ -19,5 +17,10 @@ public class UserController {
     @PostMapping(path = "/user")
     public User saveUser(@Valid @RequestBody User user){
         return userService.saveUser(user);
+    }
+
+    @GetMapping(path = "/login")
+    public User getUserByUsernameAndPassword(@Valid @RequestParam("username") String username, @Valid @RequestParam("password") String password) {
+        return userService.getUserByUsernameAndPassword(username, password);
     }
 }

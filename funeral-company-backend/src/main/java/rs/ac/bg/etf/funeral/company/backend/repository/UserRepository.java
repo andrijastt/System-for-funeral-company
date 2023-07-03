@@ -6,4 +6,7 @@ import rs.ac.bg.etf.funeral.company.backend.entity.User;
 
 @Repository
 public interface UserRepository extends JpaRepository<User, Long> {
+
+    User findUserByUsernameAndPassword(String username, String password);
+
 }
