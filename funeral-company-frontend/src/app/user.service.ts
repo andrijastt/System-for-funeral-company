@@ -18,9 +18,7 @@ export class UserService {
       password: passwordFrom,
       firstname: firstnameForm,
       lastname: lastnameForm
-    }
-
-    console.log(data)
+    }    
 
     return this.http.post<User>(`${this.uri}/user`, data);
 

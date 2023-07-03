@@ -26,9 +26,13 @@ export class RegisterUserComponent {
     }
 
     this.userService.register(this.username, this.password, this.firstname, this.lastname).subscribe((data: User)=>{      
-      console.log(data)      
+      if(data){
+
+      }
+    },
+    (error) =>{
+      console.error("Error Andrijaa")
     })
 
-  }
-
+  }  
 }
