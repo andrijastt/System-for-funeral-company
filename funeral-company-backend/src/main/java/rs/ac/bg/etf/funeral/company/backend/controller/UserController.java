@@ -18,7 +18,6 @@ public class UserController {
 
     @PostMapping(path = "/user")
     public User saveUser(@Valid @RequestBody User user){
-        System.out.println("user = " + user);
         return userService.saveUser(user);
     }
 }

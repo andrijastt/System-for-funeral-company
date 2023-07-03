@@ -1,28 +1,40 @@
-<h1>
-    System for funeral company
-    <mat-divider></mat-divider>
-</h1>
-
-<form>
-    <div>
-        <mat-form-field>
-            <mat-label>Username</mat-label>
-            <input matInput type="text">
-        </mat-form-field>
-    </div>        
-    <div>
-        <mat-form-field>
-            <mat-label>Password</mat-label>
-            <input matInput type="password">
-        </mat-form-field>
-    </div>    
-</form>
-
-<button name="LogIn" id="LogIn" class="btn btn-primary" mat-raised-button>Log In</button>
-<mat-divider></mat-divider>
 <br>
+<div class="container">
+    <form>
+        <fieldset class="mb-3 row">
+            <legend class="col-form-legend col-5">System for funeral company</legend>
+            <!-- <div class="col-8">
+                you can use radio and checkboxes here
+            </div> -->
+        </fieldset>
+        <div class="mb-3 row">
+            <mat-form-field>
+                <mat-label for="inputName" class="col-4 col-form-label">Username</mat-label>
+                <input type="text" matInput class="form-control" name="username" id="username" [(ngModel)]="username" required>                                
+            </mat-form-field>            
+        </div>
+        <div class="mb-3 row">
+            <mat-form-field>
+                <mat-label for="password" class="col-4 col-form-label">Password</mat-label>
+                <input type="password" matInput class="form-control" name="password" id="password" [(ngModel)]="password" required>
+            </mat-form-field>            
+        </div>
+        <div class="mb-3 row">
+            <div class="offset-sm-5 col-sm-8">
+                <button type="submit" mat-raised-button class="btn btn-primary">Log In</button>
+            </div>
+        </div>
+    </form>
+</div>
+
 
 <footer>
-    <a name="registerUser" id="registerUser" class="btn btn-primary" href="/registerUser" role="button">Register</a>
+
+    <div class="mb-3 row">
+        <div class="offset-sm-2 col-sm-10">
+            <a name="registerUser" id="registerUser" class="btn btn-primary" href="/registerUser" role="button">Register</a>
+        </div>
+    </div>
+    
 </footer>
 

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { UserService } from '../user.service';
 import { User } from '../model/User';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-register-user',
@@ -9,7 +10,7 @@ import { User } from '../model/User';
 })
 export class RegisterUserComponent {
 
-  constructor(private userService: UserService){}
+  constructor(private userService: UserService, private router: Router){}
 
   username: string
   password: string
@@ -27,11 +28,13 @@ export class RegisterUserComponent {
 
     this.userService.register(this.username, this.password, this.firstname, this.lastname).subscribe((data: User)=>{      
       if(data){
-
+        alert("User created!")  
+        this.router.navigate([''])
       }
     },
     (error) =>{
       console.error("Error Andrijaa")
+      alert("Username already taken!")
     })
 
   }  

@@ -14,6 +14,9 @@ export class LoginComponent {
 
   }
 
+  username: string
+  password: string
+
   login(){
     
   }
