@@ -5,7 +5,10 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { LoginComponent } from './login/login.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import {MatInputModule} from '@angular/material/input';
+import { MatInputModule } from '@angular/material/input';
+import { MatButtonModule } from '@angular/material/button'
+import { MatDividerModule } from '@angular/material/divider'
+import { MatFormFieldModule } from '@angular/material/form-field'
 import { RegisterUserComponent } from './register-user/register-user.component';
 
 
@@ -19,7 +22,10 @@ import { RegisterUserComponent } from './register-user/register-user.component';
     BrowserModule,
     AppRoutingModule,
     BrowserAnimationsModule,
-    MatInputModule
+    MatInputModule,
+    MatButtonModule,
+    MatDividerModule,
+    MatFormFieldModule
   ],
   providers: [],
   bootstrap: [AppComponent]
