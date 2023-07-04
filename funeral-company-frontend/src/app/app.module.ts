@@ -18,6 +18,7 @@ import { MatListModule } from '@angular/material/list'
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { CategoryComponent } from './category/category.component';
+import { MainNavComponent } from './main-nav/main-nav.component';
 
 
 @NgModule({
@@ -26,7 +27,8 @@ import { CategoryComponent } from './category/category.component';
     LoginComponent,
     RegisterUserComponent,
     HomePageComponent,
-    CategoryComponent
+    CategoryComponent,
+    MainNavComponent
   ],
   imports: [
     BrowserModule,
