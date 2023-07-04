@@ -15,6 +15,7 @@ import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatIconModule } from '@angular/material/icon'
 import { MatListModule } from '@angular/material/list'
 import { MatTableModule } from '@angular/material/table'
+import { MatSelectModule } from '@angular/material/select'
 
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -48,7 +49,8 @@ import { MaterialComponent } from './material/material.component';
     MatToolbarModule,
     MatIconModule,     
     MatListModule,
-    MatTableModule
+    MatTableModule,
+    MatSelectModule
   ],
   providers: [],
   bootstrap: [AppComponent]

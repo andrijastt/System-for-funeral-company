@@ -1,1 +1,52 @@
-<app-main-nav></app-main-nav>
+<app-main-nav>
+
+    <table>
+        
+    </table>
+
+
+    <button type="button" class="btn btn-primary" (click)="addMaterialButton()">Add Material</button>        
+    <div class="container" *ngIf="addMaterial">
+        <form>
+            <fieldset class="mb-3 row">
+                <legend class="col-form-legend col-5">Add new Material</legend>                    
+            </fieldset>
+            <div class="mb-3 row">
+                <mat-form-field>
+                    <mat-label for="inputName" class="col-4 col-form-label">Material name</mat-label>
+                    <input type="text" matInput class="form-control" name="name" id="name" required>                        
+                </mat-form-field>            
+            </div>
+            <div class="mb-3 row">
+                <mat-form-field>
+                    <mat-label for="inputName" class="col-4 col-form-label">Unit</mat-label>
+                    <input type="text" matInput class="form-control" name="unit" id="unit" required>                                
+                    <mat-hint>Kg, m, l</mat-hint>
+                </mat-form-field>            
+            </div>
+            <div class="mb-3 row">
+                <mat-form-field>
+                    <mat-label for="inputName" class="col-4 col-form-label">Category</mat-label>
+                    <mat-select required [(ngModel)]="categoryID" name="category" id="category">
+                        <mat-option *ngFor="let category of categories" [value]="category.categoryID">{{category.name}}</mat-option>
+                    </mat-select>                    
+                </mat-form-field>            
+            </div>
+            <div class="mb-3 row">
+                <mat-form-field>
+                    <mat-label for="inputName" class="col-4 col-form-label">Price</mat-label>
+                    <input type="number" matInput class="form-control" name="price" id="price" required>                                                    
+                </mat-form-field>            
+            </div>
+            <div class="mb-3 row">
+                <div class="offset-sm-5 col-sm-8">
+                    <button type="submit" mat-raised-button class="btn btn-primary">Add</button>
+                </div>
+            </div>
+        </form>
+    </div>
+
+</app-main-nav>
+<!-- <table mat-table>
+
+</table> -->
