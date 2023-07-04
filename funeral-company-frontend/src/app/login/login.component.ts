@@ -30,6 +30,7 @@ export class LoginComponent {
         if(data == null){
           this.message = "Wrong password or username"
         } else {
+          localStorage.setItem('User', JSON.stringify(data))
           this.router.navigate(['home'])
         }        
         

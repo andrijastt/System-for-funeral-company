@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { User } from '../model/User';
 
 @Component({
   selector: 'app-home-page',
@@ -6,5 +7,13 @@ import { Component } from '@angular/core';
   styleUrls: ['./home-page.component.css']
 })
 export class HomePageComponent {
+
+  user: User
+
+  ngOnInit(){
+
+    this.user = JSON.parse(localStorage.getItem('User'))
+
+  }
 
 }
