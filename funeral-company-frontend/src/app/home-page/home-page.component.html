@@ -1,33 +1,33 @@
 <mat-toolbar color="primary">
     
-<mat-toolbar-row>
-    <div class="row-cols-4 justify-content-center align-items-center g-2">
-        <div class="col">
-            <div class="d-grid gap-2">
-                <button type="button" mat-icon-button (click)="drawer" name="" id="">
-                    <mat-icon>menu</mat-icon>
-                </button>
-            </div>            
-        </div>        
-    </div>    
-    <div class="row-cols-4 justify-content-center align-items-center g-2">
-        <div class="col">
-            <div class="d-grid gap-2">
-                <div class="card-header">
-                    Welcome, {{user.firstname}} {{user.lastname}}
-                </div>        
+<mat-toolbar-row>       
+    <mat-toolbar-row>
+        <div class="row-cols-4 justify-content-center align-items-center g-2">
+            <div class="col">
+                <div class="d-grid gap-2">
+                    <button type="button" mat-icon-button name="" id="" (click)="opened = !opened">
+                        <mat-icon>menu</mat-icon>
+                    </button>
+                </div>            
+            </div>        
+        </div>    
+        <div class="row-cols-4 justify-content-center align-items-center g-2">
+            <div class="col">
+                <div class="d-grid gap-2">
+                    <div class="card-header">
+                        Welcome, {{user.firstname}} {{user.lastname}}
+                    </div>        
+                </div>
             </div>
         </div>
-    </div>
+    </mat-toolbar-row>
+
 </mat-toolbar-row>
     
 </mat-toolbar>
 
 <mat-drawer-container #drawer class="example-container">
-    <mat-drawer mode="side" #drawer opened>
-        
-        
-
+    <mat-drawer mode="side" #drawer [(opened)]="opened">                
         <div class="d-grid gap-2">
             <a name="category" id="category" class="btn btn-primary" href="" role="button"></a>
         </div>
@@ -40,7 +40,6 @@
         <div class="d-grid gap-2">
             <a name="category" id="category" class="btn btn-primary" href="/" role="button">Log out</a>
         </div>                
-
     </mat-drawer>
     <mat-drawer-content>
 
@@ -66,10 +65,7 @@
                     </tr>
                 </tbody>
             </table>
-        </div>
-        
-
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        </div>                
 
     </mat-drawer-content>
 </mat-drawer-container>

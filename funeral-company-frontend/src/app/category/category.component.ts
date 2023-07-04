@@ -12,6 +12,7 @@ export class CategoryComponent {
 
   user: User
   categories: Category[]  
+  opened: boolean = false
 
   constructor(private categoryService: CategoryService){}
 

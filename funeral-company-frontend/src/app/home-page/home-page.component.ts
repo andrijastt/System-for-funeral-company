@@ -9,6 +9,7 @@ import { User } from '../model/User';
 export class HomePageComponent {
 
   user: User
+  opened: boolean = false
 
   ngOnInit(){
 
