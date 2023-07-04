@@ -61,7 +61,7 @@ export class CategoryComponent {
     this.updateCategoryID = category.categoryID
   }
 
-  updateCategory(){
+  updateCategory(){    
 
     this.categoryService.updateCategory(this.updateCategoryID, this.updateCategoryName).subscribe((data: Category) =>{
       alert("Successfully updated name!")
@@ -70,6 +70,22 @@ export class CategoryComponent {
       })
     })
 
+  }
+
+  removeCategory(categoryID){
+    this.categoryService.removeCategory(categoryID).subscribe((data: string)=>{
+      alert(data)
+      this.categoryService.getAllCategories().subscribe((data: Category[])=>{
+        this.categories = data
+      })
+    },
+    (error)=>{
+      alert("Successfully deleted category")
+      this.categoryService.getAllCategories().subscribe((data: Category[])=>{
+        this.categories = data
+      })
+    }
+    )
   }
 
 }

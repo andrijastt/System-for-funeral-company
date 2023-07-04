@@ -29,4 +29,10 @@ public class CategoryServiceImplementation implements CategoryService{
         categoryTemp.setName(category.getName());
         return categoryRepository.save(categoryTemp);
     }
+
+    @Override
+    public String deleteCategoryById(Long categoryID) {
+        categoryRepository.deleteById(categoryID);
+        return "Successfully deleted category!";
+    }
 }

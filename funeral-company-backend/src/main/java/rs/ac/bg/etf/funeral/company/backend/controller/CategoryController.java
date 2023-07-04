@@ -25,8 +25,13 @@ public class CategoryController {
         return categoryService.getAllCategories();
     }
 
-    @PutMapping(path = "/update")
+    @PutMapping(path = "category/update")
     public Category updateCategoryName(@Valid @RequestBody Category category){
         return categoryService.updateCategoryName(category);
+    }
+
+    @DeleteMapping(path = "category/delete/{categoryID}")
+    public String deleteCategoryById(@Valid @PathVariable("categoryID") Long categoryID){
+        return categoryService.deleteCategoryById(categoryID);
     }
 }

@@ -9,4 +9,5 @@ public interface CategoryService {
     public Category saveCategory(Category category);
     public List<Category> getAllCategories();
     public Category updateCategoryName(Category category);
+    public String deleteCategoryById(Long categoryID);
 }
