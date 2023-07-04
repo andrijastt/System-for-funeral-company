@@ -24,4 +24,9 @@ public class CategoryController {
     public List<Category> getAllCategories(){
         return categoryService.getAllCategories();
     }
+
+    @PutMapping(path = "/update")
+    public Category updateCategoryName(@Valid @RequestBody Category category){
+        return categoryService.updateCategoryName(category);
+    }
 }

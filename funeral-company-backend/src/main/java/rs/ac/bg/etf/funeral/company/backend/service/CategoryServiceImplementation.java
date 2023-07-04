@@ -22,4 +22,11 @@ public class CategoryServiceImplementation implements CategoryService{
     public List<Category> getAllCategories() {
         return categoryRepository.findAll();
     }
+
+    @Override
+    public Category updateCategoryName(Category category) {
+        Category categoryTemp = categoryRepository.findById(category.getCategoryID()).get();
+        categoryTemp.setName(category.getName());
+        return categoryRepository.save(categoryTemp);
+    }
 }

@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { User } from '../model/User';
 import { Category } from '../model/Category';
+import { CategoryService } from '../category.service';
 
 @Component({
   selector: 'app-category',
@@ -10,13 +11,44 @@ import { Category } from '../model/Category';
 export class CategoryComponent {
 
   user: User
+  categories: Category[]
+
+  constructor(private categoryService: CategoryService){}
 
   ngOnInit(){
-
     this.user = JSON.parse(localStorage.getItem('User'))
+    this.categoryService.getAllCategories().subscribe((data: Category[])=>{
+      this.categories = data
+    })
+  }
+  
+  addCategory: boolean = false;
 
+  addCategoryButton(){
+    this.addCategory = true
   }
 
-  categories: Category[]
+  categoryName: string
+
+  saveCategory(){
+
+    if(this.categoryName == ""){
+      alert("No name entered")
+    } else {
+      this.categoryService.saveCategory(this.categoryName).subscribe((data: Category)=>{
+        alert("Category successfully added!")
+        this.categoryService.getAllCategories().subscribe((data: Category[])=>{
+          this.categories = data
+        })
+      },
+      (error)=>{
+        alert("Category with that name already exists!")      
+      })
+  
+      this.addCategory = false
+      this.categoryName = ""
+    }    
+
+  }
 
 }

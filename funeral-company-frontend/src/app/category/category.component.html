@@ -43,28 +43,47 @@
             <table class="table table-primary">
                 <thead>
                     <tr>
-                        <th scope="col">Column 1</th>
-                        <th scope="col">Column 2</th>
-                        <th scope="col">Column 3</th>
+                        <th scope="col">Category ID</th>
+                        <th scope="col">Category Name</th>                        
+                        <th>Update</th>
+                        <th>Remove</th>
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="">
-                        <td scope="row">R1C1</td>
-                        <td>R1C2</td>
-                        <td>R1C3</td>
-                    </tr>
-                    <tr class="">
-                        <td scope="row">Item</td>
-                        <td>Item</td>
-                        <td>Item</td>
-                    </tr>
+                    <tr class="" *ngFor="let category of categories">
+                        <td scope="row">{{category.categoryID}}</td>
+                        <td>{{category.name}}</td>
+                        <td>
+                            <button type="button" class="btn btn-primary">Update Category</button>
+                        </td>
+                        <td>
+                            <button type="button" class="btn btn-primary">Remove Category</button>
+                        </td>
+                    </tr>                    
                 </tbody>
             </table>
         </div>
         
-
-        <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
+        <button type="button" class="btn btn-primary" (click)="addCategoryButton()">Add Category</button>        
+        <div class="container" *ngIf="addCategory">
+            <form>
+                <fieldset class="mb-3 row">
+                    <legend class="col-form-legend col-5">Add new Category</legend>                    
+                </fieldset>
+                <div class="mb-3 row">
+                    <mat-form-field>
+                        <mat-label for="inputName" class="col-4 col-form-label">Category name</mat-label>
+                        <input type="text" matInput class="form-control" name="username" id="username" [(ngModel)]="categoryName" required>                                
+                    </mat-form-field>            
+                </div>
+                <div class="mb-3 row">
+                    <div class="offset-sm-5 col-sm-8">
+                        <button type="submit" mat-raised-button class="btn btn-primary" (click)="saveCategory()">Add</button>
+                    </div>
+                </div>
+            </form>
+        </div>        
+        
 
     </mat-drawer-content>
 </mat-drawer-container>
