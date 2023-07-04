@@ -20,6 +20,7 @@ import { RegisterUserComponent } from './register-user/register-user.component';
 import { HomePageComponent } from './home-page/home-page.component';
 import { CategoryComponent } from './category/category.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
+import { MaterialComponent } from './material/material.component';
 
 
 @NgModule({
@@ -29,7 +30,8 @@ import { MainNavComponent } from './main-nav/main-nav.component';
     RegisterUserComponent,
     HomePageComponent,
     CategoryComponent,
-    MainNavComponent
+    MainNavComponent,
+    MaterialComponent
   ],
   imports: [
     BrowserModule,
