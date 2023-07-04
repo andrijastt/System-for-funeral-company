@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { User } from '../model/User';
+import { Category } from '../model/Category';
 
 @Component({
   selector: 'app-category',
@@ -15,5 +16,7 @@ export class CategoryComponent {
     this.user = JSON.parse(localStorage.getItem('User'))
 
   }
+
+  categories: Category[]
 
 }

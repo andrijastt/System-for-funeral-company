@@ -1,4 +1,4 @@
-export class Cateory{
+export class Category{
     categoryID: number
     name: string
 }
