@@ -14,6 +14,7 @@ import { MatSidenavModule } from '@angular/material/sidenav'
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatIconModule } from '@angular/material/icon'
 import { MatListModule } from '@angular/material/list'
+import { MatTableModule } from '@angular/material/table'
 
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -44,7 +45,8 @@ import { MainNavComponent } from './main-nav/main-nav.component';
     MatSidenavModule,
     MatToolbarModule,
     MatIconModule,     
-    MatListModule
+    MatListModule,
+    MatTableModule
   ],
   providers: [],
   bootstrap: [AppComponent]
