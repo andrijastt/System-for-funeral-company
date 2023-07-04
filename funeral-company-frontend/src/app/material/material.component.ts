@@ -22,8 +22,7 @@ export class MaterialComponent {
       this.categories = data
     })
     this.materialService.getAllMaterials().subscribe((data: Material[])=>{
-      this.materials = data
-      console.log(data)
+      this.materials = data      
     })
 
   }
@@ -49,12 +48,34 @@ export class MaterialComponent {
         this.materialService.getAllMaterials().subscribe((data: Material[])=>{
           this.materials = data
         })
+        this.name = null
+        this.unit = null
+        this.categoryID = null
+        this.price = null
+        this.dataNotFilled = false
+        this.addMaterial = false
       },
       (error)=>{
         alert("Material with that name already exists!")
+      })      
+    }    
+
+  }
+
+  removeMaterial(materialID){
+    this.materialService.removeMaterial(materialID).subscribe((data: string)=>{
+      alert(data)
+      this.materialService.getAllMaterials().subscribe((data: Material[])=>{
+        this.materials = data
+      })
+    },
+    (error)=>{
+      alert("Successfully deleted material")
+      this.materialService.getAllMaterials().subscribe((data: Material[])=>{
+        this.materials = data
       })
     }
-
+    )
   }
 
 }

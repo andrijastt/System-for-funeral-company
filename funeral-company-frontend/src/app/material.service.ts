@@ -26,4 +26,10 @@ export class MaterialService {
     return this.http.post(`${this.uri}/material`, data)
 
   }
+
+  removeMaterial(materialID){
+    console.log(materialID);
+    
+    return this.http.delete(`${this.uri}/material/${materialID}`)
+  }
 }

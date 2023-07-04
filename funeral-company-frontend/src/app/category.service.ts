@@ -33,10 +33,7 @@ export class CategoryService {
     return this.http.put<Category>(`${this.uri}/category/update`, data)
   }
 
-  removeCategory(categoryID){    
-    const data = {
-      categoryID: categoryID,      
-    }
+  removeCategory(categoryID){        
     return this.http.delete(`${this.uri}/category/delete/${categoryID}`)
   }
 

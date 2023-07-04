@@ -15,6 +15,8 @@
                     <th>Unit</th>
                     <th>Category</th>
                     <th>Price</th>
+                    <th>Update</th>
+                    <th>Remove</th>
                 </tr>
                 </thead>
                 <tbody class="table-group-divider">
@@ -25,6 +27,12 @@
                         <td scope="row">{{material.unit}}</td>
                         <td scope="row">{{material.category.name}}</td>
                         <td scope="row">{{material.price}}</td>
+                        <td scope="row">
+                            <button type="button" class="btn btn-primary">Update Material</button>
+                        </td>
+                        <td scope="row">
+                            <button type="button" class="btn btn-primary" (click)="removeMaterial(material.materialID)">Remove Material</button>
+                        </td>
                     </tr>                    
                 </tbody>
                 <tfoot>
@@ -78,6 +86,3 @@
     </div>
 
 </app-main-nav>
-<!-- <table mat-table>
-
-</table> -->

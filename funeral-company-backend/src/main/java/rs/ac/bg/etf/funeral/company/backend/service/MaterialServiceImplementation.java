@@ -30,4 +30,11 @@ public class MaterialServiceImplementation implements MaterialService{
         material.setCategory(category);
         return materialRepository.save(material);
     }
+
+    @Override
+    public String deleteMaterial(Long materialID) {
+        System.out.println("materialID = " + materialID);
+        materialRepository.deleteById(materialID);
+        return "Successfully deleted material!";
+    }
 }

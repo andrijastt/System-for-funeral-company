@@ -24,4 +24,9 @@ public class MaterialController {
     public Material saveMaterial(@Valid @RequestBody Material material){
         return materialService.saveMaterial(material);
     }
+
+    @DeleteMapping(path = "/material/{materialID}")
+    public String deleteMaterial(@Valid @PathVariable("materialID") Long materialID){
+        return materialService.deleteMaterial(materialID);
+    }
 }

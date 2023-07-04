@@ -41,7 +41,7 @@ public class Material {
     private Float price;
 
     @ManyToOne(
-            cascade = CascadeType.ALL
+            cascade = CascadeType.REFRESH
     )
     @JoinColumn(
             name = "categoryID",
