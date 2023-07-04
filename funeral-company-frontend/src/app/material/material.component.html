@@ -13,7 +13,7 @@
                     <th>Name</th>
                     <th>Count</th>
                     <th>Unit</th>
-                    <th>categoryID</th>
+                    <th>Category</th>
                     <th>Price</th>
                 </tr>
                 </thead>
@@ -23,7 +23,7 @@
                         <td scope="row">{{material.name}}</td>
                         <td scope="row">{{material.count}}</td>
                         <td scope="row">{{material.unit}}</td>
-                        <td scope="row">{{material.categoryID}}</td>
+                        <td scope="row">{{material.category.name}}</td>
                         <td scope="row">{{material.price}}</td>
                     </tr>                    
                 </tbody>
@@ -42,13 +42,13 @@
             <div class="mb-3 row">
                 <mat-form-field>
                     <mat-label for="inputName" class="col-4 col-form-label">Material name</mat-label>
-                    <input type="text" matInput class="form-control" name="name" id="name" required>                        
+                    <input type="text" matInput class="form-control" name="name" id="name" [(ngModel)]="name" required>                        
                 </mat-form-field>            
             </div>
             <div class="mb-3 row">
                 <mat-form-field>
                     <mat-label for="inputName" class="col-4 col-form-label">Unit</mat-label>
-                    <input type="text" matInput class="form-control" name="unit" id="unit" required>                                
+                    <input type="text" matInput class="form-control" name="unit" id="unit" [(ngModel)]="unit" required>                                
                     <mat-hint>Kg, m, l</mat-hint>
                 </mat-form-field>            
             </div>
@@ -56,21 +56,24 @@
                 <mat-form-field>
                     <mat-label for="inputName" class="col-4 col-form-label">Category</mat-label>
                     <mat-select required [(ngModel)]="categoryID" name="category" id="category">
-                        <mat-option *ngFor="let category of categories" [value]="category.categoryID">{{category.name}}</mat-option>
+                        <mat-option *ngFor="let category of categories" [value]="category">{{category.name}}</mat-option>
                     </mat-select>                    
                 </mat-form-field>            
             </div>
             <div class="mb-3 row">
                 <mat-form-field>
                     <mat-label for="inputName" class="col-4 col-form-label">Price</mat-label>
-                    <input type="number" matInput class="form-control" name="price" id="price" required>                                                    
+                    <input type="number" matInput class="form-control" name="price" id="price" [(ngModel)]="price" required>                                                    
                 </mat-form-field>            
             </div>
             <div class="mb-3 row">
                 <div class="offset-sm-5 col-sm-8">
-                    <button type="submit" mat-raised-button class="btn btn-primary">Add</button>
+                    <button type="submit" mat-raised-button class="btn btn-primary" (click)="saveMaterial()">Add</button>
                 </div>
             </div>
+            <div class="alert alert-primary" role="alert" *ngIf="dataNotFilled">
+                <strong>Data not filled:</strong> Fill all data
+            </div>            
         </form>
     </div>
 

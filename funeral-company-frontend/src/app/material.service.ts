@@ -13,4 +13,17 @@ export class MaterialService {
   getAllMaterials(){
     return this.http.get(`${this.uri}/materials`)
   }
+
+  saveMaterial(name, unit, categoryID, price){
+
+    const data = {
+      name: name,
+      unit: unit,
+      count: 0,
+      category: categoryID,
+      price: price
+    }    
+    return this.http.post(`${this.uri}/material`, data)
+
+  }
 }

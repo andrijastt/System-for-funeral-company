@@ -23,6 +23,7 @@ export class MaterialComponent {
     })
     this.materialService.getAllMaterials().subscribe((data: Material[])=>{
       this.materials = data
+      console.log(data)
     })
 
   }
@@ -33,6 +34,27 @@ export class MaterialComponent {
     this.addMaterial = true
   }
 
-  categoryID: number
+  dataNotFilled: boolean = false  
+  name: string
+  unit: string
+  categoryID: Category
+  price: number
+
+  saveMaterial(){    
+    if(this.name == null || this.unit == null || this.categoryID == null || this.price == null){
+      this.dataNotFilled = true
+    } else {
+      this.materialService.saveMaterial(this.name, this.unit, this.categoryID, this.price).subscribe((data: Material) =>{
+        alert("Material successfully added!")
+        this.materialService.getAllMaterials().subscribe((data: Material[])=>{
+          this.materials = data
+        })
+      },
+      (error)=>{
+        alert("Material with that name already exists!")
+      })
+    }
+
+  }
 
 }

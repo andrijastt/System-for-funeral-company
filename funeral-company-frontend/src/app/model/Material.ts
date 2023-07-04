@@ -1,8 +1,10 @@
+import { Category } from "./Category"
+
 export class Material{
     materialID: number
     name: string
     count: number
     unit: string
-    categoryID: number
+    category: Category
     price: number
 }

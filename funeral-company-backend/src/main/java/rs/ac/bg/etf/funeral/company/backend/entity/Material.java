@@ -32,6 +32,11 @@ public class Material {
     @Column(
             nullable = false
     )
+    private int count;
+
+    @Column(
+            nullable = false
+    )
     @Min(0)
     private Float price;
 
