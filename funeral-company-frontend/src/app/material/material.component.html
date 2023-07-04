@@ -1,9 +1,37 @@
 <app-main-nav>
 
-    <table>
-        
-    </table>
-
+    <div class="table-responsive-lg">
+        <table class="table table-striped-columns
+        table-hover	
+        table-bordered
+        table-primary
+        align-middle">
+            <thead class="table-light">
+                <caption>Materials</caption>
+                <tr>
+                    <th>MaterialID</th>
+                    <th>Name</th>
+                    <th>Count</th>
+                    <th>Unit</th>
+                    <th>categoryID</th>
+                    <th>Price</th>
+                </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    <tr class="table-primary" *ngFor="let material of materials">
+                        <td scope="row">{{material.materialID}}</td>
+                        <td scope="row">{{material.name}}</td>
+                        <td scope="row">{{material.count}}</td>
+                        <td scope="row">{{material.unit}}</td>
+                        <td scope="row">{{material.categoryID}}</td>
+                        <td scope="row">{{material.price}}</td>
+                    </tr>                    
+                </tbody>
+                <tfoot>
+                    
+                </tfoot>
+        </table>
+    </div>    
 
     <button type="button" class="btn btn-primary" (click)="addMaterialButton()">Add Material</button>        
     <div class="container" *ngIf="addMaterial">

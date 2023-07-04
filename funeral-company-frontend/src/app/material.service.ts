@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,5 +6,11 @@ import { Injectable } from '@angular/core';
 })
 export class MaterialService {
 
-  constructor() { }
+  uri = 'http://localhost:8080'
+
+  constructor(private http: HttpClient) { }
+
+  getAllMaterials(){
+    return this.http.get(`${this.uri}/materials`)
+  }
 }

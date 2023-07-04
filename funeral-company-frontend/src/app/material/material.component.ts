@@ -15,11 +15,14 @@ export class MaterialComponent {
 
   categories: Category[]
   materials: Material[]
-  
+
   ngOnInit(){
 
     this.categoryService.getAllCategories().subscribe((data: Category[])=>{
       this.categories = data
+    })
+    this.materialService.getAllMaterials().subscribe((data: Material[])=>{
+      this.materials = data
     })
 
   }

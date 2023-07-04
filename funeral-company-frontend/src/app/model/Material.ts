@@ -3,6 +3,6 @@ export class Material{
     name: string
     count: number
     unit: string
-    IDCategory: number
+    categoryID: number
     price: number
 }
