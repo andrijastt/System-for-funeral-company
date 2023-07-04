@@ -11,7 +11,7 @@ import { CategoryService } from '../category.service';
 export class CategoryComponent {
 
   user: User
-  categories: Category[]
+  categories: Category[]  
 
   constructor(private categoryService: CategoryService){}
 
@@ -19,7 +19,7 @@ export class CategoryComponent {
     this.user = JSON.parse(localStorage.getItem('User'))
     this.categoryService.getAllCategories().subscribe((data: Category[])=>{
       this.categories = data
-    })
+    })       
   }
   
   addCategory: boolean = false;
@@ -48,6 +48,27 @@ export class CategoryComponent {
       this.addCategory = false
       this.categoryName = ""
     }    
+
+  }  
+
+  updateCategoryBool: boolean = false
+  updateCategoryName: string
+  updateCategoryID: number  
+
+  setUpdateCategory(category: Category){
+    this.updateCategoryBool = true
+    this.updateCategoryName = category.name
+    this.updateCategoryID = category.categoryID
+  }
+
+  updateCategory(){
+
+    this.categoryService.updateCategory(this.updateCategoryID, this.updateCategoryName).subscribe((data: Category) =>{
+      alert("Successfully updated name!")
+      this.categoryService.getAllCategories().subscribe((data: Category[])=>{
+        this.categories = data
+      })
+    })
 
   }
 

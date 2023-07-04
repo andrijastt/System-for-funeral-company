@@ -24,10 +24,10 @@ export class CategoryService {
     return this.http.get(`${this.uri}/categories`)
   }
 
-  updateCategory(category: Category){
+  updateCategory(categoryID, name){
     const data = {
-      categoryID: category.categoryID,
-      name: category.name
+      categoryID: categoryID,
+      name: name
     }
 
     return this.http.put<Category>(`${this.uri}/update`, data)

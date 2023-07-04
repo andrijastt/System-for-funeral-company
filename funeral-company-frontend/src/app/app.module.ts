@@ -10,9 +10,10 @@ import { MatInputModule } from '@angular/material/input';
 import { MatButtonModule } from '@angular/material/button'
 import { MatDividerModule } from '@angular/material/divider'
 import { MatFormFieldModule } from '@angular/material/form-field'
-import { MatSidenavModule, MatDrawerContainer } from '@angular/material/sidenav'
+import { MatSidenavModule } from '@angular/material/sidenav'
 import { MatToolbarModule } from '@angular/material/toolbar'
 import { MatIconModule } from '@angular/material/icon'
+import { MatListModule } from '@angular/material/list'
 
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -41,6 +42,7 @@ import { CategoryComponent } from './category/category.component';
     MatSidenavModule,
     MatToolbarModule,
     MatIconModule,     
+    MatListModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -1,15 +1,15 @@
 <mat-toolbar color="primary">
     
     <mat-toolbar-row>
-        <div class="row-cols-4 justify-content-center align-items-center g-2">
+        <!-- <div class="row-cols-4 justify-content-center align-items-center g-2">
             <div class="col">
                 <div class="d-grid gap-2">
-                    <button type="button" mat-icon-button (click)="drawer" name="" id="">
+                    <button type="button" mat-icon-button name="" id="">
                         <mat-icon>menu</mat-icon>
                     </button>
                 </div>            
             </div>        
-        </div>    
+        </div>     -->
         <div class="row-cols-4 justify-content-center align-items-center g-2">
             <div class="col">
                 <div class="d-grid gap-2">
@@ -23,8 +23,8 @@
         
 </mat-toolbar>
     
-<mat-drawer-container #drawer class="example-container">
-    <mat-drawer mode="side" #drawer opened>
+<mat-drawer-container class="example-container">
+    <mat-drawer mode="side" #drawer opened mode="side">
                     
         <div class="d-grid gap-2">
             <a name="category" id="category" class="btn btn-primary" href="/" role="button">Home</a>
@@ -50,11 +50,13 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <tr class="" *ngFor="let category of categories">
+                    <tr class="" *ngFor="let category of categories; let i = index">
                         <td scope="row">{{category.categoryID}}</td>
-                        <td>{{category.name}}</td>
+                        <td>                            
+                            {{category.name}}
+                        </td>
                         <td>
-                            <button type="button" class="btn btn-primary">Update Category</button>
+                            <button type="button" class="btn btn-primary" (click)="setUpdateCategory(category)">Update Category</button>
                         </td>
                         <td>
                             <button type="button" class="btn btn-primary">Remove Category</button>
@@ -83,9 +85,26 @@
                 </div>
             </form>
         </div>        
+
+        <div class="container" *ngIf="updateCategoryBool">
+            <form>
+                <fieldset class="mb-3 row">
+                    <legend class="col-form-legend col-5">Update Category</legend>                    
+                </fieldset>
+                <div class="mb-3 row">
+                    <mat-form-field>
+                        <mat-label for="inputName" class="col-4 col-form-label">Category name</mat-label>
+                        <input type="text" matInput class="form-control" name="updateCategoryName" id="updateCategoryName" [(ngModel)]="updateCategoryName" required>                                
+                    </mat-form-field>            
+                </div>
+                <div class="mb-3 row">
+                    <div class="offset-sm-5 col-sm-8">
+                        <button type="submit" mat-raised-button class="btn btn-primary" (click)="updateCategory()">Update</button>
+                    </div>
+                </div>
+            </form>
+        </div>
         
 
     </mat-drawer-content>
 </mat-drawer-container>
-
-    
