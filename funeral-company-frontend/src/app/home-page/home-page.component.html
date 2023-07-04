@@ -1,26 +1,45 @@
-<br>
-
-
-<fieldset class="mb-3 row">
-    <legend class="col-form-legend col-5">Welcome, {{user.firstname}} {{user.lastname}}</legend>    
-</fieldset>
-
-<mat-drawer-container class="example-container">
-    <mat-drawer mode="side" opened>
-        
-        <div class="d-grid gap-2">
-          <button type="button" name="" id="" class="btn btn-primary">Button</button>
+<mat-toolbar color="primary">
+    
+<mat-toolbar-row>
+    <div class="row-cols-4 justify-content-center align-items-center g-2">
+        <div class="col">
+            <div class="d-grid gap-2">
+                <button type="button" mat-icon-button (click)="drawer" name="" id="">
+                    <mat-icon>menu</mat-icon>
+                </button>
+            </div>            
+        </div>        
+    </div>    
+    <div class="row-cols-4 justify-content-center align-items-center g-2">
+        <div class="col">
+            <div class="d-grid gap-2">
+                <div class="card-header">
+                    Welcome, {{user.firstname}} {{user.lastname}}
+                </div>        
+            </div>
         </div>
+    </div>
+</mat-toolbar-row>
+    
+</mat-toolbar>
+
+<mat-drawer-container #drawer class="example-container">
+    <mat-drawer mode="side" #drawer opened>
+        
+        
+
         <div class="d-grid gap-2">
-          <button type="button" name="" id="" class="btn btn-primary">Category</button>
+            <a name="category" id="category" class="btn btn-primary" href="" role="button"></a>
+        </div>
+        <div class="d-grid gap-2">          
+          <a name="category" id="category" class="btn btn-primary" href="/category" role="button">Category</a>
         </div>        
         <div class="d-grid gap-2">
-            <button type="button" name="" id="" class="btn btn-primary">Update User</button>
+            <a name="category" id="category" class="btn btn-primary" href="" role="button">Update user</a>
           </div>        
         <div class="d-grid gap-2">
-            <button type="button" name="" id="" class="btn btn-primary">Log out</button>
-        </div>
-
+            <a name="category" id="category" class="btn btn-primary" href="/" role="button">Log out</a>
+        </div>                
 
     </mat-drawer>
     <mat-drawer-content>
