@@ -33,7 +33,8 @@ public class MaterialServiceImplementation implements MaterialService{
 
     @Override
     public String deleteMaterial(Long materialID) {
-        System.out.println("materialID = " + materialID);
+        Material materialDB = materialRepository.findById(materialID).get();
+        materialDB.setCategory(null);
         materialRepository.deleteById(materialID);
         return "Successfully deleted material!";
     }

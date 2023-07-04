@@ -6,6 +6,8 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.List;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -35,4 +37,10 @@ public class Category {
     )
     private String name;
 
+//    @OneToMany(
+//            mappedBy = "category",
+//            fetch = FetchType.LAZY,
+//            cascade = CascadeType.REMOVE
+//    )
+//    List<Material> materials;
 }

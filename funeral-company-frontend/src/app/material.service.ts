@@ -27,9 +27,7 @@ export class MaterialService {
 
   }
 
-  removeMaterial(materialID){
-    console.log(materialID);
-    
+  removeMaterial(materialID){        
     return this.http.delete(`${this.uri}/material/${materialID}`)
   }
 }
