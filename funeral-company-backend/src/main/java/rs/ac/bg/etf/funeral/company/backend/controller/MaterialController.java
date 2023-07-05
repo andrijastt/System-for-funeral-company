@@ -38,7 +38,6 @@ public class MaterialController {
     @GetMapping(path = "/material/search")
     public List<Material> searchMaterials(@Valid @RequestParam("name") String name, @Valid @RequestParam("countFlag") boolean countFlag,
                                           @Valid @RequestParam("categoryID") Long categoryID){
-        System.out.println("categoryID = " + categoryID);
         return materialService.findByNameContainingAndCountGreaterThanAndCategory(name, countFlag, categoryID);
     }
 }

@@ -23,6 +23,7 @@ import { HomePageComponent } from './home-page/home-page.component';
 import { CategoryComponent } from './category/category.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { MaterialComponent } from './material/material.component';
+import { ModelComponent } from './model/model.component';
 
 
 @NgModule({
@@ -33,7 +34,8 @@ import { MaterialComponent } from './material/material.component';
     HomePageComponent,
     CategoryComponent,
     MainNavComponent,
-    MaterialComponent
+    MaterialComponent,
+    ModelComponent
   ],
   imports: [
     BrowserModule,
