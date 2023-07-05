@@ -27,6 +27,12 @@ export class MaterialComponent {
 
   }
 
+  getAllMaterials(){
+    this.materialService.getAllMaterials().subscribe((data: Material[])=>{      
+      this.materials = data      
+    })
+  }
+
   addMaterial: boolean = false
 
   addMaterialButton(){
@@ -111,7 +117,7 @@ export class MaterialComponent {
   }
 
   nameSearch: string = ""
-  categorySearch: Category = null
+  categorySearch: number = null
   countFlag: boolean = false
 
   search(){

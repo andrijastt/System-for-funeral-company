@@ -53,16 +53,22 @@ public class MaterialServiceImplementation implements MaterialService{
     }
 
     @Override
-    public List<Material> findByNameContainingAndCountGreaterThan(String name, boolean count) {
-        if(count){
-            return materialRepository.findByNameContainingAndCountGreaterThan(name, 0);
-        } else {
-            return materialRepository.findByNameContainingAndCountGreaterThan(name, -1);
-        }
-    }
+    public List<Material> findByNameContainingAndCountGreaterThanAndCategory(String name, boolean count, Long categoryID) {
 
-    @Override
-    public List<Material> findByNameContaining(String name) {
-        return materialRepository.findByNameContaining(name);
+        if(categoryID == 0){
+            if(count){
+                return materialRepository.findByNameContainingAndCountGreaterThan(name, 0);
+            } else {
+                return materialRepository.findByNameContainingAndCountGreaterThan(name, -1);
+            }
+        } else {
+            Category category1 = categoryRepository.findById(categoryID).get();
+            if(count){
+                return materialRepository.findByNameContainingAndCountGreaterThanAndCategory(name, 0, category1);
+            } else {
+                return materialRepository.findByNameContainingAndCountGreaterThanAndCategory(name, -1, category1);
+            }
+        }
+
     }
 }

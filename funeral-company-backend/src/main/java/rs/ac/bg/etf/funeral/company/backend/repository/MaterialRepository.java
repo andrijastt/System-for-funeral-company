@@ -2,6 +2,7 @@ package rs.ac.bg.etf.funeral.company.backend.repository;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
+import rs.ac.bg.etf.funeral.company.backend.entity.Category;
 import rs.ac.bg.etf.funeral.company.backend.entity.Material;
 
 import java.util.List;
@@ -10,5 +11,5 @@ import java.util.List;
 public interface MaterialRepository extends JpaRepository<Material, Long> {
 
     List<Material> findByNameContainingAndCountGreaterThan(String name, int count);
-    List<Material> findByNameContaining(String name);
+    List<Material> findByNameContainingAndCountGreaterThanAndCategory(String name, int count, Category category);
 }

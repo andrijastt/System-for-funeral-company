@@ -43,12 +43,12 @@ export class MaterialService {
     return this.http.delete(`${this.uri}/material/${materialID}`)
   }
 
-  search(nameSearch, countFlag, categorySearch){
+  search(nameSearch, countFlag, categoryID){
 
     let queryParams: HttpParams = new HttpParams();
     queryParams = queryParams.append("name", nameSearch)
-    queryParams = queryParams.append("countFlag", countFlag)
-    // queryParams = queryParams.append("category", categorySearch)        
+    queryParams = queryParams.append("countFlag", countFlag)            
+    queryParams = queryParams.append("categoryID", categoryID)            
 
     return this.http.get(`${this.uri}/material/search`, {params: queryParams})
   }

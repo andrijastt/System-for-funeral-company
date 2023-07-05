@@ -36,15 +36,9 @@ public class MaterialController {
     }
 
     @GetMapping(path = "/material/search")
-    public List<Material> searchMaterials(@Valid @RequestParam("name") String name, @Valid @RequestParam("countFlag") boolean countFlag){
-        System.out.println("name = " + name);
-        System.out.println("countFlag = " + countFlag);
-//        System.out.println("category = " + category);
-        return materialService.findByNameContainingAndCountGreaterThan(name, countFlag);
-    }
-
-    @GetMapping(path = "/material/name")
-    public List<Material> findByNameContaining(@Valid @RequestParam("name") String name){
-        return materialService.findByNameContaining(name);
+    public List<Material> searchMaterials(@Valid @RequestParam("name") String name, @Valid @RequestParam("countFlag") boolean countFlag,
+                                          @Valid @RequestParam("categoryID") Long categoryID){
+        System.out.println("categoryID = " + categoryID);
+        return materialService.findByNameContainingAndCountGreaterThanAndCategory(name, countFlag, categoryID);
     }
 }

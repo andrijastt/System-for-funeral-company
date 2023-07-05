@@ -17,14 +17,19 @@
                 <mat-form-field>
                     <mat-label for="inputName" class="col">Category</mat-label>
                     <mat-select name="category" id="category" [(ngModel)]="categorySearch">
-                        <mat-option [value]="null"></mat-option>
-                        <mat-option *ngFor="let category of categories" [value]="category">{{category.name}}</mat-option>
+                        <mat-option [value]="0"></mat-option>
+                        <mat-option *ngFor="let category of categories" [value]="category.categoryID">{{category.name}}</mat-option>
                     </mat-select>
                 </mat-form-field>         
             </div>            
         </div>
         <div class="col">            
             <mat-checkbox color="primary" [(ngModel)]="countFlag">Count > 0</mat-checkbox>            
+        </div>
+        <div class="col">
+            <div class="d-grid gap-2">
+                <button type="button" class="btn btn-primary" (click)="getAllMaterials()">Get All Materials</button>   
+            </div>            
         </div>
         <div class="col">
             <div class="d-grid gap-2">
