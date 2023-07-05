@@ -6,6 +6,7 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -37,10 +38,19 @@ public class Category {
     )
     private String name;
 
-//    @OneToMany(
-//            mappedBy = "category",
-//            fetch = FetchType.LAZY,
-//            cascade = CascadeType.REMOVE
-//    )
-//    List<Material> materials;
+    @OneToMany(
+            mappedBy = "category",
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.REMOVE
+    )
+    @Transient
+    List<Material> materials;
+
+    public void addMaterials(Material material){
+        if(materials == null) materials = new ArrayList<>();
+        materials.add(material);
+    }
+    public void removeMaterial(Material material){
+        materials.remove(material);
+    }
 }
