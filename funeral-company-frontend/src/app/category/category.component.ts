@@ -81,9 +81,14 @@ export class CategoryComponent {
       })
     },
     (error)=>{
-      alert("Successfully deleted category")
+      
       this.categoryService.getAllCategories().subscribe((data: Category[])=>{
-        this.categories = data
+        if(this.categories.length == data.length){
+          alert("Cant' delete category untill all materials are removed!")
+        } else {
+          alert("Successfully deleted category")
+          this.categories = data
+        }        
       })
     }
     )

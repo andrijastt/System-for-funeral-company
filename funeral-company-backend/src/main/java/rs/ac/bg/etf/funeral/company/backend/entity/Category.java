@@ -38,21 +38,21 @@ public class Category {
     )
     private String name;
 
-//    @OneToMany(
-//            mappedBy = "category",
-//            fetch = FetchType.LAZY,
-//            cascade = CascadeType.ALL,
-//            orphanRemoval = true
-//    )
-//    @Transient
-//    List<Material> materials = new ArrayList<>();
-//
-//    public void addMaterials(Material material){
-//        materials.add(material);
-//        material.setCategory(this);
-//    }
-//    public void removeMaterial(Material material){
-//        materials.remove(material);
-//        material.setCategory(null);
-//    }
+    @OneToMany(
+            mappedBy = "category",
+            fetch = FetchType.LAZY,
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
+    )
+    @Transient
+    List<Material> materials = new ArrayList<>();
+
+    public void addMaterials(Material material){
+        materials.add(material);
+        material.setCategory(this);
+    }
+    public void removeMaterial(Material material){
+        materials.remove(material);
+        material.setCategory(null);
+    }
 }
