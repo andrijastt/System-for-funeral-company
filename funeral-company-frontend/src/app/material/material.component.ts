@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { MaterialService } from '../material.service';
-import { Category } from '../model/Category';
+import { Category } from '../models/Category';
 import { CategoryService } from '../category.service';
-import { Material } from '../model/Material';
+import { Material } from '../models/Material';
 
 @Component({
   selector: 'app-material',
@@ -60,6 +60,37 @@ export class MaterialComponent {
         alert("Material with that name already exists!")            
       })      
     }    
+
+  }
+
+  updateMaterialButton: boolean = false
+  updateMaterialID: number
+  updateName: string
+  updateUnit: string
+  updateCategoryID: Category
+  updatePrice: number
+
+  updateMaterialButtonClick(material: Material){
+    this.updateMaterialButton = true
+    this.updateMaterialID = material.materialID
+    this.updateName = material.name
+    this.updateUnit = material.unit
+    this.updateCategoryID = material.category
+    this.updatePrice = material.price        
+  }
+
+  updateMaterial(){
+    
+    this.materialService.updateMaterial(this.updateMaterialID, this.updateName, 
+      this.updateUnit, this.updateCategoryID, this.updatePrice).subscribe((data: Material)=>{
+        alert("Successfully updated Material!")
+        this.materialService.getAllMaterials().subscribe((data: Material[])=>{
+          this.materials = data
+        })
+      },
+      (error)=>{
+        alert("Material with that name already exists!")
+      })
 
   }
 

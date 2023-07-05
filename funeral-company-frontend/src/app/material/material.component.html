@@ -28,7 +28,7 @@
                         <td scope="row">{{material.category.name}}</td>
                         <td scope="row">{{material.price}}</td>
                         <td scope="row">
-                            <button type="button" class="btn btn-primary">Update Material</button>
+                            <button type="button" class="btn btn-primary" (click)="updateMaterialButtonClick(material)">Update Material</button>
                         </td>
                         <td scope="row">
                             <button type="button" class="btn btn-primary" (click)="removeMaterial(material.materialID)">Remove Material</button>
@@ -41,8 +41,9 @@
         </table>
     </div>    
 
-    <button type="button" class="btn btn-primary" (click)="addMaterialButton()">Add Material</button>        
-    <div class="container" *ngIf="addMaterial">
+    <button type="button" class="btn btn-primary" (click)="addMaterialButton()">Add Material</button>   
+         
+    <div class="container" *ngIf="addMaterial">                
         <form>
             <fieldset class="mb-3 row">
                 <legend class="col-form-legend col-5">Add new Material</legend>                    
@@ -82,6 +83,48 @@
             <div class="alert alert-primary" role="alert" *ngIf="dataNotFilled">
                 <strong>Data not filled:</strong> Fill all data
             </div>            
+        </form>
+    </div>
+
+    <div class="container" *ngIf="updateMaterialButton">                
+        <form>
+            <fieldset class="mb-3 row">
+                <legend class="col-form-legend col-5">
+                    Update Material                    
+                </legend>                    
+            </fieldset>
+            <div class="mb-3 row">
+                <mat-form-field>
+                    <mat-label for="inputName" class="col-4 col-form-label">Material name</mat-label>
+                    <input type="text" matInput class="form-control" name="name" id="name" [(ngModel)]="updateName">                        
+                </mat-form-field>            
+            </div>
+            <div class="mb-3 row">
+                <mat-form-field>
+                    <mat-label for="inputName" class="col-4 col-form-label">Unit</mat-label>
+                    <input type="text" matInput class="form-control" name="unit" id="unit" [(ngModel)]="updateUnit">                                
+                    <mat-hint>Kg, m, l</mat-hint>
+                </mat-form-field>            
+            </div>
+            <div class="mb-3 row">
+                <mat-form-field>
+                    <mat-label for="inputName" class="col-4 col-form-label">Category</mat-label>
+                    <mat-select required [(ngModel)]="updateCategoryID" name="category" id="category">
+                        <mat-option *ngFor="let category of categories" [value]="category">{{category.name}}</mat-option>
+                    </mat-select>                    
+                </mat-form-field>            
+            </div>
+            <div class="mb-3 row">
+                <mat-form-field>
+                    <mat-label for="inputName" class="col-4 col-form-label">Price</mat-label>
+                    <input type="number" matInput class="form-control" name="price" id="price" [(ngModel)]="updatePrice">                                                    
+                </mat-form-field>            
+            </div>
+            <div class="mb-3 row">
+                <div class="offset-sm-5 col-sm-8">
+                    <button type="submit" mat-raised-button class="btn btn-primary" (click)="updateMaterial()">Update</button>
+                </div>
+            </div>                        
         </form>
     </div>
 

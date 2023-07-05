@@ -9,4 +9,5 @@ public interface MaterialService {
     public List<Material> getAllMaterials();
     public Material saveMaterial(Material material);
     public String deleteMaterial(Long materialID);
+    public Material updateMaterial(Material material);
 }

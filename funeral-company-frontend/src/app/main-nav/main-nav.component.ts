@@ -2,7 +2,7 @@ import { Component, inject } from '@angular/core';
 import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';
 import { Observable } from 'rxjs';
 import { map, shareReplay } from 'rxjs/operators';
-import { User } from '../model/User';
+import { User } from '../models/User';
 
 @Component({
   selector: 'app-main-nav',

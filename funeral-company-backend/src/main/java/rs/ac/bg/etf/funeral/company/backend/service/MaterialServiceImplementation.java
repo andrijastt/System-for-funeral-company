@@ -37,4 +37,18 @@ public class MaterialServiceImplementation implements MaterialService{
         materialRepository.deleteById(materialID);
         return "Successfully deleted material!";
     }
+
+    @Override
+    public Material updateMaterial(Material material) {
+        Material materialDB = materialRepository.findById(material.getMaterialID()).get();
+        Category categoryDB = categoryRepository.findById(material.getCategory().getCategoryID()).get();
+        materialDB.setCategory(categoryDB);
+        if(!material.getName().equals(""))
+            materialDB.setName(material.getName());
+        if(!material.getUnit().equals(""))
+            materialDB.setUnit(material.getUnit());
+        if(material.getPrice() != null)
+            materialDB.setPrice(material.getPrice());
+        return materialRepository.save(materialDB);
+    }
 }

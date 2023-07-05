@@ -27,6 +27,20 @@ export class MaterialService {
 
   }
 
+  updateMaterial(materialID, name, unit, category, price){
+    const data = {
+      materialID: materialID,
+      name: name,
+      unit: unit,
+      count: 0,
+      category: category,
+      price: price
+    }    
+    console.log(data);
+    
+    return this.http.post(`${this.uri}/material/update`, data)
+  }
+
   removeMaterial(materialID){        
     return this.http.delete(`${this.uri}/material/${materialID}`)
   }
