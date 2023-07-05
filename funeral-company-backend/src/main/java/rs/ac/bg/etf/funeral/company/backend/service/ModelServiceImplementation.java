@@ -24,15 +24,15 @@ public class ModelServiceImplementation implements ModelService{
     }
 
     @Override
-    public Model updateModel(Long modelID, String name, String description) {
+    public Model updateModel(Model model) {
 
-        Model modelDB = modelRepository.findById(modelID).get();
+        Model modelDB = modelRepository.findById(model.getModelID()).get();
 
-        if(!name.equals(""))
-            modelDB.setName(name);
+        if(!model.getName().equals(""))
+            modelDB.setName(model.getName());
 
-        if(!description.equals(""))
-            modelDB.setDescription(description);
+        if(!model.getDescription().equals(""))
+            modelDB.setDescription(model.getDescription());
 
         return modelRepository.save(modelDB);
     }

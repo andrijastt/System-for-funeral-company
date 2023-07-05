@@ -25,10 +25,9 @@ public class ModelController {
         return modelService.saveModel(model);
     }
 
-    @PutMapping(path = "/model/update")
-    public Model updateModel(@Valid @PathVariable("modelID") Long modelID, @Valid @PathVariable("name") String name,
-                             @Valid @PathVariable("description") String description){
-        return modelService.updateModel(modelID, name, description);
+    @PostMapping(path = "/model/update")
+    public Model updateModel(@Valid @RequestBody Model model){
+        return modelService.updateModel(model);
     }
 
     @GetMapping(path = "/model/search")

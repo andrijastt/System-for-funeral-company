@@ -24,11 +24,12 @@ export class ModelService {
 
   updateModel(modelID, name, description){    
 
-    let queryParams: HttpParams = new HttpParams();
-    queryParams = queryParams.append("modelID", modelID)
-    queryParams = queryParams.append("name", name)
-    queryParams = queryParams.append("description", description)        
+    const data = {
+      modelID: modelID,
+      name: name,
+      description: description
+    }        
 
-    return this.http.put(`${this.uri}/model/update`, {params: queryParams})
+    return this.http.post(`${this.uri}/model/update`, data)
   }
 }

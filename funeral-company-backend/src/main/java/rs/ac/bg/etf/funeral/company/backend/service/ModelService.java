@@ -8,7 +8,7 @@ public interface ModelService {
 
     List<Model> getAllModels();
     Model saveModel(Model model);
-    Model updateModel(Long modelID, String name, String description);
+    Model updateModel(Model model);
     List<Model> getAllModelsByNameContaining(String name);
     String deleteModel(Long modelID);
 }
