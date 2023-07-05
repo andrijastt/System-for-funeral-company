@@ -1,1 +1,122 @@
-<p>model works!</p>
+<app-main-nav>
+    <br>
+    <div class="row justify-content-center align-items-center g-2-x">                
+        <fieldset class="mb-3 row">
+            <legend class="col">Serach options</legend>                    
+        </fieldset>
+        <div class="col-4">            
+            <div class="d-grid gap-2">
+                <mat-form-field>
+                    <mat-label for="inputName" class="col">Model name</mat-label>
+                    <input type="text" matInput [(ngModel)]="nameSearch">
+                </mat-form-field>    
+            </div>            
+        </div>            
+        <div class="col">
+            <div class="d-grid gap-2">
+                <button type="button" class="btn btn-primary">Get All Models</button>   
+            </div>            
+        </div>
+        <div class="col">
+            <div class="d-grid gap-2">
+                <button type="button" class="btn btn-primary" (click)="this.addModel = true">Add Model</button>   
+            </div>            
+        </div>
+        <div class="col">
+            <div class="d-grid gap-2">
+              <button type="button" name="" id="" class="btn btn-primary">Search</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="table-responsive-lg">
+        <table class="table table-striped
+        table-hover	
+        table-bordered
+        table-primary
+        align-middle">
+            <thead class="table-light">
+                <caption>Model</caption>
+                <tr>
+                    <th>ModelID</th>
+                    <th>Name</th>
+                    <th>Description</th>                    
+                    <th>Update</th>
+                    <th>Remove</th>
+                </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    <tr class="table-primary" *ngFor="let model of models">
+                        <td scope="row">{{model.modelID}}</td>
+                        <td scope="row">{{model.name}}</td>
+                        <td scope="row">{{model.description}}</td>
+                        <td scope="row">
+                            <button type="button" class="btn btn-primary">Update Model</button>
+                        </td>
+                        <td scope="row">
+                            <button type="button" class="btn btn-primary">Remove Model</button>
+                        </td>
+                    </tr>                    
+                </tbody>
+                <tfoot>
+                    
+                </tfoot>
+        </table>
+    </div>        
+         
+    <div class="container" *ngIf="addModel">                
+        <form>
+            <fieldset class="mb-3 row">
+                <legend class="col-form-legend col-5">Add new Model</legend>                    
+            </fieldset>
+            <div class="mb-3 row">
+                <mat-form-field>
+                    <mat-label for="inputName" class="col-4 col-form-label">Model name</mat-label>
+                    <input type="text" matInput class="form-control" name="name" id="name" [(ngModel)]="name" required>                        
+                </mat-form-field>            
+            </div>
+            <div class="mb-3 row">
+                <mat-form-field>
+                    <mat-label for="inputName" class="col-4 col-form-label">Description</mat-label>
+                    <input type="text" matInput class="form-control" name="description" id="description" [(ngModel)]="description" required>                                                    
+                </mat-form-field>            
+            </div>                        
+            <div class="mb-3 row">
+                <div class="offset-sm-5 col-sm-8">
+                    <button type="submit" mat-raised-button class="btn btn-primary" (click)="saveModel()">Add</button>
+                </div>
+            </div>
+            <div class="alert alert-primary" role="alert" *ngIf="dataNotFilled">
+                <strong>Data not filled:</strong> Fill all data
+            </div>            
+        </form>
+    </div>
+
+    <div class="container" *ngIf="updateModelButton">                
+        <form>
+            <fieldset class="mb-3 row">
+                <legend class="col-form-legend col-5">
+                    Update Model                    
+                </legend>                    
+            </fieldset>
+            <div class="mb-3 row">
+                <mat-form-field>
+                    <mat-label for="inputName" class="col-4 col-form-label">Model name</mat-label>
+                    <input type="text" matInput class="form-control" name="name" id="name" [(ngModel)]="updateName">                        
+                </mat-form-field>            
+            </div>
+            <div class="mb-3 row">
+                <mat-form-field>
+                    <mat-label for="inputName" class="col-4 col-form-label">Description</mat-label>
+                    <input type="text" matInput class="form-control" name="unit" id="unit" [(ngModel)]="updateDescription">                                                    
+                </mat-form-field>            
+            </div>            
+            <div class="mb-3 row">
+                <div class="offset-sm-5 col-sm-8">
+                    <button type="submit" mat-raised-button class="btn btn-primary">Update</button>
+                </div>
+            </div>                        
+        </form>
+    </div>
+
+</app-main-nav>
