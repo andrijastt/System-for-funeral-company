@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -35,13 +35,21 @@ export class MaterialService {
       count: 0,
       category: category,
       price: price
-    }    
-    console.log(data);
-    
+    }        
     return this.http.post(`${this.uri}/material/update`, data)
   }
 
   removeMaterial(materialID){        
     return this.http.delete(`${this.uri}/material/${materialID}`)
+  }
+
+  search(nameSearch, countFlag, categorySearch){
+
+    let queryParams: HttpParams = new HttpParams();
+    queryParams = queryParams.append("name", nameSearch)
+    queryParams = queryParams.append("countFlag", countFlag)
+    // queryParams = queryParams.append("category", categorySearch)        
+
+    return this.http.get(`${this.uri}/material/search`, {params: queryParams})
   }
 }

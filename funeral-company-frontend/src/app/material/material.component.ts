@@ -110,4 +110,15 @@ export class MaterialComponent {
     )
   }
 
+  nameSearch: string = ""
+  categorySearch: Category = null
+  countFlag: boolean = false
+
+  search(){
+    this.materialService.search(this.nameSearch, this.countFlag, this.categorySearch).subscribe((data: Material[])=>{
+      console.log(data)
+      this.materials = data
+    })
+  }
+
 }

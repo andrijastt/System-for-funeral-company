@@ -51,4 +51,18 @@ public class MaterialServiceImplementation implements MaterialService{
             materialDB.setPrice(material.getPrice());
         return materialRepository.save(materialDB);
     }
+
+    @Override
+    public List<Material> findByNameContainingAndCountGreaterThan(String name, boolean count) {
+        if(count){
+            return materialRepository.findByNameContainingAndCountGreaterThan(name, 0);
+        } else {
+            return materialRepository.findByNameContainingAndCountGreaterThan(name, -1);
+        }
+    }
+
+    @Override
+    public List<Material> findByNameContaining(String name) {
+        return materialRepository.findByNameContaining(name);
+    }
 }

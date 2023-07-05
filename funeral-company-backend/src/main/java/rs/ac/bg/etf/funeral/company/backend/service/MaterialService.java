@@ -10,4 +10,6 @@ public interface MaterialService {
     public Material saveMaterial(Material material);
     public String deleteMaterial(Long materialID);
     public Material updateMaterial(Material material);
+    public List<Material> findByNameContainingAndCountGreaterThan(String name, boolean count);
+    public List<Material> findByNameContaining(String name);
 }
