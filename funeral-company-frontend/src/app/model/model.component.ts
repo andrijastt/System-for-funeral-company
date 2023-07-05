@@ -73,6 +73,22 @@ export class ModelComponent {
     })
   }
 
+  removeMaterial(modelID){
+    this.modelService.removeModel(modelID).subscribe((data: string)=>{
+      alert(data)
+      this.modelService.getAllModels().subscribe((data: Model[])=>{
+        this.models = data
+      })
+    },
+    (error)=>{
+      alert("Successfully deleted material")
+      this.modelService.getAllModels().subscribe((data: Model[])=>{
+        this.models = data
+      })
+    }
+    )
+  }
+
   nameSearch: string
 
 }

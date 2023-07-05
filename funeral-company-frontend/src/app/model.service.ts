@@ -32,4 +32,8 @@ export class ModelService {
 
     return this.http.post(`${this.uri}/model/update`, data)
   }
+
+  removeModel(modelID){
+    return this.http.delete(`${this.uri}/model/delete/${modelID}`)
+  }
 }

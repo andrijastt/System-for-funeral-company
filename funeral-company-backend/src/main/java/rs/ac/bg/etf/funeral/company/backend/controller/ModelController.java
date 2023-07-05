@@ -35,8 +35,8 @@ public class ModelController {
         return modelService.getAllModelsByNameContaining(name);
     }
 
-    @DeleteMapping(path = "/material/delete")
-    public String deleteModel(@Valid @PathVariable("materialID") Long materialID){
-        return modelService.deleteModel(materialID);
+    @DeleteMapping(path = "/model/delete/{modelID}")
+    public String deleteModel(@Valid @PathVariable("modelID") Long modelID){
+        return modelService.deleteModel(modelID);
     }
 }
