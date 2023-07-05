@@ -36,4 +36,12 @@ export class ModelService {
   removeModel(modelID){
     return this.http.delete(`${this.uri}/model/delete/${modelID}`)
   }
+
+  search(nameSearch){
+
+    let queryParams: HttpParams = new HttpParams();
+    queryParams = queryParams.append("name", nameSearch)            
+
+    return this.http.get(`${this.uri}/model/search`, {params: queryParams})
+  }
 }

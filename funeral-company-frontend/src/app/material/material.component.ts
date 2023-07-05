@@ -121,8 +121,7 @@ export class MaterialComponent {
   countFlag: boolean = false
 
   search(){
-    this.materialService.search(this.nameSearch, this.countFlag, this.categorySearch).subscribe((data: Material[])=>{
-      console.log(data)
+    this.materialService.search(this.nameSearch, this.countFlag, this.categorySearch).subscribe((data: Material[])=>{      
       this.materials = data
     })
   }

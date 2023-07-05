@@ -31,7 +31,7 @@ public class ModelController {
     }
 
     @GetMapping(path = "/model/search")
-    public List<Model> getAllModelsByNameContaining(@Valid @PathVariable("name") String name){
+    public List<Model> getAllModelsByNameContaining(@Valid @RequestParam("name") String name){
         return modelService.getAllModelsByNameContaining(name);
     }
 

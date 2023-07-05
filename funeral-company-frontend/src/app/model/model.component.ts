@@ -19,6 +19,12 @@ export class ModelComponent {
     })
   }
 
+  getAllModels(){
+    this.modelService.getAllModels().subscribe((data : Model[])=>{
+      this.models = data;
+    })
+  }
+
   addModel: boolean = false  
 
   name: string
@@ -89,6 +95,11 @@ export class ModelComponent {
     )
   }
 
-  nameSearch: string
+  nameSearch: string = ""
+  search(){
+    this.modelService.search(this.nameSearch).subscribe((data: Model[])=>{      
+      this.models = data
+    })
+  }
 
 }
