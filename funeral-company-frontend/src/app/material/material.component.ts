@@ -18,12 +18,10 @@ export class MaterialComponent {
 
   ngOnInit(){
 
-    this.categoryService.getAllCategories().subscribe((data: Category[])=>{
-      console.log(data);      
+    this.categoryService.getAllCategories().subscribe((data: Category[])=>{      
       this.categories = data
     })
-    this.materialService.getAllMaterials().subscribe((data: Material[])=>{
-      console.log(data);
+    this.materialService.getAllMaterials().subscribe((data: Material[])=>{      
       this.materials = data      
     })
 
