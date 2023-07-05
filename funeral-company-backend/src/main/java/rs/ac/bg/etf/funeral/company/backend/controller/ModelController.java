@@ -31,7 +31,7 @@ public class ModelController {
         return modelService.updateModel(materialID, name, description);
     }
 
-    @GetMapping(path = "/material/search")
+    @GetMapping(path = "/model/search")
     public List<Model> getAllModelsByNameContaining(@Valid @PathVariable("name") String name){
         return modelService.getAllModelsByNameContaining(name);
     }
