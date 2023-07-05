@@ -26,9 +26,9 @@ public class ModelController {
     }
 
     @PutMapping(path = "/model/update")
-    public Model updateModel(@Valid @PathVariable("materialID") Long materialID, @Valid @PathVariable("name") String name,
+    public Model updateModel(@Valid @PathVariable("modelID") Long modelID, @Valid @PathVariable("name") String name,
                              @Valid @PathVariable("description") String description){
-        return modelService.updateModel(materialID, name, description);
+        return modelService.updateModel(modelID, name, description);
     }
 
     @GetMapping(path = "/model/search")

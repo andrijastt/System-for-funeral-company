@@ -51,7 +51,7 @@
                         <td scope="row">{{model.name}}</td>
                         <td scope="row">{{model.description}}</td>
                         <td scope="row">
-                            <button type="button" class="btn btn-primary">Update Model</button>
+                            <button type="button" class="btn btn-primary" (click)="updateModelButtonClick(model)">Update Model</button>
                         </td>
                         <td scope="row">
                             <button type="button" class="btn btn-primary">Remove Model</button>
@@ -113,7 +113,7 @@
             </div>            
             <div class="mb-3 row">
                 <div class="offset-sm-5 col-sm-8">
-                    <button type="submit" mat-raised-button class="btn btn-primary">Update</button>
+                    <button type="submit" mat-raised-button class="btn btn-primary" (click)="updateModel()">Update</button>
                 </div>
             </div>                        
         </form>

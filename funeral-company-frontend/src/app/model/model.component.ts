@@ -49,8 +49,29 @@ export class ModelComponent {
   }
 
   updateModelButton: boolean = false
+  updateModelID: number
   updateName: string
   updateDescription: string
+
+  updateModelButtonClick(model: Model){
+    this.updateModelButton = true
+    this.updateModelID = model.modelID
+    this.updateName = model.name
+    this.updateDescription = model.description
+  }
+
+  updateModel(){
+    this.modelService.updateModel(this.updateModelID, this.updateName, this.updateDescription).subscribe((data: Model)=>{
+      alert("Model successfuly updated")
+        this.modelService.getAllModels().subscribe((data : Model[])=>{
+          this.models = data;
+        })
+        this.updateModelButton = false
+        this.updateModelID = null
+        this.updateName = null
+        this.updateDescription = null
+    })
+  }
 
   nameSearch: string
 

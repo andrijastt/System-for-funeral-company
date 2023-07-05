@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -20,5 +20,15 @@ export class ModelService {
       description: description
     }
     return this.http.post(`${this.uri}/model`, data)
+  }
+
+  updateModel(modelID, name, description){    
+
+    let queryParams: HttpParams = new HttpParams();
+    queryParams = queryParams.append("modelID", modelID)
+    queryParams = queryParams.append("name", name)
+    queryParams = queryParams.append("description", description)        
+
+    return this.http.put(`${this.uri}/model/update`, {params: queryParams})
   }
 }
