@@ -19,9 +19,11 @@ export class MaterialComponent {
   ngOnInit(){
 
     this.categoryService.getAllCategories().subscribe((data: Category[])=>{
+      console.log(data);      
       this.categories = data
     })
     this.materialService.getAllMaterials().subscribe((data: Material[])=>{
+      console.log(data);
       this.materials = data      
     })
 
@@ -43,7 +45,8 @@ export class MaterialComponent {
     if(this.name == null || this.unit == null || this.categoryID == null || this.price == null){
       this.dataNotFilled = true
     } else {
-      this.materialService.saveMaterial(this.name, this.unit, this.categoryID, this.price).subscribe((data: Material) =>{
+      this.materialService.saveMaterial(this.name, this.unit, this.categoryID, this.price).subscribe(
+        (data: Material) =>{
         alert("Material successfully added!")
         this.materialService.getAllMaterials().subscribe((data: Material[])=>{
           this.materials = data
@@ -56,7 +59,7 @@ export class MaterialComponent {
         this.addMaterial = false
       },
       (error)=>{
-        alert("Material with that name already exists!")
+        alert("Material with that name already exists!")            
       })      
     }    
 

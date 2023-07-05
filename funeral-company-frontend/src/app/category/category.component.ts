@@ -18,7 +18,7 @@ export class CategoryComponent {
 
   ngOnInit(){
     this.user = JSON.parse(localStorage.getItem('User'))
-    this.categoryService.getAllCategories().subscribe((data: Category[])=>{
+    this.categoryService.getAllCategories().subscribe((data: Category[])=>{      
       this.categories = data
     })       
   }

@@ -41,11 +41,14 @@ public class Material {
     private Float price;
 
     @ManyToOne(
-            cascade = CascadeType.REMOVE
+            cascade = CascadeType.REMOVE,
+            fetch = FetchType.EAGER
     )
     @JoinColumn(
             name = "categoryID",
             referencedColumnName = "categoryID"
     )
     private Category category;
+
+
 }

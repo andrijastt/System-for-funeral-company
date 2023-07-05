@@ -26,7 +26,6 @@ public class MaterialServiceImplementation implements MaterialService{
     @Override
     public Material saveMaterial(Material material) {
         Category category = categoryRepository.findById(material.getCategory().getCategoryID()).get();
-        category.addMaterials(material);
         material.setCategory(category);
         return materialRepository.save(material);
     }
@@ -35,7 +34,6 @@ public class MaterialServiceImplementation implements MaterialService{
     public String deleteMaterial(Long materialID) {
         Material materialDB = materialRepository.findById(materialID).get();
         materialDB.getCategory().removeMaterial(materialDB);
-        materialDB.setCategory(null);
         materialRepository.deleteById(materialID);
         return "Successfully deleted material!";
     }

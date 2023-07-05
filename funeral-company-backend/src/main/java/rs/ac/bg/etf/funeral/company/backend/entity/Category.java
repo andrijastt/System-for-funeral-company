@@ -41,16 +41,18 @@ public class Category {
     @OneToMany(
             mappedBy = "category",
             fetch = FetchType.LAZY,
-            cascade = CascadeType.REMOVE
+            cascade = CascadeType.ALL,
+            orphanRemoval = true
     )
     @Transient
-    List<Material> materials;
+    List<Material> materials = new ArrayList<>();
 
     public void addMaterials(Material material){
-        if(materials == null) materials = new ArrayList<>();
         materials.add(material);
+        material.setCategory(this);
     }
     public void removeMaterial(Material material){
         materials.remove(material);
+        material.setCategory(null);
     }
 }
