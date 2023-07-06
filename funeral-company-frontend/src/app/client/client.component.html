@@ -86,12 +86,12 @@
             <div class="mb-3 row">
                 <mat-form-field>
                     <mat-label for="inputName" class="col-4 col-form-label">Client city</mat-label>
-                    <input type="text" matInput class="form-control" name="description" id="description" [(ngModel)]="description" required>                                                    
+                    <input type="text" matInput class="form-control" name="description" id="description" [(ngModel)]="city" required>                                                    
                 </mat-form-field>            
             </div>                        
             <div class="mb-3 row">
                 <div class="offset-sm-5 col-sm-8">
-                    <button type="submit" mat-raised-button class="btn btn-primary" (click)="saveModel()">Add</button>
+                    <button type="submit" mat-raised-button class="btn btn-primary" (click)="saveClient()">Add</button>
                 </div>
             </div>
             <div class="alert alert-primary" role="alert" *ngIf="dataNotFilled">
@@ -100,7 +100,7 @@
         </form>
     </div>
 
-    <div class="container" *ngIf="updateModelButton">                
+    <div class="container" *ngIf="updateClientButton">                
         <form>
             <fieldset class="mb-3 row">
                 <legend class="col-form-legend col-5">
@@ -109,19 +109,19 @@
             </fieldset>
             <div class="mb-3 row">
                 <mat-form-field>
-                    <mat-label for="inputName" class="col-4 col-form-label">Model name</mat-label>
+                    <mat-label for="inputName" class="col-4 col-form-label">Client name</mat-label>
                     <input type="text" matInput class="form-control" name="name" id="name" [(ngModel)]="updateName">                        
                 </mat-form-field>            
             </div>
             <div class="mb-3 row">
                 <mat-form-field>
-                    <mat-label for="inputName" class="col-4 col-form-label">Description</mat-label>
-                    <input type="text" matInput class="form-control" name="unit" id="unit" [(ngModel)]="updateDescription">                                                    
+                    <mat-label for="inputName" class="col-4 col-form-label">Client city</mat-label>
+                    <input type="text" matInput class="form-control" name="unit" id="unit" [(ngModel)]="updateCity">                                                    
                 </mat-form-field>            
             </div>            
             <div class="mb-3 row">
                 <div class="offset-sm-5 col-sm-8">
-                    <button type="submit" mat-raised-button class="btn btn-primary" (click)="updateModel()">Update</button>
+                    <button type="submit" mat-raised-button class="btn btn-primary" (click)="updateClient()">Update</button>
                 </div>
             </div>                        
         </form>

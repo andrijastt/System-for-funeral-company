@@ -14,7 +14,38 @@ export class ClientComponent {
   clients: Client[]
 
   ngOnInit(){
-    
+    this.clientService.getAllClients().subscribe((data: Client[])=>{
+      this.clients = data
+    })
   }
 
+  getAllClients(){
+    this.clientService.getAllClients().subscribe((data: Client[])=>{
+      this.clients = data
+    })
+  }
+
+  addClient: boolean = false
+  name: string
+  city: string
+  dataNotFilled: boolean = false
+
+  saveClient(){
+
+    if(this.name == null || this.name == "" || this.city == null || this.city == ""){
+      this.dataNotFilled = true
+    } else{
+      this.clientService.saveClient(this.name, this.city).subscribe((data: Client)=>{
+        alert("Client successfully added!")
+        this.clientService.getAllClients().subscribe((data: Client[])=>{
+          this.clients = data
+        })
+        this.dataNotFilled = false
+        this.name = null
+        this.city = null
+        this.addClient = false
+      })
+    }
+
+  }
 }
