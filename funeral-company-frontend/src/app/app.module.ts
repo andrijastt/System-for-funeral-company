@@ -24,6 +24,7 @@ import { CategoryComponent } from './category/category.component';
 import { MainNavComponent } from './main-nav/main-nav.component';
 import { MaterialComponent } from './material/material.component';
 import { ModelComponent } from './model/model.component';
+import { ClientComponent } from './client/client.component';
 
 
 @NgModule({
@@ -35,7 +36,8 @@ import { ModelComponent } from './model/model.component';
     CategoryComponent,
     MainNavComponent,
     MaterialComponent,
-    ModelComponent
+    ModelComponent,
+    ClientComponent
   ],
   imports: [
     BrowserModule,
