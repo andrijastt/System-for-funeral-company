@@ -59,10 +59,10 @@
                         <td scope="row">{{client.name}}</td>
                         <td scope="row">{{client.city}}</td>
                         <td scope="row">
-                            <button type="button" class="btn btn-primary" (click)="updateClientButtonClick(model)">Update Client</button>
+                            <button type="button" class="btn btn-primary" (click)="updateClientButtonClick(client)">Update Client</button>
                         </td>
                         <td scope="row">
-                            <button type="button" class="btn btn-primary" (click)="removeClient(model.clientID)">Remove Client</button>
+                            <button type="button" class="btn btn-primary" (click)="removeClient(client.clientID)">Remove Client</button>
                         </td>
                     </tr>                    
                 </tbody>
