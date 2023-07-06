@@ -35,4 +35,9 @@ public class CategoryServiceImplementation implements CategoryService{
         categoryRepository.deleteById(categoryID);
         return "Successfully deleted category!";
     }
+
+    @Override
+    public List<Category> findByNameContaining(String name) {
+        return categoryRepository.findByNameContaining(name);
+    }
 }

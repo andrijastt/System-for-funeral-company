@@ -10,4 +10,6 @@ public interface CategoryService {
     public List<Category> getAllCategories();
     public Category updateCategoryName(Category category);
     public String deleteCategoryById(Long categoryID);
+
+    public List<Category> findByNameContaining(String name);
 }

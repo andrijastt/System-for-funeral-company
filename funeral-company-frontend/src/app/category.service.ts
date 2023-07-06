@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Category } from './models/Category';
 
@@ -35,6 +35,12 @@ export class CategoryService {
 
   removeCategory(categoryID){        
     return this.http.delete(`${this.uri}/category/delete/${categoryID}`)
+  }
+
+  search(name){
+    let queryParams: HttpParams = new HttpParams();
+    queryParams = queryParams.append("name", name)
+    return this.http.get(`${this.uri}/category/search`, {params: queryParams})
   }
 
 }

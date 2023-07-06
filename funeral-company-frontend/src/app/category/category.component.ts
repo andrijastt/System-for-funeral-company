@@ -16,11 +16,16 @@ export class CategoryComponent {
 
   constructor(private categoryService: CategoryService){}
 
-  ngOnInit(){
-    this.user = JSON.parse(localStorage.getItem('User'))
+  ngOnInit(){    
     this.categoryService.getAllCategories().subscribe((data: Category[])=>{      
       this.categories = data
     })       
+  }
+
+  getAllCategories(){
+    this.categoryService.getAllCategories().subscribe((data: Category[])=>{      
+      this.categories = data
+    })
   }
   
   addCategory: boolean = false;
@@ -94,4 +99,11 @@ export class CategoryComponent {
     )
   }
 
+  nameSearch: string
+
+  search(){
+    this.categoryService.search(this.nameSearch).subscribe((data: Category[])=>{
+      this.categories = data
+    })
+  }
 }

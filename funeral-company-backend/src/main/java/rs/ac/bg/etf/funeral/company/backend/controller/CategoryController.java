@@ -34,4 +34,9 @@ public class CategoryController {
     public String deleteCategoryById(@Valid @PathVariable("categoryID") Long categoryID){
         return categoryService.deleteCategoryById(categoryID);
     }
+
+    @GetMapping(path = "/category/search")
+    public List<Category> findByNameContaining(@Valid @RequestParam("name") String name){
+        return categoryService.findByNameContaining(name);
+    }
 }
