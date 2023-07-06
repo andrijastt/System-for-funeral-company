@@ -43,6 +43,9 @@ export class ClientComponent {
         this.name = null
         this.city = null
         this.addClient = false
+      },
+      (error)=>{
+        alert("Client with that name already exists!")
       })
     }
   }
@@ -69,6 +72,9 @@ export class ClientComponent {
       this.updateName = null
       this.updateCity = null
       this.updateClientButton = false
+    },
+    (error)=>{
+      alert("Client with that name already exists!")
     })
   }
 
