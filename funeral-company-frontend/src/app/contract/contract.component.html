@@ -50,17 +50,22 @@
                 </tr>
                 </thead>
                 <tbody class="table-group-divider">
-                    <!-- <tr class="table-primary" *ngFor="let model of models">
-                        <td scope="row">{{model.modelID}}</td>
-                        <td scope="row">{{model.name}}</td>
-                        <td scope="row">{{model.description}}</td>
+                    <tr class="table-primary" *ngFor="let contract of contracts">
+                        <td scope="row">{{contract.contractID}}</td>
+                        <td scope="row">{{contract.client.name}}</td>
+                        <td scope="row">{{contract.dateSigned}}</td>
+                        <td scope="row">{{contract.paymentDate}}</td>
+                        <td scope="row">{{contract.validUntil}}</td>
+                        <td scope="row">{{contract.money}}</td>
+                        <td scope="row">{{contract.currency}}</td>
+                        <td scope="row">{{contract.valid}}</td>
                         <td scope="row">
-                            <button type="button" class="btn btn-primary" (click)="updateModelButtonClick(model)">Update Model</button>
+                            <button type="button" class="btn btn-primary">Update Model</button>
                         </td>
                         <td scope="row">
-                            <button type="button" class="btn btn-primary" (click)="removeMaterial(model.modelID)">Remove Model</button>
+                            <button type="button" class="btn btn-primary">Remove Model</button>
                         </td>
-                    </tr>                     -->
+                    </tr>                    
                 </tbody>
                 <tfoot>
                     
@@ -76,14 +81,15 @@
                 <mat-form-field>
                     <mat-label for="inputName" class="col-4 col-form-label">Client</mat-label>                                        
                     <mat-select name="client" id="category" [(ngModel)]="clientID">                        
-                        <mat-option *ngFor="let client of clients" [value]="client.clientID">{{client.name}}</mat-option>
+                        <mat-option *ngFor="let client of clients" [value]="client">{{client.name}}</mat-option>
                     </mat-select>
                 </mat-form-field>
             </div>
             <div class="mb-3 row">
                 <mat-form-field>
                     <mat-label for="inputName" class="col-4 col-form-label">Date signed</mat-label>                                        
-                    <input matInput [matDatepicker]="dateSigned" [max]="this.minMaxDate" class="form-control" name="dateSigned" id="dateSigned" required>
+                    <input matInput [matDatepicker]="dateSigned" [(ngModel)]="dateSignedData"
+                    [max]="this.minMaxDate" class="form-control" name="dateSigned" id="dateSigned" required>
                     <mat-hint>MM/DD/YYYY</mat-hint>
                     <mat-datepicker-toggle matIconSuffix [for]="dateSigned"></mat-datepicker-toggle>
                     <mat-datepicker #dateSigned></mat-datepicker>
@@ -92,7 +98,8 @@
             <div class="mb-3 row">
                 <mat-form-field>
                     <mat-label for="inputName" class="col-4 col-form-label">Payment date</mat-label>                                        
-                    <input matInput [matDatepicker]="paymentDate" [min]="this.minMaxDate" class="form-control" name="paymentDate" id="paymentDate" required>
+                    <input matInput [matDatepicker]="paymentDate" [(ngModel)]="paymentDateData"
+                    [min]="this.minMaxDate" class="form-control" name="paymentDate" id="paymentDate" required>
                     <mat-hint>MM/DD/YYYY</mat-hint>
                     <mat-datepicker-toggle matIconSuffix [for]="paymentDate"></mat-datepicker-toggle>
                     <mat-datepicker #paymentDate></mat-datepicker>                                                    
@@ -101,7 +108,8 @@
             <div class="mb-3 row">
                 <mat-form-field>
                     <mat-label for="inputName" class="col-4 col-form-label">Valid unitll</mat-label>                                        
-                    <input matInput [matDatepicker]="valid" [min]="this.minMaxDate" class="form-control" name="valid" id="valid" required>
+                    <input matInput [matDatepicker]="valid" [(ngModel)]="validUntilData"
+                    [min]="this.minMaxDate" class="form-control" name="valid" id="valid" required>
                     <mat-hint>MM/DD/YYYY</mat-hint>
                     <mat-datepicker-toggle matIconSuffix [for]="valid"></mat-datepicker-toggle>
                     <mat-datepicker #valid></mat-datepicker>                                                    
@@ -110,13 +118,13 @@
             <div class="mb-3 row">
                 <mat-form-field>
                     <mat-label for="inputName" class="col-4 col-form-label">Money</mat-label>                                        
-                    <input matInput type="number" min="0" class="form-control" name="money" id="money" required>                    
+                    <input matInput type="number" [(ngModel)]="money" min="0" class="form-control" name="money" id="money" required>                    
                 </mat-form-field>
             </div>
             <div class="mb-3 row">
                 <mat-form-field>
                     <mat-label for="inputName" class="col-4 col-form-label">Currency</mat-label>                                        
-                    <input matInput type="text" class="form-control" name="valid" id="valid" required>                    
+                    <input matInput [(ngModel)]="currency" type="text" class="form-control" name="currency" id="currency" required>                    
                 </mat-form-field>
             </div>       
             <div class="mb-3 row">

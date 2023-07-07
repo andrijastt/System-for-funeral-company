@@ -18,31 +18,39 @@ export class ContractComponent {
   }
 
   clients: Client[]
+  contracts: Contract[]
 
   ngOnInit(){
     this.clientService.getAllClients().subscribe((data: Client[])=>{
       this.clients = data
+    })
+    this.contractService.getAllValidContracts().subscribe((data:Contract[])=>{
+      this.contracts = data
     })
   }
 
   addContract: boolean = false
   dataNotFilled: boolean = false  
 
-  dateSigned: Date
-  clientID: number
-  paymentDate: Date
-  validUntill: Date
+  dateSignedData: Date
+  clientID: Client
+  paymentDateData: Date
+  validUntilData: Date
   money: number
   currency: string
 
   saveContract(){
-    if(this.clientID == null || this.dateSigned == null || this.paymentDate == null ||this.validUntill == null || 
+    if(this.clientID == null || this.dateSignedData == null || this.paymentDateData == null ||this.validUntilData == null || 
       this.money == null || this.currency == null){
       this.dataNotFilled = true
     } else {
 
-      this.contractService.saveContract(this.clientID, this.dateSigned, this.paymentDate, this.validUntill, this.money,this.currency)
+      this.contractService.saveContract(this.clientID, this.dateSignedData, this.paymentDateData, this.validUntilData, this.money,this.currency)
       .subscribe((data: Contract)=>{
+        alert("Successfully added Contract!")
+        this.contractService.getAllValidContracts().subscribe((data:Contract[])=>{
+          this.contracts = data
+        })
 
       })
 

@@ -18,14 +18,14 @@ export class ContractService {
     return this.http.get(`${this.uri}/contracts/valid`)
   }
 
-  saveContract(clientID, dateSigned, paymentDate, validUntill, money, currency){
+  saveContract(clientID, dateSigned, paymentDate, validUntil, money, currency){
     const data = {
       dateSigned: dateSigned,
       paymentDate: paymentDate,
-      validUntill: validUntill,
+      validUntil: validUntil,
       money: money,
       currency: currency,
-      clientID: clientID,
+      client: clientID,
       valid: true
     }
 
