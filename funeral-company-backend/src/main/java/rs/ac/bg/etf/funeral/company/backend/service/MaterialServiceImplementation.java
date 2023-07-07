@@ -20,8 +20,6 @@ public class MaterialServiceImplementation implements MaterialService{
 
     @Override
     public List<Material> getAllMaterials() {
-        System.out.println("materialRepository.findAll() = " + materialRepository.findAll());
-        System.out.println("categoryRepository.findAll() = " + categoryRepository.findAll());
         return materialRepository.findAll();
     }
 
