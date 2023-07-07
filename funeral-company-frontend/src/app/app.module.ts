@@ -25,6 +25,7 @@ import { MainNavComponent } from './main-nav/main-nav.component';
 import { MaterialComponent } from './material/material.component';
 import { ModelComponent } from './model/model.component';
 import { ClientComponent } from './client/client.component';
+import { ContractComponent } from './contract/contract.component';
 
 
 @NgModule({
@@ -37,7 +38,8 @@ import { ClientComponent } from './client/client.component';
     MainNavComponent,
     MaterialComponent,
     ModelComponent,
-    ClientComponent
+    ClientComponent,
+    ContractComponent
   ],
   imports: [
     BrowserModule,
