@@ -17,6 +17,8 @@ import { MatListModule } from '@angular/material/list'
 import { MatTableModule } from '@angular/material/table'
 import { MatSelectModule } from '@angular/material/select'
 import { MatCheckboxModule } from '@angular/material/checkbox'
+import { MatDatepickerModule } from '@angular/material/datepicker'
+import { MatNativeDateModule } from '@angular/material/core'
 
 import { RegisterUserComponent } from './register-user/register-user.component';
 import { HomePageComponent } from './home-page/home-page.component';
@@ -58,7 +60,9 @@ import { ContractComponent } from './contract/contract.component';
     MatListModule,
     MatTableModule,
     MatSelectModule,
-    MatCheckboxModule
+    MatCheckboxModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   providers: [],
   bootstrap: [AppComponent]
