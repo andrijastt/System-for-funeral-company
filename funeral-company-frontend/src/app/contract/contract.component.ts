@@ -29,6 +29,18 @@ export class ContractComponent {
     })
   }
 
+  getAllContracts(){
+    this.contractService.getAllContracts().subscribe((data:Contract[])=>{
+      this.contracts = data
+    })
+  }
+
+  getAllValidContracts(){
+    this.contractService.getAllValidContracts().subscribe((data:Contract[])=>{
+      this.contracts = data
+    })
+  }
+
   addContract: boolean = false
   dataNotFilled: boolean = false  
 
@@ -54,7 +66,24 @@ export class ContractComponent {
 
       })
 
+      this.clientID = null
+      this.dateSignedData = null
+      this.paymentDateData = null
+      this.validUntilData = null
+      this.money = null
+      this.currency = null
+      this.dataNotFilled = false
+      this.addContract = false
     }
+  }
+
+  changeValid(contractID){
+    this.contractService.changeValid(contractID).subscribe((data: Contract)=>{
+      alert("Successfully updated contract's status!")
+      this.contractService.getAllValidContracts().subscribe((data:Contract[])=>{
+        this.contracts = data
+      })
+    })
   }
 
 }

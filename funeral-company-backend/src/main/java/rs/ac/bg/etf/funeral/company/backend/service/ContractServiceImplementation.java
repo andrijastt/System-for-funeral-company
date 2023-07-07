@@ -37,5 +37,10 @@ public class ContractServiceImplementation implements ContractService{
         return contractRepository.save(contract);
     }
 
-
+    @Override
+    public Contract updateValidContract(Long contractID) {
+        Contract contract = contractRepository.findById(contractID).get();
+        contract.setValid(!contract.getValid());
+        return contractRepository.save(contract);
+    }
 }

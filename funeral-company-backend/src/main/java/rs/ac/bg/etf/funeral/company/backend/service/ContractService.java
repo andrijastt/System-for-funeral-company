@@ -8,6 +8,6 @@ public interface ContractService {
 
     List<Contract> getAllContracts();
     List<Contract> getAllValidContracts();
-
     Contract saveContract(Contract contract);
+    Contract updateValidContract(Long contractID);
 }

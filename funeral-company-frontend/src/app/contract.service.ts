@@ -31,4 +31,11 @@ export class ContractService {
 
     return this.http.post(`${this.uri}/contract`, data)
   }
+
+  changeValid(contractID){
+    const data = {
+      
+    }
+    return this.http.post(`${this.uri}/contract/valid/${contractID}`, data)
+  }
 }

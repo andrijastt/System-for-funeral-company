@@ -29,4 +29,9 @@ public class ContractController {
     public Contract saveContract(@Valid @RequestBody Contract contract){
         return contractService.saveContract(contract);
     }
+
+    @PostMapping(path = "/contract/valid/{contractID}")
+    public Contract updateValidContract(@Valid @PathVariable("contractID") Long contractID){
+        return contractService.updateValidContract(contractID);
+    }
 }
