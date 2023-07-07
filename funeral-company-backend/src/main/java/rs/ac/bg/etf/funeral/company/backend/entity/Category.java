@@ -1,5 +1,6 @@
 package rs.ac.bg.etf.funeral.company.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -40,19 +41,23 @@ public class Category {
 
     @OneToMany(
             mappedBy = "category",
-            fetch = FetchType.LAZY,
+            fetch = FetchType.EAGER,
             cascade = CascadeType.ALL,
             orphanRemoval = true
     )
     @Transient
-    List<Material> materials = new ArrayList<>();
+    @JsonIgnore
+    List<Material> materials;
 
     public void addMaterials(Material material){
+        if(materials == null) materials = new ArrayList<>();
         materials.add(material);
         material.setCategory(this);
     }
     public void removeMaterial(Material material){
-        materials.remove(material);
-        material.setCategory(null);
+        if(materials != null){
+            materials.remove(material);
+            material.setCategory(null);
+        }
     }
 }

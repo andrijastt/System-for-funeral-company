@@ -2,10 +2,7 @@ package rs.ac.bg.etf.funeral.company.backend.entity;
 
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 @Entity
 @Data
@@ -48,6 +45,7 @@ public class Material {
             name = "categoryID",
             referencedColumnName = "categoryID"
     )
+    @ToString.Exclude
     private Category category;
 
 
