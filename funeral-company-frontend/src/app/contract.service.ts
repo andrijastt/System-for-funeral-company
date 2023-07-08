@@ -26,6 +26,10 @@ export class ContractService {
     return this.http.get(`${this.uri}/contracts/client/sum/${clientID}`)
   }  
 
+  getNewestContractByClient(clientID){
+    return this.http.get(`${this.uri}/contract/client/newest/${clientID}`)
+  }  
+
   saveContract(clientID, dateSigned, paymentDate, validUntil, money, currency){
     const data = {
       dateSigned: dateSigned,

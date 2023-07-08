@@ -55,10 +55,4 @@ public class ContractServiceImplementation implements ContractService{
         Client client = clientRepository.findById(clientID).get();
         return contractRepository.sumMoneyOfClient(client);
     }
-
-//    @Override
-//    public List<String> currencyOfClient(Long clientID) {
-//        Client client = clientRepository.findById(clientID).get();
-//        return contractRepository.currencyOfClient(client);
-//    }
 }

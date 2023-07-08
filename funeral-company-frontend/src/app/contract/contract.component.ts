@@ -103,4 +103,24 @@ export class ContractComponent {
     }    
   }
 
+  getNewestContractByClient(client: Client){
+    if(client != null){      
+      this.contractService.getNewestContractByClient(client.clientID).subscribe((data: Contract[])=>{               
+        this.contracts = data
+      })            
+    } else{
+      alert("Select client")
+    }
+  }
+
+  getAllContractsByClient(client: Client){
+    if(client != null){      
+      this.contractService.getAllContractsByClient(client.clientID).subscribe((data: Contract[])=>{               
+        this.contracts = data
+      })            
+    } else{
+      alert("Select client")
+    }
+  }
+
 }

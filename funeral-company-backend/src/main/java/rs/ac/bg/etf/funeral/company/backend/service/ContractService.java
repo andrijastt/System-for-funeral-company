@@ -13,5 +13,4 @@ public interface ContractService {
     Contract updateValidContract(Long contractID);
     List<Contract> getAllContractsByClient(Long clientID);
     List<Object[]> sumMoneyOfClient(Long clientID);
-//    List<String> currencyOfClient(Long clientID);
 }

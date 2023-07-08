@@ -16,6 +16,4 @@ public interface ContractRepository extends JpaRepository<Contract, Long> {
 
     @Query("SELECT c.currency, sum (c.money) from Contract c where c.client = ?1 group by c.currency")
     public List<Object[]> sumMoneyOfClient(Client client);
-//    @Query("SELECT c.currency from Contract c where c.client = ?1 group by c.currency")
-//    public List<String> currencyOfClient(Client client);
 }

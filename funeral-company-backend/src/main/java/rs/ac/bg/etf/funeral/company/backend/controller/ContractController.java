@@ -35,11 +35,6 @@ public class ContractController {
         return contractService.sumMoneyOfClient(clientID);
     }
 
-//    @GetMapping(path = "/contracts/client/currency/{clientID}")
-//    public List<String> currencyOfClient(@Valid @PathVariable("clientID") Long clientID){
-//        return contractService.currencyOfClient(clientID);
-//    }
-
     @PostMapping(path = "/contract")
     public Contract saveContract(@Valid @RequestBody Contract contract){
         return contractService.saveContract(contract);
