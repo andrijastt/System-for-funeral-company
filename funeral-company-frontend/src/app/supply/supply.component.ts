@@ -1,4 +1,9 @@
 import { Component } from '@angular/core';
+import { SupplyService } from '../supply.service';
+import { Material } from '../models/Material';
+import { Supply } from '../models/Supply';
+import { MaterialService } from '../material.service';
+import { MaterialSupply } from '../models/MaterialSupply';
 
 @Component({
   selector: 'app-supply',
@@ -7,4 +12,54 @@ import { Component } from '@angular/core';
 })
 export class SupplyComponent {
 
+  constructor(private supplyService: SupplyService, private materialService: MaterialService){}
+  
+  supplies: Supply[]
+  materialSelect: Material[]  
+
+  ngOnInit(){
+    this.supplyService.getAllSupplies().subscribe((data: Supply[])=>{
+      this.supplies = data
+    })
+    this.materialService.getAllMaterials().subscribe((data: Material[])=>{
+      this.materialSelect = data
+    })
+  }
+
+  addSupplyButton: boolean = false
+  dataNotFilled: boolean = false  
+  name: string
+
+  materialSupply: MaterialSupply[] = new Array(1)
+
+  addMoreMaterial(){        
+    this.materialSupply.push(new MaterialSupply)
+  }
+
+  removeMaterial(i: number){   
+    if(this.materialSupply.length == 1){
+      alert("Can't remove material, needs to be one")
+    } else {      
+      this.materialSupply.splice(i, 1)      
+    }
+  }
+
+  saveSupply(){
+
+    console.log(this.materialSupply)
+
+    for(let material of this.materialSupply){
+      if(material.materialID == null || material.price == null || material.amount == null){
+        this.dataNotFilled = true
+        break
+      }
+    }    
+
+    if(this.name == null){
+      this.dataNotFilled = false
+    }
+
+  }
+
 }
+

@@ -7,5 +7,5 @@ import java.util.List;
 
 public interface SupplyService {
 
-    List<Supply> getAllServices();
+    List<Supply> getAllSupplies();
 }

@@ -1,1 +1,65 @@
-<p>supply works!</p>
+<app-main-nav>            
+    <div class="card">
+        <div class="card-header">
+            Supply
+        </div>
+        <mat-accordion class="example-headers-align" multi>        
+            <mat-expansion-panel>
+                <mat-expansion-panel-header>Proba</mat-expansion-panel-header>
+                <mat-panel-description>
+                    
+                </mat-panel-description>
+            </mat-expansion-panel>
+            
+        </mat-accordion>
+    </div>    
+    <br>
+    <button type="button" class="btn btn-primary col-2" (click)="addSupplyButton = true">Add supply</button>  
+    <mat-divider></mat-divider>
+    <br>
+    <div class="container" *ngIf="addSupplyButton">                
+        <form>
+            <fieldset class="mb-3 row">
+                <legend class="col-form-legend col-5">Add new Supply</legend>                    
+            </fieldset>
+            <div class="mb-3 row">
+                <mat-form-field>
+                    <mat-label for="inputName" class="col-4 col-form-label">Supplier name</mat-label>
+                    <input type="text" matInput class="form-control" name="name" id="name" required>                        
+                </mat-form-field>            
+            </div>                   
+            <div class="mb-3 row" *ngFor="let materialS of materialSupply; let i = index">
+                <mat-form-field class="col-3">
+                    <mat-label for="inputName" class="col-4 col-form-label">Material</mat-label>
+                    <mat-select required name="category" id="category">
+                        <mat-option *ngFor="let material of materialSelect" [value]="material.materialID">{{material.name}}</mat-option>
+                    </mat-select>                        
+                </mat-form-field>
+                <mat-form-field class="col-3">
+                    <mat-label for="inputName" class="col-4 col-form-label">Amount</mat-label>
+                    <input type="text" matInput min="1" class="form-control" name="name" id="name" required>                        
+                </mat-form-field>
+                <mat-form-field class="col-3">
+                    <mat-label for="inputName" class="col-4 col-form-label">Price</mat-label>
+                    <input type="text" matInput min="1" [(ngModel)]="materialSupply[i].price" class="form-control" name="name" id="name" required>                        
+                </mat-form-field>
+                <div class="col-2">
+                    <button type="submit" color="warn" mat-raised-button class="btn btn-primary" (click)="removeMaterial(i)">
+                        Remove Material
+                    </button>
+                </div>            
+            </div>
+            <div class="col-3">
+                <button type="submit" mat-raised-button class="btn btn-primary" (click)="addMoreMaterial()">Add More Materials</button>
+            </div>                            
+            <div class="mb-3 row">
+                <div class="offset-sm-5 col-sm-8">
+                    <button type="submit" mat-raised-button class="btn btn-primary" (click)="saveSupply()">Add</button>
+                </div>
+            </div>
+            <div class="alert alert-primary" role="alert" *ngIf="dataNotFilled">
+                <strong>Data not filled:</strong> Fill all data
+            </div>            
+        </form>
+    </div>  
+</app-main-nav>

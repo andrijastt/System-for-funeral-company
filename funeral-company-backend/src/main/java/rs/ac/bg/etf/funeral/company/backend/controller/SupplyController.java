@@ -18,6 +18,6 @@ public class SupplyController {
 
     @GetMapping(path = "/supplies")
     public List<Supply> getAllSupplies(){
-        return supplyService.getAllServices();
+        return supplyService.getAllSupplies();
     }
 }

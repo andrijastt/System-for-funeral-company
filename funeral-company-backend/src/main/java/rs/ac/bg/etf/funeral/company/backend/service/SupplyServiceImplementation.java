@@ -14,7 +14,7 @@ public class SupplyServiceImplementation implements SupplyService{
     private SupplyRepository supplyRepository;
 
     @Override
-    public List<Supply> getAllServices() {
+    public List<Supply> getAllSupplies() {
         return supplyRepository.findAll();
     }
 }

@@ -22,6 +22,9 @@ public class Supply {
     @Column(nullable = false)
     private Date dateOrdered;
 
+    @Column(nullable = false)
+    private String name;
+
     @Column(nullable = true)
     private Date dateArrived;
 
