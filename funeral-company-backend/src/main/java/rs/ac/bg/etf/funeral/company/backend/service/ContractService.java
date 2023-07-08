@@ -13,5 +13,6 @@ public interface ContractService {
     Contract updateValidContract(Long contractID);
     List<Contract> getAllContractsByClient(Long clientID);
     List<Object[]> sumMoneyOfClient(Long clientID);
-    String removeClient(Long contractID);
+    String removeContract(Long contractID);
+    Contract updateContract(Contract contract);
 }

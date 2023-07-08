@@ -57,11 +57,26 @@ public class ContractServiceImplementation implements ContractService{
     }
 
     @Override
-    public String removeClient(Long contractID) {
+    public String removeContract(Long contractID) {
         Contract contract = contractRepository.findById(contractID).get();
         contract.getClient().removeContract(contract);
         contract.setClient(null);
         contractRepository.delete(contract);
         return "Successfully deleted contract!";
+    }
+
+    @Override
+    public Contract updateContract(Contract contract) {
+        Contract contractDB = contractRepository.findById(contract.getContractID()).get();
+
+        if(!contract.getCurrency().equals(""))
+            contractDB.setCurrency(contract.getCurrency());
+        if(contract.getMoney() == null)
+            contractDB.setMoney(contractDB.getMoney());
+        contractDB.setDateSigned(contract.getDateSigned());
+        contractDB.setPaymentDate(contract.getPaymentDate());
+        contractDB.setValidUntil(contract.getValidUntil());
+        contractDB.setClient(contract.getClient());
+        return contractRepository.save(contractDB);
     }
 }

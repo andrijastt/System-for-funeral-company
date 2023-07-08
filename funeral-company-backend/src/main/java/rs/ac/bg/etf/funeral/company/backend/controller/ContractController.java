@@ -45,8 +45,13 @@ public class ContractController {
         return contractService.updateValidContract(contractID);
     }
 
+    @PostMapping(path = "/contract/update")
+    public Contract updateValidContract(@Valid @RequestBody Contract contract){
+        return contractService.updateContract(contract);
+    }
+
     @DeleteMapping(path = "/contract/{contractID}")
     public String removeContract(@Valid @PathVariable("contractID") Long contractID){
-        return contractService.removeClient(contractID);
+        return contractService.removeContract(contractID);
     }
 }
