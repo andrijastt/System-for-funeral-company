@@ -44,4 +44,9 @@ public class ContractController {
     public Contract updateValidContract(@Valid @PathVariable("contractID") Long contractID){
         return contractService.updateValidContract(contractID);
     }
+
+    @DeleteMapping(path = "/contract/{contractID}")
+    public String removeContract(@Valid @PathVariable("contractID") Long contractID){
+        return contractService.removeClient(contractID);
+    }
 }

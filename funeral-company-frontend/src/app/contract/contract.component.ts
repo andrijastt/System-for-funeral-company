@@ -123,4 +123,25 @@ export class ContractComponent {
     }
   }
 
+  removeContract(contractID){
+
+    this.contractService.removeContract(contractID).subscribe((data: string)=>{
+      alert(data)
+      this.contractService.getAllValidContracts().subscribe((data:Contract[])=>{
+        this.contracts = data
+      })
+    },
+    (error)=>{
+      this.contractService.getAllValidContracts().subscribe((data:Contract[])=>{
+        if(this.contracts.length == data.length){
+          alert("Couldn't delete contract")
+        }else{
+          alert("Successfully deleted contract")
+          this.contracts = data
+        }        
+      })
+    })
+
+  }
+
 }

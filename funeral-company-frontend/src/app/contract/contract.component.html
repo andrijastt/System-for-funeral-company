@@ -37,7 +37,7 @@
         </div>                           
         <div class="col-2">
             <div class="d-grid gap-2">
-                <button type="button" class="btn btn-primary">Get All Client Contracts</button>   
+                <button type="button" class="btn btn-primary" (click)="getAllContracts()">Get All Client Contracts</button>   
             </div>                                    
         </div>
         <div class="col-2">
@@ -127,7 +127,7 @@
                             <button type="button" class="btn btn-primary">Update Contract</button>
                         </td>
                         <td scope="row">
-                            <button type="button" class="btn btn-primary">Remove Contract</button>
+                            <button type="button" class="btn btn-primary" (click)="removeContract(contract.contractID)">Remove Contract</button>
                         </td>
                     </tr>                    
                 </tbody>

@@ -50,4 +50,8 @@ export class ContractService {
     }
     return this.http.post(`${this.uri}/contract/valid/${contractID}`, data)
   }
+
+  removeContract(contractID){    
+    return this.http.delete(`${this.uri}/contract/${contractID}`)
+  }
 }

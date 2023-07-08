@@ -55,4 +55,13 @@ public class ContractServiceImplementation implements ContractService{
         Client client = clientRepository.findById(clientID).get();
         return contractRepository.sumMoneyOfClient(client);
     }
+
+    @Override
+    public String removeClient(Long contractID) {
+        Contract contract = contractRepository.findById(contractID).get();
+        contract.getClient().removeContract(contract);
+        contract.setClient(null);
+        contractRepository.delete(contract);
+        return "Successfully deleted contract!";
+    }
 }
