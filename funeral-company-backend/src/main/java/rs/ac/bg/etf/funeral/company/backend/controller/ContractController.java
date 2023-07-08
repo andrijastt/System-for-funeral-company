@@ -35,6 +35,11 @@ public class ContractController {
         return contractService.sumMoneyOfClient(clientID);
     }
 
+    @GetMapping(path = "/contract/client/newest/{clientID}")
+    public List<Contract> findByClientNewest(@Valid @PathVariable("clientID") Long clientID){
+        return contractService.findByClientNewest(clientID);
+    }
+
     @PostMapping(path = "/contract")
     public Contract saveContract(@Valid @RequestBody Contract contract){
         return contractService.saveContract(contract);

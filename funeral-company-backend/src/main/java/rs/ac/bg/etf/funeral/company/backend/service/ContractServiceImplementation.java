@@ -80,4 +80,10 @@ public class ContractServiceImplementation implements ContractService{
         contractDB.setClient(client);
         return contractRepository.save(contractDB);
     }
+
+    @Override
+    public List<Contract> findByClientNewest(Long clientID) {
+        Client client = clientRepository.findById(clientID).get();
+        return contractRepository.findByClientNewest(clientID);
+    }
 }
