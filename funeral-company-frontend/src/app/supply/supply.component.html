@@ -31,19 +31,19 @@
             <div class="mb-3 row" *ngFor="let materialS of materialSupply; let i = index">
                 <mat-form-field class="col-3">
                     <mat-label for="inputName" class="col-4 col-form-label">Material</mat-label>
-                    <mat-select required name="category" id="category">
+                    <mat-select required name="category" id="category" [(ngModel)]="materialSupply[i].materialID">
                         <mat-option *ngFor="let material of materialSelect" [value]="material.materialID">{{material.name}}</mat-option>
                     </mat-select>                        
                 </mat-form-field>
                 <mat-form-field class="col-3">
                     <mat-label for="inputName" class="col-4 col-form-label">Amount</mat-label>
-                    <input type="text" matInput min="1" class="form-control" name="name" id="name" required>                        
+                    <input type="number" matInput min="1" [(ngModel)]="materialSupply[i].amount" class="form-control" name="name" id="name" required>                        
                 </mat-form-field>
                 <mat-form-field class="col-3">
                     <mat-label for="inputName" class="col-4 col-form-label">Price</mat-label>
-                    <input type="text" matInput min="1" [(ngModel)]="materialSupply[i].price" class="form-control" name="name" id="name" required>                        
+                    <input type="number" matInput min="1" [(ngModel)]="materialSupply[i].price" class="form-control" name="name" id="name" required>                        
                 </mat-form-field>
-                <div class="col-2">
+                <div class="col-3">
                     <button type="submit" color="warn" mat-raised-button class="btn btn-primary" (click)="removeMaterial(i)">
                         Remove Material
                     </button>

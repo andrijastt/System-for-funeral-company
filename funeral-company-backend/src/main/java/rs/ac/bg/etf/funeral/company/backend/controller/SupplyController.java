@@ -1,9 +1,8 @@
 package rs.ac.bg.etf.funeral.company.backend.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import rs.ac.bg.etf.funeral.company.backend.entity.Supply;
 import rs.ac.bg.etf.funeral.company.backend.service.SupplyService;
 
@@ -19,5 +18,11 @@ public class SupplyController {
     @GetMapping(path = "/supplies")
     public List<Supply> getAllSupplies(){
         return supplyService.getAllSupplies();
+    }
+
+    @PostMapping(path = "/supply")
+    public Supply saveSupply(@Valid @RequestBody Supply supply){
+        System.out.println("supply = " + supply);
+        return supply;
     }
 }

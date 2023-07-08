@@ -14,5 +14,13 @@ export class SupplyService {
     return this.http.get(`${this.uri}/supplies`)
   }
 
-  // saveSupplies(name, )
+  saveSupplies(name, materialSupply){
+
+    const data = {
+      name: name,
+      dateOrder: new Date,
+      materialSupplyList: materialSupply
+    }
+    return this.http.post(`${this.uri}/supply`, data)
+  }
 }

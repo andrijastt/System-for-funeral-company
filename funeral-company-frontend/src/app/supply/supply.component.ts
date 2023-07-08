@@ -30,10 +30,10 @@ export class SupplyComponent {
   dataNotFilled: boolean = false  
   name: string
 
-  materialSupply: MaterialSupply[] = new Array(1)
+  materialSupply: MaterialSupply[] = []
 
-  addMoreMaterial(){        
-    this.materialSupply.push(new MaterialSupply)
+  addMoreMaterial(){            
+    this.materialSupply.push(new MaterialSupply())
   }
 
   removeMaterial(i: number){   
@@ -46,7 +46,11 @@ export class SupplyComponent {
 
   saveSupply(){
 
-    console.log(this.materialSupply)
+    this.dataNotFilled = false
+
+    if(this.materialSupply.length == 0){
+      this.dataNotFilled = true
+    }
 
     for(let material of this.materialSupply){
       if(material.materialID == null || material.price == null || material.amount == null){
@@ -58,6 +62,12 @@ export class SupplyComponent {
     if(this.name == null){
       this.dataNotFilled = false
     }
+
+
+    if(!this.dataNotFilled)
+      this.supplyService.saveSupplies(this.name, this.materialSupply).subscribe((data: Supply)=>{
+        console.log(data)      
+      })
 
   }
 
