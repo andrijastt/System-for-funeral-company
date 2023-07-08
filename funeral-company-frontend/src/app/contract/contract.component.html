@@ -1,53 +1,89 @@
 <app-main-nav>
     <br>
-    <div class="row justify-content-center align-items-center g-2-x">                
-        <fieldset class="mb-3 row">
-            <legend class="col">Serach options</legend>                    
-        </fieldset>        
-        <div class="col">
+    <div class="row justify-content-center align-items-center g-2-x">                                
+        <div class="col-3">
             <div class="d-grid gap-2">
                 <button type="button" class="btn btn-primary" (click)="this.addContract = true">Add Contract</button>   
             </div>            
+        </div>                                    
+        <div class="col-3">
+            <div class="d-grid gap-2">
+                <button type="button" class="btn btn-primary" (click)="getAllContracts()">Get All Contracts</button>   
+            </div>                                    
         </div>
-        <div class="col-4">            
+        <div class="col-3">
+            <div class="d-grid gap-2">
+                <button type="button" class="btn btn-primary" (click)="getAllValidContracts()">Get All Valid Contracts</button>   
+            </div>
+        </div>
+    </div>
+    
+    <mat-divider></mat-divider>
+    <fieldset class="mb-3 row">
+        <legend class="col">Serach options</legend>                    
+    </fieldset>
+
+    <div class="row justify-content-center align-items-center g-2-x">                        
+        <div class="col-3">            
             <div class="d-grid gap-2">
                 <mat-form-field>
                     <mat-label for="inputName" class="col-4 col-form-label">Client</mat-label>                                        
-                    <mat-select name="client" id="category">                        
+                    <mat-select name="client" id="category" [(ngModel)]="clientSearch">                        
                         <mat-option [value]="null"></mat-option>
                         <mat-option *ngFor="let client of clients" [value]="client">{{client.name}}</mat-option>
                     </mat-select>
                 </mat-form-field>    
             </div>            
-        </div>            
-        <div class="col-4">            
+        </div>                           
+        <div class="col-2">
             <div class="d-grid gap-2">
-                <mat-form-field>
-                    <mat-label>Date signed range</mat-label>
-                    <mat-date-range-input [rangePicker]="picker">
-                      <input matStartDate placeholder="Start date" >
-                      <input matEndDate placeholder="End date">
-                    </mat-date-range-input>
-                    <mat-hint>MM/DD/YYYY – MM/DD/YYYY</mat-hint>
-                    <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
-                    <mat-date-range-picker #picker></mat-date-range-picker>
-                </mat-form-field>    
-            </div>            
-        </div>        
-        <div class="col">
-            <div class="d-grid gap-2">
-                <button type="button" class="btn btn-primary" (click)="getAllContracts()">Get All Contracts</button>   
-            </div>             
-            <div class="d-grid gap-2">
-                <button type="button" class="btn btn-primary" (click)="getAllValidContracts()">Get All Valid Contracts</button>   
-            </div>           
+                <button type="button" class="btn btn-primary">Get All Client Contracts</button>   
+            </div>                                    
         </div>
-        <!-- <div class="col">
+        <div class="col-2">
             <div class="d-grid gap-2">
-              <button type="button" name="" id="" class="btn btn-primary" (click)="search()">Search</button>
-            </div>
-        </div> -->
+                <button type="button" class="btn btn-primary">Get All Valid Client Contracts</button>   
+            </div>                                    
+        </div>
+        <div class="col-2">
+            <div class="d-grid gap-2">
+                <button type="button" class="btn btn-primary">Get Newest Valid Client Contracts</button>   
+            </div>                                    
+        </div>
+        <div class="col-2">
+            <div class="d-grid gap-2">
+                <button type="button" class="btn btn-primary" (click)="getSumOfAllContractsByClient(clientSearch)">Get Sum Money of Client Contracts</button>   
+            </div>                                    
+        </div>
+        <fieldset class="col-2">
+            <legend></legend>                    
+        </fieldset>
+    </div>    
+    <mat-divider></mat-divider>    
+    <div class="table-responsive-lg" *ngIf="showTable">
+        <table class="table table-striped
+        table-hover	
+        table-bordered
+        table-primary
+        align-middle">
+            <thead class="table-light">
+                <caption>Client {{clientTableName}}</caption>
+                <tr>                   
+                    <th>Money</th>
+                    <th>Currency</th>                    
+                </tr>
+                </thead>
+                <tbody class="table-group-divider">
+                    <tr class="table-primary" *ngFor="let num of sumTable; let n in index">                           
+                        <td scope="row">{{num[1]}}</td>
+                        <td scope="row">{{num[0]}}</td>                        
+                    </tr>                    
+                </tbody>
+                <tfoot>                    
+                </tfoot>
+        </table>        
     </div>
+    <mat-divider></mat-divider>    
     <div class="table-responsive-lg">
         <table class="table table-striped
         table-hover	

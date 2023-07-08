@@ -86,4 +86,21 @@ export class ContractComponent {
     })
   }
 
+  clientSearch: Client = null
+  clientTableName: string = ""
+  sumTable: Object[][]  
+  showTable: boolean = false
+
+  getSumOfAllContractsByClient(client: Client){
+    if(client != null){
+      this.clientTableName = client.name
+      this.contractService.getSumOfAllContractsByClient(client.clientID).subscribe((data: Object[][])=>{               
+        this.sumTable = data
+      })      
+      this.showTable = true
+    } else{
+      alert("Select client")
+    }    
+  }
+
 }

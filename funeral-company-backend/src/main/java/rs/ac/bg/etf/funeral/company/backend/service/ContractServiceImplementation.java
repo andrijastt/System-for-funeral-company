@@ -43,4 +43,22 @@ public class ContractServiceImplementation implements ContractService{
         contract.setValid(!contract.getValid());
         return contractRepository.save(contract);
     }
+
+    @Override
+    public List<Contract> getAllContractsByClient(Long clientID) {
+        Client client = clientRepository.findById(clientID).get();
+        return contractRepository.findByClient(client);
+    }
+
+    @Override
+    public List<Object[]> sumMoneyOfClient(Long clientID) {
+        Client client = clientRepository.findById(clientID).get();
+        return contractRepository.sumMoneyOfClient(client);
+    }
+
+//    @Override
+//    public List<String> currencyOfClient(Long clientID) {
+//        Client client = clientRepository.findById(clientID).get();
+//        return contractRepository.currencyOfClient(client);
+//    }
 }

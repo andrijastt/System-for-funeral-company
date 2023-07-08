@@ -25,6 +25,21 @@ public class ContractController {
         return contractService.getAllValidContracts();
     }
 
+    @GetMapping(path = "/contracts/client/{clientID}")
+    public List<Contract> getAllContractsByClient(@Valid @PathVariable("clientID") Long clientID){
+        return contractService.getAllContractsByClient(clientID);
+    }
+
+    @GetMapping(path = "/contracts/client/sum/{clientID}")
+    public List<Object[]> sumMoneyOfClient(@Valid @PathVariable("clientID") Long clientID){
+        return contractService.sumMoneyOfClient(clientID);
+    }
+
+//    @GetMapping(path = "/contracts/client/currency/{clientID}")
+//    public List<String> currencyOfClient(@Valid @PathVariable("clientID") Long clientID){
+//        return contractService.currencyOfClient(clientID);
+//    }
+
     @PostMapping(path = "/contract")
     public Contract saveContract(@Valid @RequestBody Contract contract){
         return contractService.saveContract(contract);
