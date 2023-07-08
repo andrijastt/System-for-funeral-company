@@ -8,6 +8,7 @@ import { MaterialComponent } from './material/material.component';
 import { ModelComponent } from './model/model.component';
 import { ClientComponent } from './client/client.component';
 import { ContractComponent } from './contract/contract.component';
+import { SupplyComponent } from './supply/supply.component';
 
 const routes: Routes = [
   {path: "", component: LoginComponent},
@@ -17,7 +18,8 @@ const routes: Routes = [
   {path: "material", component: MaterialComponent},
   {path: "model", component: ModelComponent},
   {path: "client", component: ClientComponent},
-  {path: "contract", component: ContractComponent}
+  {path: "contract", component: ContractComponent},
+  {path: "supply", component: SupplyComponent}
 ];
 
 @NgModule({

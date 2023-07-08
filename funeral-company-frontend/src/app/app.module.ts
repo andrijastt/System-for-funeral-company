@@ -28,6 +28,7 @@ import { MaterialComponent } from './material/material.component';
 import { ModelComponent } from './model/model.component';
 import { ClientComponent } from './client/client.component';
 import { ContractComponent } from './contract/contract.component';
+import { SupplyComponent } from './supply/supply.component';
 
 
 @NgModule({
@@ -41,7 +42,8 @@ import { ContractComponent } from './contract/contract.component';
     MaterialComponent,
     ModelComponent,
     ClientComponent,
-    ContractComponent
+    ContractComponent,
+    SupplyComponent
   ],
   imports: [
     BrowserModule,
