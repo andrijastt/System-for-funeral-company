@@ -124,7 +124,7 @@
                             <button type="button" class="btn btn-primary" (click)="changeValid(contract.contractID)">Change valid</button>
                         </td>
                         <td scope="row">
-                            <button type="button" class="btn btn-primary">Update Contract</button>
+                            <button type="button" class="btn btn-primary" (click)="updateContractButton(contract)">Update Contract</button>
                         </td>
                         <td scope="row">
                             <button type="button" class="btn btn-primary" (click)="removeContract(contract.contractID)">Remove Contract</button>
@@ -199,6 +199,69 @@
             <div class="alert alert-primary" role="alert" *ngIf="dataNotFilled">
                 <strong>Data not filled:</strong> Fill all data
             </div>            
+        </form>
+    </div>
+
+    <div class="container" *ngIf="updateContract">                
+        <form>
+            <fieldset class="mb-3 row">
+                <legend class="col-form-legend col-5">Update Contract</legend>                    
+            </fieldset>
+            <div class="mb-3 row">
+                <mat-form-field>
+                    <mat-label for="inputName" class="col-4 col-form-label">Client</mat-label>                                        
+                    <mat-select name="client" id="category" [(ngModel)]="updateClient">                        
+                        <mat-option *ngFor="let client of clients" [value]="client">{{client.name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+            </div>
+            <div class="mb-3 row">
+                <mat-form-field>
+                    <mat-label for="inputName" class="col-4 col-form-label">Date signed</mat-label>                                        
+                    <input matInput [matDatepicker]="dateSigned" [(ngModel)]="updateDateSignedData"
+                    [max]="this.minMaxDate" class="form-control" name="dateSigned" id="dateSigned" required>
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="dateSigned"></mat-datepicker-toggle>
+                    <mat-datepicker #dateSigned></mat-datepicker>
+                </mat-form-field>            
+            </div>
+            <div class="mb-3 row">
+                <mat-form-field>
+                    <mat-label for="inputName" class="col-4 col-form-label">Payment date</mat-label>                                        
+                    <input matInput [matDatepicker]="paymentDate" [(ngModel)]="updatePaymentDateData"
+                    [min]="this.minMaxDate" class="form-control" name="paymentDate" id="paymentDate" required>
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="paymentDate"></mat-datepicker-toggle>
+                    <mat-datepicker #paymentDate></mat-datepicker>                                                    
+                </mat-form-field>            
+            </div>                        
+            <div class="mb-3 row">
+                <mat-form-field>
+                    <mat-label for="inputName" class="col-4 col-form-label">Valid unitll</mat-label>                                        
+                    <input matInput [matDatepicker]="valid" [(ngModel)]="updateValidUntilData"
+                    [min]="this.minMaxDate" class="form-control" name="valid" id="valid" required>
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="valid"></mat-datepicker-toggle>
+                    <mat-datepicker #valid></mat-datepicker>                                                    
+                </mat-form-field>
+            </div>
+            <div class="mb-3 row">
+                <mat-form-field>
+                    <mat-label for="inputName" class="col-4 col-form-label">Money</mat-label>                                        
+                    <input matInput type="number" [(ngModel)]="updateMoney" min="0" class="form-control" name="money" id="money" required>                    
+                </mat-form-field>
+            </div>
+            <div class="mb-3 row">
+                <mat-form-field>
+                    <mat-label for="inputName" class="col-4 col-form-label">Currency</mat-label>                                        
+                    <input matInput [(ngModel)]="updateCurrency" type="text" class="form-control" name="currency" id="currency" required>                    
+                </mat-form-field>
+            </div>       
+            <div class="mb-3 row">
+                <div class="offset-sm-5 col-sm-8">
+                    <button type="submit" mat-raised-button class="btn btn-primary" (click)="updateContractClick()">Update</button>
+                </div>
+            </div>                             
         </form>
     </div>
 </app-main-nav>

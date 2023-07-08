@@ -54,4 +54,19 @@ export class ContractService {
   removeContract(contractID){    
     return this.http.delete(`${this.uri}/contract/${contractID}`)
   }
+
+  updateContract(contractID, clientID, dateSigned, paymentDate, validUntil, money, currency){
+    const data = {
+      contractID: contractID,
+      dateSigned: dateSigned,
+      paymentDate: paymentDate,
+      validUntil: validUntil,
+      money: money,
+      currency: currency,
+      client: clientID,
+      valid: true
+    }
+
+    return this.http.post(`${this.uri}/contract/update`, data)
+  }
 }

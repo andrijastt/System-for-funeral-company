@@ -144,4 +144,33 @@ export class ContractComponent {
 
   }
 
+  updateContract: boolean = false
+  updateContractID: number
+  updateClient: Client
+  updateDateSignedData: Date
+  updatePaymentDateData: Date
+  updateValidUntilData: Date
+  updateMoney: number
+  updateCurrency: string
+
+  updateContractButton(contract: Contract){    
+    this.updateContract = true
+    this.updateContractID = contract.contractID
+    this.updateClient = contract.client
+    this.updateDateSignedData = contract.dateSigned
+    this.updatePaymentDateData = contract.paymentDate
+    this.updateValidUntilData = contract.validUntil
+    this.updateMoney = contract.money
+    this.updateCurrency = contract.currency    
+  }
+
+  updateContractClick(){
+    this.contractService.updateContract(this.updateContractID, this.updateClient, this.updateDateSignedData, this.updatePaymentDateData, 
+      this.updateValidUntilData, this.updateMoney, this.updateCurrency).subscribe((data: Contract)=>{
+        alert("Successfully updated contract!")
+        this.contractService.getAllValidContracts().subscribe((data:Contract[])=>{
+          this.contracts = data
+        })
+      })
+  }
 }

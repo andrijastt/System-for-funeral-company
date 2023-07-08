@@ -71,12 +71,13 @@ public class ContractServiceImplementation implements ContractService{
 
         if(!contract.getCurrency().equals(""))
             contractDB.setCurrency(contract.getCurrency());
-        if(contract.getMoney() == null)
-            contractDB.setMoney(contractDB.getMoney());
+        if(contract.getMoney() != null)
+            contractDB.setMoney(contract.getMoney());
         contractDB.setDateSigned(contract.getDateSigned());
         contractDB.setPaymentDate(contract.getPaymentDate());
         contractDB.setValidUntil(contract.getValidUntil());
-        contractDB.setClient(contract.getClient());
+        Client client = clientRepository.findById(contractDB.getClient().getClientID()).get();
+        contractDB.setClient(client);
         return contractRepository.save(contractDB);
     }
 }
