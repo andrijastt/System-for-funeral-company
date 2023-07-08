@@ -171,6 +171,14 @@ export class ContractComponent {
         this.contractService.getAllValidContracts().subscribe((data:Contract[])=>{
           this.contracts = data
         })
+        this.updateContract = false
+        this.updateContractID = null
+        this.updateClient = null
+        this.updateDateSignedData = null
+        this.updatePaymentDateData = null
+        this.updateValidUntilData = null
+        this.updateMoney = null
+        this.updateCurrency = null
       })
   }
 }
