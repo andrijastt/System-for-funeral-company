@@ -4,6 +4,9 @@ import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Data
 @NoArgsConstructor
@@ -48,5 +51,18 @@ public class Material {
     @ToString.Exclude
     private Category category;
 
+    @OneToMany
+    private List<MaterialSupply> materialSupplyList;
 
+    public void addMaterialSupply(MaterialSupply materialSupply){
+        if(materialSupplyList == null) materialSupplyList = new ArrayList<>();
+        materialSupplyList.add(materialSupply);
+        materialSupply.getMaterialSupplyPK().setMaterialID(this.materialID);
+    }
+    public void removeMaterialSupply(MaterialSupply materialSupply){
+        if(materialSupplyList != null){
+            materialSupplyList.remove(materialSupply);
+            materialSupply.getMaterialSupplyPK().setMaterialID(null);
+        }
+    }
 }
