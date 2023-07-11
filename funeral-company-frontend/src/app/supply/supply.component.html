@@ -31,8 +31,11 @@
             <div class="mb-3 row" *ngFor="let materialS of materialSupply; let i = index">
                 <mat-form-field class="col-3">
                     <mat-label for="inputName" class="col-4 col-form-label">Material</mat-label>
-                    <mat-select required name="category" id="category" [(ngModel)]="materialSupply[i].materialID">
-                        <mat-option *ngFor="let material of materialSelect" [value]="material.materialID">{{material.name}}</mat-option>
+                    <mat-select required name="category" id="category" [(value)]="materialSupply[i].materialID" 
+                    (selectionChange)="onChangeMaterial($event, i)">
+                        <mat-option *ngFor="let material of materialSelect" [value]="material.materialID">
+                            {{material.name}}
+                        </mat-option>
                     </mat-select>                        
                 </mat-form-field>
                 <mat-form-field class="col-3">
