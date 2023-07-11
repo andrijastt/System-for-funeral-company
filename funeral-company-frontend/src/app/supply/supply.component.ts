@@ -96,12 +96,29 @@ export class SupplyComponent {
 
 
     if(!this.dataNotFilled)
-      this.supplyService.saveSupplies(this.name, this.materialSupply).subscribe((data: Supply)=>{
-        console.log(data)
+      this.supplyService.saveSupplies(this.name, this.materialSupply).subscribe((data: Supply)=>{        
+        alert("Successfully added Supply")
         this.supplyService.getAllSupplies().subscribe((data: Supply[])=>{
           this.supplies = data
         })
+        this.materialSelected = []
+        this.dataNotFilled = false
+        this.name = null
+        this.materialSupply = []
+        this.addSupplyButton = false
+
       })
+  }
+
+  supplyArived(supplyID){
+
+    this.supplyService.arrivedSupply(supplyID).subscribe((data: Supply)=>{
+      alert("Package arrived")
+      this.supplyService.getAllSupplies().subscribe((data: Supply[])=>{
+        this.supplies = data
+      })
+    })
+
   }
 
 }

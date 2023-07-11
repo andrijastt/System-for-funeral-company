@@ -5,12 +5,50 @@
         </div>
         <mat-accordion class="example-headers-align" multi>        
             <mat-expansion-panel *ngFor="let supply of supplies">
-                <mat-expansion-panel-header>SupplyID:{{supply.supplyID}}, {{supply.name}}</mat-expansion-panel-header>
-                <mat-panel-description>
+                <mat-expansion-panel-header>                                        
+                    <ul class="list-group list-group-horizontal-xl">
+                        <li class="list-group-item">
+                            SupplyID:{{supply.supplyID}} 
+                        </li>
+                        <li class="list-group-item">
+                            Supply Name: {{supply.name}}
+                        </li>
+                        <li class="list-group-item">
+                            Date Ordered: {{supply.dateOrdered | date:'dd.MM.yyyy.'}}
+                        </li>
+                        <li class="list-group-item">
+                            Date Arrived: {{supply.dateArrived == null ? "Not arrived" : supply.dateArrived | date:'dd.MM.yyyy.'}}
+                        </li>
+                        <li class="list-group-item" *ngIf="supply.dateArrived == null">
+                            <button mat-raised-button type="button" class="btn btn-primary" color="primary" 
+                            (click)="supplyArived(supply.supplyID)">
+                                Arrived
+                            </button>
+                        </li>
+                        <li class="list-group-item" *ngIf="supply.dateArrived == null">
+                            <button mat-raised-button type="button" class="btn btn-primary" color="warn">Remove</button>
+                        </li>                        
+                    </ul>
+                </mat-expansion-panel-header>
+                <br>
+                <strong>Material supplies</strong>
+                <br>
+                <mat-panel-description>                    
+                    <ul class="list-group list-group-numbered">
+                        <li class="list-group-item">Material name</li>
+                        <li class="list-group-item">Amount</li>
+                        <li class="list-group-item">Price per unit</li>
+                        <li class="list-group-item" *ngIf="supply.dateArrived == null">
+                            <button type="button" class="btn btn-primary" disabled>Update Material Supply</button>
+                        </li>
+                    </ul>
                     <ul class="list-group list-group-numbered" *ngFor="let matSupply of supply.materialSupplyList">
                         <li class="list-group-item">{{printName(matSupply.materialSupplyPK.materialID)}}</li>
                         <li class="list-group-item">{{matSupply.amount}}</li>
                         <li class="list-group-item">{{matSupply.price}}</li>
+                        <li class="list-group-item" *ngIf="supply.dateArrived == null">
+                            <button type="button" class="btn btn-primary">Update</button>
+                        </li>
                     </ul>
                 </mat-panel-description>
             </mat-expansion-panel>
@@ -32,7 +70,7 @@
                     <input type="text" matInput class="form-control" name="name" id="name" required [(ngModel)]="name">                                            
                 </mat-form-field>            
             </div>                   
-            <div class="mb-3 row" *ngFor="let materialS of materialSupply; let i = index">
+            <div class="mb-3 row" *ngFor="let materials of materialSupply; let i = index">
                 <mat-form-field class="col-3">
                     <mat-label for="inputName" class="col-4 col-form-label">Material</mat-label>
                     <mat-select required name="category" id="category" [(value)]="materialSupply[i].materialID" 

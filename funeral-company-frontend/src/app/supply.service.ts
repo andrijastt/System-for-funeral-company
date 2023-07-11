@@ -15,13 +15,19 @@ export class SupplyService {
   }
 
   saveSupplies(name, materialSupply){
-
     const data = {
       name: name,      
       materialSupplyList: materialSupply
-    }
-    console.log(data);
-        
+    }            
     return this.http.post(`${this.uri}/supply`, data)
+  }
+
+  arrivedSupply(supplyID){
+
+    const data = {
+      
+    }    
+    
+    return this.http.post(`${this.uri}/supply/arrived/${supplyID}`, data)
   }
 }

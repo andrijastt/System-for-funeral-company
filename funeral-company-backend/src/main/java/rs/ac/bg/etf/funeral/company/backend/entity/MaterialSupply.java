@@ -15,7 +15,7 @@ public class MaterialSupply {
     private MaterialSupplyPK materialSupplyPK;
 
     @Column(nullable = false)
-    private Long amount;
+    private int amount;
 
     @Column(nullable = false)
     private Float price;

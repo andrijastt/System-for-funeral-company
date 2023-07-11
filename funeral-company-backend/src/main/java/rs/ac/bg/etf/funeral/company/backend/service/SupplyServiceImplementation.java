@@ -2,9 +2,11 @@ package rs.ac.bg.etf.funeral.company.backend.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import rs.ac.bg.etf.funeral.company.backend.entity.Material;
 import rs.ac.bg.etf.funeral.company.backend.entity.MaterialSupply;
 import rs.ac.bg.etf.funeral.company.backend.entity.MaterialSupplyPK;
 import rs.ac.bg.etf.funeral.company.backend.entity.Supply;
+import rs.ac.bg.etf.funeral.company.backend.repository.MaterialRepository;
 import rs.ac.bg.etf.funeral.company.backend.repository.MaterialSupplyRepository;
 import rs.ac.bg.etf.funeral.company.backend.repository.SupplyRepository;
 
@@ -19,6 +21,9 @@ public class SupplyServiceImplementation implements SupplyService{
 
     @Autowired
     private MaterialSupplyRepository materialSupplyRepository;
+
+    @Autowired
+    private MaterialRepository materialRepository;
 
     @Override
     public List<Supply> getAllSupplies() {
@@ -39,6 +44,20 @@ public class SupplyServiceImplementation implements SupplyService{
         }
 
         supply.setMaterialSupplyList(listTemp);
+
+        return supplyRepository.save(supply);
+    }
+
+    @Override
+    public Supply supplyArrived(Long supplyID) {
+        Supply supply = supplyRepository.findById(supplyID).get();
+        supply.setDateArrived(new Date());
+
+        for(MaterialSupply ms: supply.getMaterialSupplyList()){
+            Material material = materialRepository.findById(ms.getMaterialSupplyPK().getMaterialID()).get();
+            material.setCount(material.getCount() + ms.getAmount());
+            materialRepository.save(material);
+        }
 
         return supplyRepository.save(supply);
     }

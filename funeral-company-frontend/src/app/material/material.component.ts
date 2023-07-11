@@ -117,7 +117,7 @@ export class MaterialComponent {
   }
 
   nameSearch: string = ""
-  categorySearch: number = null
+  categorySearch: number = 0
   countFlag: boolean = false
 
   search(){
