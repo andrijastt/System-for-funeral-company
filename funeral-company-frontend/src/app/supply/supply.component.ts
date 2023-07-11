@@ -35,8 +35,22 @@ export class SupplyComponent {
   materialSupply: MaterialSupply[] = []
 
   addMoreMaterial(){                    
-    this.materialSupply.push(new MaterialSupply())    
-    this.materialSelected.push(0)
+
+    if(this.materialSupply.length == this.materialSelect.length){
+      alert("Added all fields for materials")
+    } else {
+      this.materialSupply.push(new MaterialSupply())    
+      this.materialSelected.push(0)
+    }    
+  }
+
+  printName(id: number): string{
+    for(let i = 0; i < this.materialSelect.length; i++){
+      if(this.materialSelect[i].materialID == id){
+        return this.materialSelect[i].name
+      }
+    }
+    return ""
   }
 
   removeMaterial(i: number){   
@@ -48,20 +62,15 @@ export class SupplyComponent {
     }
   }
 
-  onChangeMaterial(e: MatSelectChange, i: number){
-    
-    let temp: number = this.materialSelected.indexOf(e.value)
-    console.log(temp)
-    console.log(this.materialSelected)
-
+  onChangeMaterial(e: MatSelectChange, i: number){    
+    let temp: number = this.materialSelected.indexOf(e.value)        
     if(temp == -1){
       this.materialSelected[i] = e.value
     } else {
       alert("Material already selected")            
-      this.materialSupply[i].materialID = null
+      this.materialSupply[i].materialID = null      
       this.materialSelected[i] = 0
-    }
-    console.log(this.materialSelected)
+    }    
   }
 
   saveSupply(){
@@ -76,6 +85,8 @@ export class SupplyComponent {
       if(material.materialID == null || material.price == null || material.amount == null){
         this.dataNotFilled = true
         break
+      } else {        
+        material.materialSupplyPK.materialID = material.materialID
       }
     }    
 
@@ -86,9 +97,11 @@ export class SupplyComponent {
 
     if(!this.dataNotFilled)
       this.supplyService.saveSupplies(this.name, this.materialSupply).subscribe((data: Supply)=>{
-        console.log(data)      
+        console.log(data)
+        this.supplyService.getAllSupplies().subscribe((data: Supply[])=>{
+          this.supplies = data
+        })
       })
-
   }
 
 }

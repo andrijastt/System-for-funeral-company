@@ -4,10 +4,14 @@
             Supply
         </div>
         <mat-accordion class="example-headers-align" multi>        
-            <mat-expansion-panel>
-                <mat-expansion-panel-header>Proba</mat-expansion-panel-header>
+            <mat-expansion-panel *ngFor="let supply of supplies">
+                <mat-expansion-panel-header>SupplyID:{{supply.supplyID}}, {{supply.name}}</mat-expansion-panel-header>
                 <mat-panel-description>
-                    
+                    <ul class="list-group list-group-numbered" *ngFor="let matSupply of supply.materialSupplyList">
+                        <li class="list-group-item">{{printName(matSupply.materialSupplyPK.materialID)}}</li>
+                        <li class="list-group-item">{{matSupply.amount}}</li>
+                        <li class="list-group-item">{{matSupply.price}}</li>
+                    </ul>
                 </mat-panel-description>
             </mat-expansion-panel>
             
@@ -25,7 +29,7 @@
             <div class="mb-3 row">
                 <mat-form-field>
                     <mat-label for="inputName" class="col-4 col-form-label">Supplier name</mat-label>
-                    <input type="text" matInput class="form-control" name="name" id="name" required>                        
+                    <input type="text" matInput class="form-control" name="name" id="name" required [(ngModel)]="name">                                            
                 </mat-form-field>            
             </div>                   
             <div class="mb-3 row" *ngFor="let materialS of materialSupply; let i = index">

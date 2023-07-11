@@ -17,12 +17,13 @@ public class SupplyController {
 
     @GetMapping(path = "/supplies")
     public List<Supply> getAllSupplies(){
+        System.out.println(supplyService.getAllSupplies());
         return supplyService.getAllSupplies();
+
     }
 
     @PostMapping(path = "/supply")
     public Supply saveSupply(@Valid @RequestBody Supply supply){
-        System.out.println("supply = " + supply);
-        return supply;
+        return supplyService.saveSupply(supply);
     }
 }

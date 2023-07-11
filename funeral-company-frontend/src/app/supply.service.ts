@@ -17,10 +17,11 @@ export class SupplyService {
   saveSupplies(name, materialSupply){
 
     const data = {
-      name: name,
-      dateOrder: new Date,
+      name: name,      
       materialSupplyList: materialSupply
     }
+    console.log(data);
+        
     return this.http.post(`${this.uri}/supply`, data)
   }
 }
