@@ -47,18 +47,22 @@
                         <li class="list-group-item">Material name</li>
                         <li class="list-group-item">Amount</li>
                         <li class="list-group-item">Price per unit (RSD)</li>
-                        <li class="list-group-item" *ngIf="supply.dateArrived == null">
+                        <!-- <li class="list-group-item" *ngIf="supply.dateArrived == null">
                             <button type="button" class="btn btn-primary" disabled>Update Material Supply</button>
-                        </li>
+                        </li> -->
                     </ul>
                     <ul class="list-group list-group-numbered" *ngFor="let matSupply of supply.materialSupplyList">
                         <li class="list-group-item">{{printName(matSupply.materialSupplyPK.materialID)}}</li>
                         <li class="list-group-item">{{matSupply.amount}}</li>
                         <li class="list-group-item">{{matSupply.price}}</li>
-                        <li class="list-group-item" *ngIf="supply.dateArrived == null">
+                        <!-- <li class="list-group-item" *ngIf="supply.dateArrived == null">
                             <button type="button" class="btn btn-primary">Update</button>
-                        </li>
+                        </li> -->
                     </ul>
+                    <button type="button" class="btn btn-primary" *ngIf="supply.dateArrived == null" 
+                    (click)="updateMaterialSupplyClick(supply.materialSupplyList)">
+                        Update Material Supply
+                    </button>
                 </mat-panel-description>
             </mat-expansion-panel>
             
@@ -147,4 +151,47 @@
             </div>                        
         </form>
     </div>
+
+    <div class="container" *ngIf="updateMaterialSupplyBool">                
+        <form>
+            <fieldset class="mb-3 row">
+                <legend class="col-form-legend col-5">Update Material Supply</legend>                    
+            </fieldset>
+            <div class="mb-3 row" *ngFor="let materials of updateMaterialSupply; let i = index">
+                <mat-form-field class="col-3">
+                    <mat-label for="inputName" class="col-4 col-form-label">Material</mat-label>
+                    <mat-select required name="category" id="category" [(value)]="updateMaterialSupply[i].materialSupplyPK.materialID" 
+                    (selectionChange)="onChangeMaterialUpdate($event, i)">
+                        <mat-option *ngFor="let material of materialSelect" [value]="material.materialID">
+                            {{material.name}}
+                        </mat-option>
+                    </mat-select>                        
+                </mat-form-field>
+                <mat-form-field class="col-3">
+                    <mat-label for="inputName" class="col-4 col-form-label">Amount</mat-label>
+                    <input type="number" matInput min="1" [(ngModel)]="updateMaterialSupply[i].amount" class="form-control" name="name" id="name" required>                        
+                </mat-form-field>
+                <mat-form-field class="col-3">
+                    <mat-label for="inputName" class="col-4 col-form-label">Price</mat-label>
+                    <input type="number" matInput min="1" [(ngModel)]="updateMaterialSupply[i].price" class="form-control" name="name" id="name" required>                        
+                </mat-form-field>
+                <div class="col-3">
+                    <button type="submit" color="warn" mat-raised-button class="btn btn-primary" (click)="removeUpdateMaterial(i)">
+                        Remove Material
+                    </button>
+                </div>            
+            </div>                        
+        </form>
+        <div class="col-3">
+            <button type="submit" mat-raised-button class="btn btn-primary" (click)="addMoreUpdateMaterial()">Add More Materials</button>
+        </div>                            
+        <div class="mb-3 row">
+            <div class="offset-sm-5 col-sm-8">
+                <button type="submit" mat-raised-button class="btn btn-primary" (click)="updateMaterialSupplyClickFinal()">
+                    Update Material Supply
+                </button>
+            </div>
+        </div>
+    </div>
+
 </app-main-nav>

@@ -39,4 +39,11 @@ export class SupplyService {
     }            
     return this.http.post(`${this.uri}/supply/update`, data)
   }
+
+  updateMaterialSupply(materialSupply){
+    const data = {      
+      materialSupplyList: materialSupply
+    }            
+    return this.http.post(`${this.uri}/supply/material/update`, data)
+  }
 }

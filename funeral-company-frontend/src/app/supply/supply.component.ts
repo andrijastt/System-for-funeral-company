@@ -160,5 +160,60 @@ export class SupplyComponent {
     })
 
   }
+
+  updateMaterialSupplyBool: boolean = false
+  updateMaterialSelected: number[] = []
+  updateMaterialSupply: MaterialSupply[] = []  
+
+  updateMaterialSupplyClick(materialSupplyList){
+    this.updateMaterialSupplyBool = true        
+    this.updateMaterialSupply = materialSupplyList            
+    this.updateMaterialSelected = []
+    this.updateMaterialSupply.forEach(element => {
+      this.updateMaterialSelected.push(element.materialSupplyPK.materialID)
+    });    
+  }
+
+  onChangeMaterialUpdate(e: MatSelectChange, i: number){    
+    let temp: number = this.updateMaterialSelected.indexOf(e.value)        
+    if(temp == -1){
+      this.updateMaterialSelected[i] = e.value
+    } else {
+      alert("Material already selected")            
+      this.updateMaterialSupply[i].materialSupplyPK.materialID = null      
+      this.updateMaterialSelected[i] = 0
+    }    
+  }
+
+  addMoreUpdateMaterial(){                    
+
+    if(this.updateMaterialSupply.length == this.materialSelect.length){
+      alert("Added all fields for materials")
+    } else {
+      this.updateMaterialSupply.push(new MaterialSupply())    
+      this.updateMaterialSelected.push(0)
+    }    
+  }
+
+  removeUpdateMaterial(i: number){   
+    if(this.updateMaterialSupply.length == 1){
+      alert("Can't remove material, needs to be one")
+    } else {      
+      this.updateMaterialSupply.splice(i, 1)      
+      this.updateMaterialSelected.splice(i, 1)      
+    }
+  }
+
+  updateMaterialSupplyClickFinal(){        
+    this.supplyService.updateMaterialSupply(this.updateMaterialSupply).subscribe((data: Supply)=>{
+      alert("Successfully updated Material Supply")
+      this.supplyService.getAllSupplies().subscribe((data: Supply[])=>{
+        this.supplies = data
+      })
+      this.updateMaterialSupplyBool = false
+      this.updateMaterialSelected = []
+      this.updateMaterialSupply = []
+    })
+  }
 }
 

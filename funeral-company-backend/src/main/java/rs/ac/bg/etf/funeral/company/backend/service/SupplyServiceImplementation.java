@@ -82,4 +82,34 @@ public class SupplyServiceImplementation implements SupplyService{
         supplyDB.setDateOrdered(supply.getDateOrdered());
         return supplyRepository.save(supplyDB);
     }
+
+    @Override
+    public Supply updateMaterialSupply(List<MaterialSupply> materialSupplyList) {
+
+        System.out.println("materialSupplyList = " + materialSupplyList);
+        List<MaterialSupply> msListDB = materialSupplyRepository.findByMaterialSupplyPK_SupplyID(
+                materialSupplyList.get(0).getMaterialSupplyPK().getSupplyID());
+
+        Supply supplyDB = supplyRepository.findById(materialSupplyList.get(0).getMaterialSupplyPK().getSupplyID()).get();
+        supplyDB.setMaterialSupplyList(null);
+        supplyRepository.saveAndFlush(supplyDB);
+
+        for(MaterialSupply ms: msListDB){
+            materialSupplyRepository.delete(ms);
+        }
+
+        for(MaterialSupply ms: materialSupplyList){
+//            MaterialSupply msDB = materialSupplyRepository.findByMaterialSupplyPK_MaterialIDAndMaterialSupplyPK_SupplyID(
+//                    ms.getMaterialSupplyPK().getMaterialID(), ms.getMaterialSupplyPK().getSupplyID()
+//            );
+//            System.out.println("msDB = " + msDB);
+//            if(msDB != null){
+//                msDB.setPrice(ms.getPrice());
+//                msDB.setAmount(ms.getAmount());
+//            }
+            materialSupplyRepository.save(ms);
+        }
+        supplyDB.setMaterialSupplyList(materialSupplyList);
+        return supplyRepository.save(supplyDB);
+    }
 }

@@ -3,6 +3,7 @@ package rs.ac.bg.etf.funeral.company.backend.controller;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import rs.ac.bg.etf.funeral.company.backend.entity.MaterialSupply;
 import rs.ac.bg.etf.funeral.company.backend.entity.Supply;
 import rs.ac.bg.etf.funeral.company.backend.service.SupplyService;
 
@@ -28,6 +29,11 @@ public class SupplyController {
     @PostMapping(path = "/supply/update")
     public Supply updateSupply(@Valid @RequestBody Supply supply){
         return supplyService.updateSupply(supply);
+    }
+
+    @PostMapping(path = "/supply/material/update")
+    public Supply updateMaterialSupply(@Valid @RequestBody Supply materialSupply){
+        return supplyService.updateMaterialSupply(materialSupply.getMaterialSupplyList());
     }
 
     @PostMapping(path = "/supply/arrived/{supplyID}")
