@@ -1,0 +1,47 @@
+<app-main-nav>
+<br>
+<div class="container">
+    <form>
+        <fieldset class="mb-3 row">
+            <legend class="col-form-legend col-5">
+                Update User                    
+            </legend>                    
+        </fieldset>
+        <div class="mb-3 row">
+            <mat-form-field>
+                <mat-label for="inputName" class="col-4 col-form-label">First name</mat-label>
+                <input type="text" matInput class="form-control" name="firstname" id="firstname" [(ngModel)]="user.firstname">                        
+            </mat-form-field>            
+        </div>
+        <div class="mb-3 row">
+            <mat-form-field>
+                <mat-label for="inputName" class="col-4 col-form-label">Last name</mat-label>
+                <input type="text" matInput class="form-control" name="lastname" id="lastname" [(ngModel)]="user.lastname">
+            </mat-form-field>            
+        </div>
+        <div class="mb-3 row">
+            <mat-form-field>
+                <mat-label for="inputName" class="col-4 col-form-label">Username</mat-label>                
+                <input type="text" matInput class="form-control" name="username" id="username" [(ngModel)]="user.username">
+            </mat-form-field>            
+        </div>
+        <div class="mb-3 row">
+            <mat-form-field>
+                <mat-label for="inputName" class="col-4 col-form-label">Password</mat-label>
+                <input type="password" matInput class="form-control" name="password" id="password" [(ngModel)]="user.password">
+            </mat-form-field>            
+        </div>
+        <div class="mb-3 row">
+            <div class="offset-sm-5 col-sm-8">
+                <button type="submit" mat-raised-button class="btn btn-primary" (click)="updateUser()">Update</button>
+            </div>
+        </div>  
+        <div class="mb-3 row">
+            <div class="offset-sm-5 col-sm-8">
+                <button type="submit" mat-raised-button class="btn btn-primary" (click)="removeUser()" color="warn">Remove</button>
+            </div>
+        </div>                      
+    </form>
+</div>
+
+</app-main-nav>

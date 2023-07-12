@@ -9,6 +9,7 @@ import { ModelComponent } from './model/model.component';
 import { ClientComponent } from './client/client.component';
 import { ContractComponent } from './contract/contract.component';
 import { SupplyComponent } from './supply/supply.component';
+import { ProfileComponent } from './profile/profile.component';
 
 const routes: Routes = [
   {path: "", component: LoginComponent},
@@ -19,7 +20,8 @@ const routes: Routes = [
   {path: "model", component: ModelComponent},
   {path: "client", component: ClientComponent},
   {path: "contract", component: ContractComponent},
-  {path: "supply", component: SupplyComponent}
+  {path: "supply", component: SupplyComponent},
+  {path: "profile", component: ProfileComponent}
 ];
 
 @NgModule({

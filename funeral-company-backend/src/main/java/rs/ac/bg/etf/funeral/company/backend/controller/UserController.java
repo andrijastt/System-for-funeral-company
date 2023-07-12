@@ -18,8 +18,18 @@ public class UserController {
         return userService.saveUser(user);
     }
 
+    @PostMapping(path = "/user/update")
+    public User updateUser(@Valid @RequestBody User user){
+        return userService.updateUser(user);
+    }
+
     @GetMapping(path = "/login")
     public User getUserByUsernameAndPassword(@Valid @RequestParam("username") String username, @Valid @RequestParam("password") String password) {
         return userService.getUserByUsernameAndPassword(username, password);
+    }
+
+    @DeleteMapping(path = "/user/delete/{userID}")
+    public String removeUser(@Valid @PathVariable("userID") Long userID){
+        return userService.removeUser(userID);
     }
 }

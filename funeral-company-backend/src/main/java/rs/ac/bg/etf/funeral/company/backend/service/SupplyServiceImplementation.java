@@ -99,14 +99,6 @@ public class SupplyServiceImplementation implements SupplyService{
         }
 
         for(MaterialSupply ms: materialSupplyList){
-//            MaterialSupply msDB = materialSupplyRepository.findByMaterialSupplyPK_MaterialIDAndMaterialSupplyPK_SupplyID(
-//                    ms.getMaterialSupplyPK().getMaterialID(), ms.getMaterialSupplyPK().getSupplyID()
-//            );
-//            System.out.println("msDB = " + msDB);
-//            if(msDB != null){
-//                msDB.setPrice(ms.getPrice());
-//                msDB.setAmount(ms.getAmount());
-//            }
             materialSupplyRepository.save(ms);
         }
         supplyDB.setMaterialSupplyList(materialSupplyList);

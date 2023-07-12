@@ -19,6 +19,7 @@ export class LoginComponent {
   username: string
   password: string
   message: string
+  dataNotFilled: boolean = false
   login(){
     
     if(this.username == null || this.password == null){
@@ -28,7 +29,7 @@ export class LoginComponent {
       this.userService.login(this.username, this.password).subscribe((data: User) =>{
 
         if(data == null){
-          this.message = "Wrong password or username"
+          this.dataNotFilled = true          
         } else {
           localStorage.setItem('User', JSON.stringify(data))
           this.router.navigate(['home'])
