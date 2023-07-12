@@ -1,5 +1,6 @@
 package rs.ac.bg.etf.funeral.company.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Min;
 import lombok.*;
@@ -63,6 +64,23 @@ public class Material {
         if(materialSupplyList != null){
             materialSupplyList.remove(materialSupply);
             materialSupply.getMaterialSupplyPK().setMaterialID(null);
+        }
+    }
+
+    @OneToMany(mappedBy = "product")
+    @Transient
+    @JsonIgnore
+    List<Product> productList;
+
+    public void addProduct(Product product){
+        if(productList == null) productList = new ArrayList<>();
+        productList.add(product);
+        product.setMaterial(this);
+    }
+    public void removeProduct(Product product){
+        if(productList != null){
+            productList.remove(product);
+            product.setMaterial(null);
         }
     }
 }

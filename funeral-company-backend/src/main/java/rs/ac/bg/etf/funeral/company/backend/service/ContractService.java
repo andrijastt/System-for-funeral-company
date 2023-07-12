@@ -1,6 +1,5 @@
 package rs.ac.bg.etf.funeral.company.backend.service;
 
-import rs.ac.bg.etf.funeral.company.backend.entity.Client;
 import rs.ac.bg.etf.funeral.company.backend.entity.Contract;
 
 import java.util.List;
