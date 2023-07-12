@@ -31,6 +31,7 @@ import { ClientComponent } from './client/client.component';
 import { ContractComponent } from './contract/contract.component';
 import { SupplyComponent } from './supply/supply.component';
 import { ProfileComponent } from './profile/profile.component';
+import { ProductComponent } from './product/product.component';
 
 
 @NgModule({
@@ -46,7 +47,8 @@ import { ProfileComponent } from './profile/profile.component';
     ClientComponent,
     ContractComponent,
     SupplyComponent,
-    ProfileComponent
+    ProfileComponent,
+    ProductComponent
   ],
   imports: [
     BrowserModule,
