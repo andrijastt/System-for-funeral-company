@@ -23,11 +23,11 @@ export class SupplyService {
   }
 
   arrivedSupply(supplyID){
-
-    const data = {
-      
-    }    
-    
+    const data = { }    
     return this.http.post(`${this.uri}/supply/arrived/${supplyID}`, data)
+  }
+
+  deleteSupply(supplyID){
+    return this.http.delete(`${this.uri}/supply/delete/${supplyID}`)
   }
 }

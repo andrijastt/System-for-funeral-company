@@ -20,13 +20,21 @@
                             Date Arrived: {{supply.dateArrived == null ? "Not arrived" : supply.dateArrived | date:'dd.MM.yyyy.'}}
                         </li>
                         <li class="list-group-item" *ngIf="supply.dateArrived == null">
+                            <button mat-raised-button type="button" class="btn btn-primary" color="primary">
+                                Update
+                            </button>
+                        </li>
+                        <li class="list-group-item" *ngIf="supply.dateArrived == null">
                             <button mat-raised-button type="button" class="btn btn-primary" color="primary" 
-                            (click)="supplyArived(supply.supplyID)">
+                            (click)="supplyArrived(supply.supplyID)">
                                 Arrived
                             </button>
                         </li>
                         <li class="list-group-item" *ngIf="supply.dateArrived == null">
-                            <button mat-raised-button type="button" class="btn btn-primary" color="warn">Remove</button>
+                            <button mat-raised-button type="button" class="btn btn-primary" color="warn"
+                            (click)="deleteSupply(supply.supplyID)">
+                                Remove
+                            </button>
                         </li>                        
                     </ul>
                 </mat-expansion-panel-header>
@@ -37,7 +45,7 @@
                     <ul class="list-group list-group-numbered">
                         <li class="list-group-item">Material name</li>
                         <li class="list-group-item">Amount</li>
-                        <li class="list-group-item">Price per unit</li>
+                        <li class="list-group-item">Price per unit (RSD)</li>
                         <li class="list-group-item" *ngIf="supply.dateArrived == null">
                             <button type="button" class="btn btn-primary" disabled>Update Material Supply</button>
                         </li>

@@ -110,10 +110,22 @@ export class SupplyComponent {
       })
   }
 
-  supplyArived(supplyID){
-
+  supplyArrived(supplyID){
     this.supplyService.arrivedSupply(supplyID).subscribe((data: Supply)=>{
       alert("Package arrived")
+      this.supplyService.getAllSupplies().subscribe((data: Supply[])=>{
+        this.supplies = data
+      })
+    })
+  }
+
+  deleteSupply(supplyID){
+
+    this.supplyService.deleteSupply(supplyID).subscribe((data: Supply)=>{
+
+    },
+    (error)=>{
+      alert("Successfully deleted!")
       this.supplyService.getAllSupplies().subscribe((data: Supply[])=>{
         this.supplies = data
       })

@@ -30,4 +30,8 @@ public class SupplyController {
         return supplyService.supplyArrived(supplyID);
     }
 
+    @DeleteMapping(path = "/supply/delete/{supplyID}")
+    public String removeSupply(@Valid @PathVariable("supplyID") Long supplyID){
+        return supplyService.removeSupply(supplyID);
+    }
 }

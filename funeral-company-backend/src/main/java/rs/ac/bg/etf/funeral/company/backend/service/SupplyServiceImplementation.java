@@ -61,4 +61,16 @@ public class SupplyServiceImplementation implements SupplyService{
 
         return supplyRepository.save(supply);
     }
+
+    @Override
+    public String removeSupply(Long supplyID) {
+        Supply supply = supplyRepository.findById(supplyID).get();
+        List<MaterialSupply> msList = materialSupplyRepository.findByMaterialSupplyPK_SupplyID((supplyID));
+        supply.setMaterialSupplyList(null);
+        for(MaterialSupply ms: msList){
+            materialSupplyRepository.delete(ms);
+        }
+        supplyRepository.delete(supply);
+        return "Successfully deleted!";
+    }
 }
