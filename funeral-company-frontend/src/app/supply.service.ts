@@ -30,4 +30,13 @@ export class SupplyService {
   deleteSupply(supplyID){
     return this.http.delete(`${this.uri}/supply/delete/${supplyID}`)
   }
+
+  updateSupply(supplyID, name, dateOrdered){
+    const data = {
+      name: name,      
+      supplyID: supplyID,
+      dateOrdered: dateOrdered
+    }            
+    return this.http.post(`${this.uri}/supply/update`, data)
+  }
 }

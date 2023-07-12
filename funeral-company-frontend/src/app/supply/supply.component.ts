@@ -18,6 +18,7 @@ export class SupplyComponent {
   supplies: Supply[]
   materialSelect: Material[]  
   materialSelected: number[] = []
+  minMaxDate: Date = new Date()
 
   ngOnInit(){
     this.supplyService.getAllSupplies().subscribe((data: Supply[])=>{
@@ -133,5 +134,31 @@ export class SupplyComponent {
 
   }
 
+  updateSupply: boolean = false
+  updateName: string
+  updateDateOrdered: Date
+  updateSupplyID: number
+
+  updateSupplyButton(supply: Supply){
+    this.updateSupply = true
+    this.updateName = supply.name
+    this.updateDateOrdered = supply.dateOrdered
+    this.updateSupplyID = supply.supplyID
+  }
+
+  updateSupplyButtonClick(){
+
+    this.supplyService.updateSupply(this.updateSupplyID, this.updateName, this.updateDateOrdered).subscribe((data: Supply)=>{
+      alert("Successfully updatedSupply")
+      this.supplyService.getAllSupplies().subscribe((data: Supply[])=>{
+        this.supplies = data
+      })
+      this.updateSupply = false
+      this.updateName = null
+      this.updateDateOrdered = null
+      this.updateSupplyID = null
+    })
+
+  }
 }
 

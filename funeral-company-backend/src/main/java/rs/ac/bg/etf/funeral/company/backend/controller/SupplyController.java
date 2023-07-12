@@ -25,6 +25,11 @@ public class SupplyController {
         return supplyService.saveSupply(supply);
     }
 
+    @PostMapping(path = "/supply/update")
+    public Supply updateSupply(@Valid @RequestBody Supply supply){
+        return supplyService.updateSupply(supply);
+    }
+
     @PostMapping(path = "/supply/arrived/{supplyID}")
     public Supply supplyArrived(@Valid @PathVariable("supplyID") Long supplyID){
         return supplyService.supplyArrived(supplyID);

@@ -20,7 +20,8 @@
                             Date Arrived: {{supply.dateArrived == null ? "Not arrived" : supply.dateArrived | date:'dd.MM.yyyy.'}}
                         </li>
                         <li class="list-group-item" *ngIf="supply.dateArrived == null">
-                            <button mat-raised-button type="button" class="btn btn-primary" color="primary">
+                            <button mat-raised-button type="button" class="btn btn-primary" color="primary"
+                            (click)="updateSupplyButton(supply)">
                                 Update
                             </button>
                         </li>
@@ -115,4 +116,35 @@
             </div>            
         </form>
     </div>  
+
+    <div class="container" *ngIf="updateSupply">                
+        <form>
+            <fieldset class="mb-3 row">
+                <legend class="col-form-legend col-5">Update Supply</legend>                    
+            </fieldset>
+            <div class="mb-3 row">
+                <mat-form-field>
+                    <mat-label for="inputName" class="col-4 col-form-label">Supplier name</mat-label>
+                    <input type="text" matInput class="form-control" name="name" id="name" required [(ngModel)]="updateName">                                            
+                </mat-form-field>            
+            </div>
+            <div class="mb-3 row">
+                <mat-form-field>
+                    <mat-label for="inputName" class="col-4 col-form-label">Date signed</mat-label>                                        
+                    <input matInput [matDatepicker]="dateSigned" [(ngModel)]="updateDateOrdered"
+                    [max]="this.minMaxDate" class="form-control" name="dateSigned" id="dateSigned" required>
+                    <mat-hint>MM/DD/YYYY</mat-hint>
+                    <mat-datepicker-toggle matIconSuffix [for]="dateSigned"></mat-datepicker-toggle>
+                    <mat-datepicker #dateSigned></mat-datepicker>
+                </mat-form-field>            
+            </div>                                                                       
+            <div class="mb-3 row">
+                <div class="offset-sm-5 col-sm-8">
+                    <button type="submit" mat-raised-button class="btn btn-primary" (click)="updateSupplyButtonClick()">
+                        Update
+                    </button>
+                </div>
+            </div>                        
+        </form>
+    </div>
 </app-main-nav>

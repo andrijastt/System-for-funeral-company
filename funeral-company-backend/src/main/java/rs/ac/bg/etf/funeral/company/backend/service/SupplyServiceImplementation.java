@@ -73,4 +73,13 @@ public class SupplyServiceImplementation implements SupplyService{
         supplyRepository.delete(supply);
         return "Successfully deleted!";
     }
+
+    @Override
+    public Supply updateSupply(Supply supply) {
+        System.out.println("supply = " + supply);
+        Supply supplyDB = supplyRepository.findById(supply.getSupplyID()).get();
+        if(!supply.getName().equals("")) supplyDB.setName(supply.getName());
+        supplyDB.setDateOrdered(supply.getDateOrdered());
+        return supplyRepository.save(supplyDB);
+    }
 }

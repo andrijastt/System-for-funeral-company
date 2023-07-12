@@ -9,6 +9,7 @@ public interface SupplyService {
 
     List<Supply> getAllSupplies();
     Supply saveSupply(Supply supply);
+    Supply updateSupply(Supply supply);
     Supply supplyArrived(Long supplyID);
     String removeSupply(Long supplyID);
 }
