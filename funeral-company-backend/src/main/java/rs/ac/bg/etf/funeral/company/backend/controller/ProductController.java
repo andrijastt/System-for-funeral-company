@@ -22,7 +22,11 @@ public class ProductController {
 
     @PostMapping(path = "/product")
     public Product saveProduct(@Valid @RequestBody Product product){
-        System.out.println("product = " + product);
         return productService.saveProduct(product);
+    }
+
+    @PostMapping(path = "/product/update")
+    public Product updateProduct(@Valid @RequestBody Product product){
+        return productService.updateProduct(product);
     }
 }

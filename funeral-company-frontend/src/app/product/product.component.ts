@@ -144,4 +144,52 @@ export class ProductComponent {
       )
     }
   }
+
+
+  updateProduct: boolean = false
+  updateProductID: number
+  updatePrice: number
+  updateHeight: number
+  updateWidth: number
+  updateDepth: number
+  updateModel: Model
+
+  updateProductButton(product: Product){
+    this.updateProduct = true
+    
+    this.updateProductID = product.productID
+    this.updateHeight = product.height
+    this.updateWidth = product.width
+    this.updateDepth = product.depth
+    this.updatePrice = product.price
+    this.updateModel = product.model
+  }
+
+  updateProductButtonClick(){
+
+    this.productService.updateProduct(this.updateProductID, this.updateHeight, this.updateWidth, this.updateDepth, 
+      this.updatePrice, this.updateModel).subscribe((data: Product)=>{
+
+
+        alert("Successfully updated product!")
+        this.productService.getAllProducts().subscribe((data: Product[])=>{
+          this.products = data
+        })
+
+        this.updateProduct = false
+    
+        this.updateProductID = null
+        this.updateHeight = null
+        this.updateWidth = null
+        this.updateDepth = null
+        this.updatePrice = null
+        this.updateModel = null
+      })
+
+  }
+
+  deleteProduct(productID){
+
+  }
+
 }

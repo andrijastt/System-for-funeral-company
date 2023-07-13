@@ -22,7 +22,7 @@
                         <li class="list-group-item">
                             Price: {{product.price}}
                         </li>
-                        <!-- <li class="list-group-item" *ngIf="product.count == 0">
+                        <li class="list-group-item" *ngIf="product.count == 0">
                             <button mat-raised-button type="button" class="btn btn-primary" color="primary"
                             (click)="updateProductButton(product)">
                                 Update
@@ -33,7 +33,7 @@
                             (click)="deleteProduct(product.productID)">
                                 Remove
                             </button>
-                        </li>                         -->
+                        </li>                        
                     </ul>
                 </mat-expansion-panel-header>
                 <br>
@@ -134,36 +134,54 @@
         </form>
     </div>  
 
-    <!-- <div class="container" *ngIf="updateSupply">                
+    <div class="container" *ngIf="updateProduct">                
         <form>
             <fieldset class="mb-3 row">
-                <legend class="col-form-legend col-5">Update Supply</legend>                    
+                <legend class="col-form-legend col-5">Update Product</legend>                    
             </fieldset>
             <div class="mb-3 row">
                 <mat-form-field>
-                    <mat-label for="inputName" class="col-4 col-form-label">Supplier name</mat-label>
-                    <input type="text" matInput class="form-control" name="name" id="name" required [(ngModel)]="updateName">                                            
-                </mat-form-field>            
+                    <mat-label for="inputName" class="col-4 col-form-label">Height</mat-label>
+                    <input type="number" matInput class="form-control" name="height" id="height" required [(ngModel)]="updateHeight">                                            
+                </mat-form-field>                                            
             </div>
             <div class="mb-3 row">
                 <mat-form-field>
-                    <mat-label for="inputName" class="col-4 col-form-label">Date signed</mat-label>                                        
-                    <input matInput [matDatepicker]="dateSigned" [(ngModel)]="updateDateOrdered"
-                    [max]="this.minMaxDate" class="form-control" name="dateSigned" id="dateSigned" required>
-                    <mat-hint>MM/DD/YYYY</mat-hint>
-                    <mat-datepicker-toggle matIconSuffix [for]="dateSigned"></mat-datepicker-toggle>
-                    <mat-datepicker #dateSigned></mat-datepicker>
+                    <mat-label for="inputName" class="col-4 col-form-label">Width</mat-label>
+                    <input type="number" matInput class="form-control" name="width" id="width" required [(ngModel)]="updateWidth">                                            
+                </mat-form-field>
+            </div>
+            <div class="mb-3 row">
+                <mat-form-field>
+                    <mat-label for="inputName" class="col-4 col-form-label">Depth</mat-label>
+                    <input type="number" matInput class="form-control" name="depth" id="depth" required [(ngModel)]="updateDepth">                                            
+                </mat-form-field>
+            </div>
+            <div class="mb-3 row">
+                <mat-form-field>
+                    <mat-label for="inputName" class="col-4 col-form-label">Price</mat-label>
+                    <input type="number" matInput class="form-control" name="price" id="price" required [(ngModel)]="updatePrice">                                            
+                </mat-form-field>
+            </div>
+            <div class="mb-3 row">
+                <mat-form-field>
+                    <mat-label for="model" class="col-4 col-form-label">Model</mat-label>
+                    <mat-select required name="model" id="model" [(ngModel)]="updateModel">
+                        <mat-option *ngFor="let model of modelSelect" [value]="model">
+                            {{model.name}}
+                        </mat-option>
+                    </mat-select>                                            
                 </mat-form-field>            
             </div>                                                                       
             <div class="mb-3 row">
                 <div class="offset-sm-5 col-sm-8">
-                    <button type="submit" mat-raised-button class="btn btn-primary" (click)="updateSupplyButtonClick()">
+                    <button type="submit" mat-raised-button class="btn btn-primary" (click)="updateProductButtonClick()">
                         Update
                     </button>
                 </div>
             </div>                        
         </form>
-    </div> -->
+    </div>
 
     <!-- <div class="container" *ngIf="updateMaterialSupplyBool">                
         <form>

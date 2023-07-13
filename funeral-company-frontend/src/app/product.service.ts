@@ -17,17 +17,30 @@ export class ProductService {
 
   saveProduct(height, width, depth, price, materialUsedList, model){
 
-  const data = {
-    height: height,
-    width: width,
-    depth: depth,
-    price: price,
-    count: 0,
-    materialUsedList: materialUsedList,
-    model: model
+    const data = {
+      height: height,
+      width: width,
+      depth: depth,
+      price: price,
+      count: 0,
+      materialUsedList: materialUsedList,
+      model: model
+    }
+    
+    return this.http.post(`${this.uri}/product`, data)
   }
-  console.log(data);
-  
-  return this.http.post(`${this.uri}/product`, data)
+
+  updateProduct(productID, height, width, depth, price, model){
+
+    const data = {
+      productID: productID,
+      height: height,
+      width: width,
+      depth: depth,
+      price: price,
+      model: model
+    }
+    
+    return this.http.post(`${this.uri}/product/update`, data)
   }
 }
