@@ -25,6 +25,9 @@ public class Product {
     private Long length;
 
     @Column(nullable = false)
+    private Long count;
+
+    @Column(nullable = false)
     private Float price;
 
     @ManyToOne
