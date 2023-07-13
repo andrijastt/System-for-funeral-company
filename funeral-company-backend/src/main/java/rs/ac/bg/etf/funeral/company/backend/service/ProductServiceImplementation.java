@@ -69,4 +69,18 @@ public class ProductServiceImplementation implements ProductService{
 
         return productRepository.save(productDB);
     }
+
+    @Override
+    public String deleteProduct(Long productID) {
+
+        Product product = productRepository.findById(productID).get();
+        List<MaterialUsed> muList = product.getMaterialUsedList();
+        product.setMaterialUsedList(null);
+
+        for(MaterialUsed mu: muList){
+            materialUsedRepository.delete(mu);
+        }
+        productRepository.delete(product);
+        return "Successfully deleted product";
+    }
 }

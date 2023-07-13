@@ -9,4 +9,5 @@ public interface ProductService {
     List<Product> getAllProducts();
     Product saveProduct(Product product);
     Product updateProduct(Product product);
+    String deleteProduct(Long productID);
 }

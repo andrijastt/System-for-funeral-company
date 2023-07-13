@@ -43,4 +43,8 @@ export class ProductService {
     
     return this.http.post(`${this.uri}/product/update`, data)
   }
+
+  deleteProduct(productID){
+    return this.http.delete(`${this.uri}/product/delete/${productID}`)
+  }
 }

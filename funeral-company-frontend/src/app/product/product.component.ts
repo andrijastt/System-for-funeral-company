@@ -190,6 +190,16 @@ export class ProductComponent {
 
   deleteProduct(productID){
 
+    this.productService.deleteProduct(productID).subscribe((data: string)=>{
+
+    },
+    (error)=>{
+      alert('Successfully deleted product')
+      this.productService.getAllProducts().subscribe((data: Product[])=>{
+        this.products = data
+      })
+    })
+
   }
 
 }
