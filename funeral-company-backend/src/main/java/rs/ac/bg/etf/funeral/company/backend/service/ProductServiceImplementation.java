@@ -5,8 +5,9 @@ import org.springframework.stereotype.Service;
 import rs.ac.bg.etf.funeral.company.backend.repository.ProductRepository;
 
 @Service
-public class ProductServiceImplementation {
+public class ProductServiceImplementation implements ProductService{
 
     @Autowired
     private ProductRepository productRepository;
+
 }
