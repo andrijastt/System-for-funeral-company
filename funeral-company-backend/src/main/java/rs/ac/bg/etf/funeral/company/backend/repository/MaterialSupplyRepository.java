@@ -8,7 +8,7 @@ import rs.ac.bg.etf.funeral.company.backend.entity.MaterialSupplyPK;
 import java.util.List;
 
 @Repository
-public interface MaterialSupplyRepository extends JpaRepository<MaterialSupply, Long> {
+public interface MaterialSupplyRepository extends JpaRepository<MaterialSupply, MaterialSupplyPK> {
 
     List<MaterialSupply> findByMaterialSupplyPK_SupplyID(Long supplyID);
     MaterialSupply findByMaterialSupplyPK_MaterialIDAndMaterialSupplyPK_SupplyID(Long materialID, Long supplyID);

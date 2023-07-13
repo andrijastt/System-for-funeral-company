@@ -14,12 +14,6 @@
                             Model: {{product.model.name}}
                         </li>
                         <li class="list-group-item">
-                            Material: {{product.material.name}}
-                        </li>
-                        <li class="list-group-item">
-                            Category: {{product.material.category.name}}
-                        </li>
-                        <li class="list-group-item">
                             Dimension: {{product.height}}X{{product.width}}X{{product.depth}}
                         </li>
                         <li class="list-group-item">
@@ -43,20 +37,18 @@
                     </ul>
                 </mat-expansion-panel-header>
                 <br>
-                <strong>Material supplies</strong>
+                <strong>Material used</strong>
                 <br>
                 <mat-panel-description>                    
-                    <!-- <ul class="list-group list-group-numbered">
+                    <ul class="list-group list-group-numbered">
                         <li class="list-group-item">Material name</li>
-                        <li class="list-group-item">Amount</li>
-                        <li class="list-group-item">Price per unit (RSD)</li>                        
+                        <li class="list-group-item">Amount</li>                                                
                     </ul>
-                    <ul class="list-group list-group-numbered" *ngFor="let matSupply of supply.materialSupplyList">
-                        <li class="list-group-item">{{printName(matSupply.materialSupplyPK.materialID)}}</li>
-                        <li class="list-group-item">{{matSupply.amount}}</li>
-                        <li class="list-group-item">{{matSupply.price}}</li>                        
+                    <ul class="list-group list-group-numbered" *ngFor="let matUsed of product.materialUsedList">
+                        <li class="list-group-item">{{printNameMaterial(matUsed.materialUsedPK.materialID)}}</li>
+                        <li class="list-group-item">{{matUsed.amount}}{{printUnitMaterial(matUsed.materialUsedPK.materialID)}}</li>                                                
                     </ul>
-                    <button type="button" class="btn btn-primary" *ngIf="supply.dateArrived == null" 
+                    <!-- <button type="button" class="btn btn-primary" *ngIf="supply.dateArrived == null" 
                     (click)="updateMaterialSupplyClick(supply.materialSupplyList)">
                         Update Material Supply
                     </button> -->
@@ -65,38 +57,62 @@
             
         </mat-accordion>
     </div>    
-    <!-- <br>
-    <button type="button" class="btn btn-primary col-2" (click)="addSupplyButton = true">Add supply</button>  
+    <br>
+    <button type="button" class="btn btn-primary col-2" (click)="addProductButton = true">Add product</button>  
     <mat-divider></mat-divider>
     <br>
-    <div class="container" *ngIf="addSupplyButton">                
+    <div class="container" *ngIf="addProductButton">                
         <form>
             <fieldset class="mb-3 row">
-                <legend class="col-form-legend col-5">Add new Supply</legend>                    
+                <legend class="col-form-legend col-5">Add new Product</legend>                    
             </fieldset>
             <div class="mb-3 row">
                 <mat-form-field>
-                    <mat-label for="inputName" class="col-4 col-form-label">Supplier name</mat-label>
-                    <input type="text" matInput class="form-control" name="name" id="name" required [(ngModel)]="name">                                            
+                    <mat-label for="inputName" class="col-4 col-form-label">Height</mat-label>
+                    <input type="number" matInput class="form-control" name="height" id="height" required [(ngModel)]="addHeight">                                            
+                </mat-form-field>                                            
+            </div>
+            <div class="mb-3 row">
+                <mat-form-field>
+                    <mat-label for="inputName" class="col-4 col-form-label">Width</mat-label>
+                    <input type="number" matInput class="form-control" name="width" id="width" required [(ngModel)]="addWidth">                                            
+                </mat-form-field>
+            </div>
+            <div class="mb-3 row">
+                <mat-form-field>
+                    <mat-label for="inputName" class="col-4 col-form-label">Depth</mat-label>
+                    <input type="number" matInput class="form-control" name="depth" id="depth" required [(ngModel)]="addDepth">                                            
+                </mat-form-field>
+            </div>
+            <div class="mb-3 row">
+                <mat-form-field>
+                    <mat-label for="inputName" class="col-4 col-form-label">Price</mat-label>
+                    <input type="number" matInput class="form-control" name="price" id="price" required [(ngModel)]="addPrice">                                            
+                </mat-form-field>
+            </div>
+            <div class="mb-3 row">
+                <mat-form-field>
+                    <mat-label for="model" class="col-4 col-form-label">Model</mat-label>
+                    <mat-select required name="model" id="model" [(ngModel)]="addModel">
+                        <mat-option *ngFor="let model of modelSelect" [value]="model">
+                            {{model.name}}
+                        </mat-option>
+                    </mat-select>                                            
                 </mat-form-field>            
             </div>                   
-            <div class="mb-3 row" *ngFor="let materials of materialSupply; let i = index">
-                <mat-form-field class="col-3">
+            <div class="mb-3 row" *ngFor="let matUsed of addMaterialUsed; let i = index">
+                <mat-form-field class="col-4">
                     <mat-label for="inputName" class="col-4 col-form-label">Material</mat-label>
-                    <mat-select required name="category" id="category" [(value)]="materialSupply[i].materialID" 
+                    <mat-select required name="category" id="category" [value]="matUsed.materialUsedPK.materialID"
                     (selectionChange)="onChangeMaterial($event, i)">
                         <mat-option *ngFor="let material of materialSelect" [value]="material.materialID">
                             {{material.name}}
                         </mat-option>
                     </mat-select>                        
                 </mat-form-field>
-                <mat-form-field class="col-3">
+                <mat-form-field class="col-4">
                     <mat-label for="inputName" class="col-4 col-form-label">Amount</mat-label>
-                    <input type="number" matInput min="1" [(ngModel)]="materialSupply[i].amount" class="form-control" name="name" id="name" required>                        
-                </mat-form-field>
-                <mat-form-field class="col-3">
-                    <mat-label for="inputName" class="col-4 col-form-label">Price</mat-label>
-                    <input type="number" matInput min="1" [(ngModel)]="materialSupply[i].price" class="form-control" name="name" id="name" required>                        
+                    <input type="number" matInput min="1" [(ngModel)]="matUsed.amount" class="form-control" name="amount" id="amount" required>                        
                 </mat-form-field>
                 <div class="col-3">
                     <button type="submit" color="warn" mat-raised-button class="btn btn-primary" (click)="removeMaterial(i)">
@@ -109,7 +125,7 @@
             </div>                            
             <div class="mb-3 row">
                 <div class="offset-sm-5 col-sm-8">
-                    <button type="submit" mat-raised-button class="btn btn-primary" (click)="saveSupply()">Add</button>
+                    <button type="submit" mat-raised-button class="btn btn-primary" (click)="saveProduct()">Add</button>
                 </div>
             </div>
             <div class="alert alert-primary" role="alert" *ngIf="dataNotFilled">
@@ -118,7 +134,7 @@
         </form>
     </div>  
 
-    <div class="container" *ngIf="updateSupply">                
+    <!-- <div class="container" *ngIf="updateSupply">                
         <form>
             <fieldset class="mb-3 row">
                 <legend class="col-form-legend col-5">Update Supply</legend>                    
@@ -147,9 +163,9 @@
                 </div>
             </div>                        
         </form>
-    </div>
+    </div> -->
 
-    <div class="container" *ngIf="updateMaterialSupplyBool">                
+    <!-- <div class="container" *ngIf="updateMaterialSupplyBool">                
         <form>
             <fieldset class="mb-3 row">
                 <legend class="col-form-legend col-5">Update Material Supply</legend>                    

@@ -67,20 +67,20 @@ public class Material {
         }
     }
 
-    @OneToMany(mappedBy = "product")
-    @Transient
-    @JsonIgnore
-    List<Product> productList;
-
-    public void addProduct(Product product){
-        if(productList == null) productList = new ArrayList<>();
-        productList.add(product);
-        product.setMaterial(this);
-    }
-    public void removeProduct(Product product){
-        if(productList != null){
-            productList.remove(product);
-            product.setMaterial(null);
-        }
-    }
+//    @OneToMany
+//    @Transient
+//    @JsonIgnore
+//    List<Ma> productList;
+//
+//    public void addProduct(Product product){
+//        if(productList == null) productList = new ArrayList<>();
+//        productList.add(product);
+//        product.setMaterial(this);
+//    }
+//    public void removeProduct(Product product){
+//        if(productList != null){
+//            productList.remove(product);
+//            product.setMaterial(null);
+//        }
+//    }
 }

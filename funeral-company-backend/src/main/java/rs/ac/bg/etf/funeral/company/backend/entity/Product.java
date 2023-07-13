@@ -5,6 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,7 +25,7 @@ public class Product {
     private Long width;
 
     @Column(nullable = false)
-    private Long length;
+    private Long depth;
 
     @Column(nullable = false)
     private Long count;
@@ -32,15 +35,23 @@ public class Product {
 
     @ManyToOne
     @JoinColumn(
-            name = "materialID",
-            referencedColumnName = "materialID"
-    )
-    private Material material;
-
-    @ManyToOne
-    @JoinColumn(
             name = "modelID",
             referencedColumnName = "modelID"
     )
     private Model model;
+
+    @OneToMany
+    List<MaterialUsed> materialUsedList;
+
+    public void addMaterialUsed(MaterialUsed materialUsed){
+        if(materialUsedList == null) materialUsedList = new ArrayList<>();
+        materialUsedList.add(materialUsed);
+        materialUsed.getMaterialUsedPK().setProductID(this.productID);
+    }
+    public void removeMaterialSupply(MaterialUsed materialUsed){
+        if(materialUsedList != null){
+            materialUsedList.remove(materialUsed);
+            materialUsed.getMaterialUsedPK().setProductID(null);
+        }
+    }
 }
