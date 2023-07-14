@@ -47,4 +47,11 @@ export class ProductService {
   deleteProduct(productID){
     return this.http.delete(`${this.uri}/product/delete/${productID}`)
   }
+
+  updateMaterialUsed(materialUsed){
+    const data = {      
+      materialUsedList: materialUsed
+    }            
+    return this.http.post(`${this.uri}/product/material/update`, data)
+  }
 }

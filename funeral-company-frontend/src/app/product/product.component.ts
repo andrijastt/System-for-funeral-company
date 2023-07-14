@@ -133,6 +133,7 @@ export class ProductComponent {
           })
 
           this.dataNotFilled = false
+          this.addProductButton = false
           this.addHeight = null 
           this.addDepth = null
           this.addWidth = null
@@ -198,6 +199,71 @@ export class ProductComponent {
       this.productService.getAllProducts().subscribe((data: Product[])=>{
         this.products = data
       })
+    })
+
+  }
+
+  updateMaterialUsedBool: boolean = false
+
+  updateMaterialUsed: MaterialUsed[]
+  updateMaterialSelected: number[]
+
+  updateMaterialUsedClick(materialUsedList){
+
+    this.updateMaterialUsedBool = true        
+    this.updateMaterialUsed = materialUsedList            
+    this.updateMaterialSelected = []
+    this.updateMaterialUsed.forEach(element => {
+      this.updateMaterialSelected.push(element.materialUsedPK.materialID)
+    });
+
+  }
+
+  onChangeMaterialUpdate(e: MatSelectChange, i: number){        
+    let temp: number = this.addMaterialSelected.indexOf(e.value)        
+    if(temp == -1){
+      this.updateMaterialSelected[i] = e.value
+      this.updateMaterialUsed[i].materialUsedPK.materialID = e.value
+    } else {
+      alert("Material already selected")            
+      this.updateMaterialUsed[i].materialUsedPK.materialID = null      
+      this.updateMaterialSelected[i] = 0
+    }    
+  }
+
+  addMoreUpdateMaterial(){
+
+    if(this.updateMaterialUsed.length == this.materialSelect.length){
+      alert("Added all fields for materials")
+    } else {
+      this.updateMaterialUsed.push(new MaterialUsed())    
+      this.updateMaterialSelected.push(0)
+    }
+
+  }
+
+  removeMaterialUpdate(i: number){   
+    if(this.updateMaterialUsed.length == 1){
+      alert("Can't remove material, needs to be one")
+    } else {      
+      this.updateMaterialUsed.splice(i, 1)      
+      this.updateMaterialSelected.splice(i, 1)      
+    }
+  }
+
+  updateMaterialUsedClickFinal(){
+
+    this.productService.updateMaterialUsed(this.updateMaterialUsed).subscribe((data: Product)=>{
+
+      alert('Successfully updated Materials used!')
+      
+      this.productService.getAllProducts().subscribe((data: Product[])=>{
+        this.products = data
+      })
+
+      this.updateMaterialUsed = null
+      this.updateMaterialSelected = null
+
     })
 
   }

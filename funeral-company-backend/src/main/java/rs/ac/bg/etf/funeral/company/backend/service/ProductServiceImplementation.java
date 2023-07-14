@@ -2,9 +2,7 @@ package rs.ac.bg.etf.funeral.company.backend.service;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-import rs.ac.bg.etf.funeral.company.backend.entity.MaterialUsed;
-import rs.ac.bg.etf.funeral.company.backend.entity.Model;
-import rs.ac.bg.etf.funeral.company.backend.entity.Product;
+import rs.ac.bg.etf.funeral.company.backend.entity.*;
 import rs.ac.bg.etf.funeral.company.backend.repository.MaterialUsedRepository;
 import rs.ac.bg.etf.funeral.company.backend.repository.ModelRepository;
 import rs.ac.bg.etf.funeral.company.backend.repository.ProductRepository;
@@ -82,5 +80,27 @@ public class ProductServiceImplementation implements ProductService{
         }
         productRepository.delete(product);
         return "Successfully deleted product";
+    }
+
+    @Override
+    public Product updateMaterialUsed(List<MaterialUsed> materialUsedList) {
+
+        List<MaterialUsed> muListDB = materialUsedRepository.findByMaterialUsedPK_ProductID(
+                materialUsedList.get(0).getMaterialUsedPK().getProductID());
+
+        Product productDB = productRepository.findById(materialUsedList.get(0).getMaterialUsedPK().getProductID()).get();
+        productDB.setMaterialUsedList(null);
+        productRepository.saveAndFlush(productDB);
+
+        for(MaterialUsed mu: muListDB){
+            materialUsedRepository.delete(mu);
+        }
+
+        for(MaterialUsed mu: muListDB){
+            materialUsedRepository.save(mu);
+        }
+        productDB.setMaterialUsedList(materialUsedList);
+
+        return productRepository.save(productDB);
     }
 }

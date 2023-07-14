@@ -86,7 +86,6 @@ public class SupplyServiceImplementation implements SupplyService{
     @Override
     public Supply updateMaterialSupply(List<MaterialSupply> materialSupplyList) {
 
-        System.out.println("materialSupplyList = " + materialSupplyList);
         List<MaterialSupply> msListDB = materialSupplyRepository.findByMaterialSupplyPK_SupplyID(
                 materialSupplyList.get(0).getMaterialSupplyPK().getSupplyID());
 

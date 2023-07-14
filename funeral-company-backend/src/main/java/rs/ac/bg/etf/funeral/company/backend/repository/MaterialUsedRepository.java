@@ -5,6 +5,10 @@ import org.springframework.stereotype.Repository;
 import rs.ac.bg.etf.funeral.company.backend.entity.MaterialUsed;
 import rs.ac.bg.etf.funeral.company.backend.entity.MaterialUsedPK;
 
+import java.util.List;
+
 @Repository
 public interface MaterialUsedRepository extends JpaRepository<MaterialUsed, MaterialUsedPK> {
+
+    List<MaterialUsed> findByMaterialUsedPK_ProductID(Long productID);
 }

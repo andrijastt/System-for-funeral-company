@@ -3,6 +3,7 @@ package rs.ac.bg.etf.funeral.company.backend.controller;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import rs.ac.bg.etf.funeral.company.backend.entity.MaterialUsed;
 import rs.ac.bg.etf.funeral.company.backend.entity.Product;
 import rs.ac.bg.etf.funeral.company.backend.service.ProductService;
 
@@ -33,5 +34,10 @@ public class ProductController {
     @DeleteMapping(path = "/product/delete/{productID}")
     public String updateProduct(@Valid @PathVariable("productID") Long productID){
         return productService.deleteProduct(productID);
+    }
+
+    @PostMapping(path = "/product/material/update")
+    public Product updateMaterialUsed(@Valid @RequestBody Product product){
+        return productService.updateMaterialUsed(product.getMaterialUsedList());
     }
 }
