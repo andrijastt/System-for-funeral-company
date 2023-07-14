@@ -3,7 +3,6 @@ package rs.ac.bg.etf.funeral.company.backend.controller;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
-import rs.ac.bg.etf.funeral.company.backend.entity.MaterialUsed;
 import rs.ac.bg.etf.funeral.company.backend.entity.Product;
 import rs.ac.bg.etf.funeral.company.backend.service.ProductService;
 
