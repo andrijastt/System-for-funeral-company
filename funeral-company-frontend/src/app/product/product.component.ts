@@ -289,12 +289,29 @@ export class ProductComponent {
 
   addProduct(productID){
 
-    this.productService.addProduct(productID, this.addAmount).subscribe((data: String)=>{
-      alert(data)
-      this.productService.searchProduct(this.modelSearch, this.countFlag).subscribe((data: Product[])=>{
-        this.products = data
+    if(this.addAmount != null)
+      this.productService.addProduct(productID, this.addAmount).subscribe((data: Product)=>{
+        for(let i = 0; i <= this.products.length; i++){
+          
+          if(data.productID == this.products[i].productID){
+            if(data.count != this.products[i].count){
+              alert("Successfully added product")
+            } else {
+              alert("Not enough material to add products")
+            }
+            break
+          }
+          
+        }
+
+        this.productService.searchProduct(this.modelSearch, this.countFlag).subscribe((data: Product[])=>{
+          this.products = data
+        })
+        this.addAmount = null
       })
-    })
+    else {
+      alert("No amount typed")
+    }
 
   }
 }

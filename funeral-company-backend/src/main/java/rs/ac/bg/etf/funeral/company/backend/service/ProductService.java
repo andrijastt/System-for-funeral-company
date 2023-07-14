@@ -14,5 +14,5 @@ public interface ProductService {
 
     Product updateMaterialUsed(List<MaterialUsed> materialUsedList);
     List<Product> searchProduct(boolean count, Long modelID);
-    String addProduct(Long productID, Long amount);
+    Product addProduct(Long productID, Long amount);
 }

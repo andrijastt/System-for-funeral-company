@@ -125,7 +125,7 @@ public class ProductServiceImplementation implements ProductService{
     }
 
     @Override
-    public String addProduct(Long productID, Long amount) {
+    public Product addProduct(Long productID, Long amount) {
 
         Product productDB = productRepository.findById(productID).get();
 
@@ -146,9 +146,8 @@ public class ProductServiceImplementation implements ProductService{
                 temp.setCount((int)(temp.getCount() - mu.getAmount() * amount));
                 materialRepository.save(temp);
             }
-            return "Successfully added products!";
         }
 
-        return "Not enough materials to" + amount + "that amount of product";
+        return productRepository.save(productDB);
     }
 }

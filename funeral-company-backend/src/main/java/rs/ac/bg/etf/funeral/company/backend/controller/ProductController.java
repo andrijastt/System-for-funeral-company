@@ -47,7 +47,7 @@ public class ProductController {
     }
 
     @PostMapping(path = "/product/add/{productID}/{amount}")
-    public String addProduct(@Valid @PathVariable("productID") Long productID, @Valid @PathVariable("amount") Long amount){
+    public Product addProduct(@Valid @PathVariable("productID") Long productID, @Valid @PathVariable("amount") Long amount){
         return productService.addProduct(productID, amount);
     }
 }
