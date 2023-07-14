@@ -20,6 +20,7 @@ export class OrdersComponent {
   productSelect: Product[]
   contractSelect: Contract[]
   orders: Orders[]
+  minMaxDate: Date = new Date()
 
   ngOnInit(){
     this.contractService.getAllValidContracts().subscribe((data: Contract[])=>[
@@ -123,5 +124,35 @@ export class OrdersComponent {
     this.ordersService.getAllContractOrders(this.contractSearch).subscribe((data: Orders[])=>{
       this.orders = data
     })
+  }
+
+  updateOrder: boolean = false
+  updateContract: Contract
+  updateDateSend: Date
+  updateOrderID: number
+
+  updateOrderButton(order: Orders){
+
+    this.updateOrder = true
+    this.updateContract = order.contract
+    this.updateDateSend = order.dateSend
+    this.updateOrderID = order.orderID
+
+  }
+
+  updateOrderButtonClick(){
+    
+    this.ordersService.updateOrder(this.updateOrderID, this.updateContract, this.updateDateSend).subscribe((data: Orders)=>{
+
+      alert("Successfully updated order")
+      this.ordersService.getAllOrders().subscribe((data: Orders[])=>{
+        this.orders = data
+      })
+      this.updateOrder = false
+      this.updateContract = null
+      this.updateDateSend = null
+      this.updateOrderID = null
+    })
+    
   }
 }

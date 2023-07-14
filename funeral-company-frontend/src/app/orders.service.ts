@@ -28,4 +28,14 @@ export class OrdersService {
 
     return this.http.post(`${this.uri}/order`, data)
   }
+
+  updateOrder(orderID, contract, dateSend){
+    const data = {
+      contract: contract,
+      orderID: orderID,
+      dateSend: dateSend
+    }
+
+    return this.http.post(`${this.uri}/order/update`, data)
+  }
 }

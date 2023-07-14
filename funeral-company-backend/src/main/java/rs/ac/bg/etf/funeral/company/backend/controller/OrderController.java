@@ -29,4 +29,9 @@ public class OrderController {
     private Orders saveOrder(@Valid @RequestBody Orders order){
         return orderService.saveOrder(order);
     }
+
+    @PostMapping(path = "/order/update")
+    private Orders updateOrder(@Valid @RequestBody Orders order){
+        return orderService.updateOrder(order);
+    }
 }
