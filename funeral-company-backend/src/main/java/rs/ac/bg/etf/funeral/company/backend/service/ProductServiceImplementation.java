@@ -3,10 +3,7 @@ package rs.ac.bg.etf.funeral.company.backend.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rs.ac.bg.etf.funeral.company.backend.entity.*;
-import rs.ac.bg.etf.funeral.company.backend.repository.MaterialRepository;
-import rs.ac.bg.etf.funeral.company.backend.repository.MaterialUsedRepository;
-import rs.ac.bg.etf.funeral.company.backend.repository.ModelRepository;
-import rs.ac.bg.etf.funeral.company.backend.repository.ProductRepository;
+import rs.ac.bg.etf.funeral.company.backend.repository.*;
 
 import java.util.List;
 
@@ -24,6 +21,9 @@ public class ProductServiceImplementation implements ProductService{
 
     @Autowired
     private MaterialRepository materialRepository;
+
+    @Autowired
+    private ItemRepository itemRepository;
 
     @Override
     public List<Product> getAllProducts() {
@@ -75,6 +75,11 @@ public class ProductServiceImplementation implements ProductService{
     public String deleteProduct(Long productID) {
 
         Product product = productRepository.findById(productID).get();
+
+        List<Item> items = itemRepository.findByItemPK_ProductID(productID);
+
+        if(items.size() > 0) return "Can't delete product";
+
         List<MaterialUsed> muList = product.getMaterialUsedList();
         product.setMaterialUsedList(null);
 

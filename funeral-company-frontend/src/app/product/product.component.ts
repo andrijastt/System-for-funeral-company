@@ -196,8 +196,13 @@ export class ProductComponent {
 
     },
     (error)=>{
-      alert('Successfully deleted product')
+      
       this.productService.getAllProducts().subscribe((data: Product[])=>{
+
+        if(this.products.length == data.length)
+          alert("Can't delete product")
+        else
+          alert('Successfully deleted product')
         this.products = data
       })
     })
