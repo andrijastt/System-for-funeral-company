@@ -11,6 +11,17 @@ export class OrdersService {
   constructor(private http: HttpClient) { }
 
   getAllOrders(){
-    return this.http.get(`${this.http}/orders`)
+    return this.http.get(`${this.uri}/orders`)
+  }
+
+  saveOrder(contract, itemList){
+
+    const data = {
+      contract: contract,
+      status: 'sent',
+      itemList: itemList
+    }
+
+    return this.http.post(`${this.uri}/order`, data)
   }
 }

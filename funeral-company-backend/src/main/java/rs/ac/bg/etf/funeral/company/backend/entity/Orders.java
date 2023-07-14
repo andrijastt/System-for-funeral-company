@@ -35,7 +35,6 @@ public class Orders {
     @Column(nullable = false)
     private Date dateSend;
 
-    @Column(nullable = false)
     private Date dateArrived;
 
     @OneToMany

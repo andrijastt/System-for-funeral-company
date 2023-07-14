@@ -1,9 +1,8 @@
 package rs.ac.bg.etf.funeral.company.backend.controller;
 
+import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 import rs.ac.bg.etf.funeral.company.backend.entity.Orders;
 import rs.ac.bg.etf.funeral.company.backend.service.OrderService;
 
@@ -16,8 +15,13 @@ public class OrderController {
     @Autowired
     private OrderService orderService;
 
-    @GetMapping(path = "/orders")
+    @GetMapping(path ="/orders")
     private List<Orders> getAllOrders(){
         return orderService.getAllOrders();
+    }
+
+    @PostMapping(path = "/order")
+    private Orders saveOrder(@Valid @RequestBody Orders order){
+        return orderService.saveOrder(order);
     }
 }
