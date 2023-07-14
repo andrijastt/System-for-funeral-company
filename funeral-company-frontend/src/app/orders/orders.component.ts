@@ -155,4 +155,72 @@ export class OrdersComponent {
     })
     
   }
+
+  updateItemsBool: boolean = false
+
+  updateItem: Item[]
+  updateItemSelected: number[]
+
+  updateItemClick(itemList){
+
+    this.updateItemsBool = true        
+    this.updateItem = itemList            
+    this.updateItemSelected = []
+    this.updateItem.forEach(element => {
+      this.updateItemSelected.push(element.itemPK.productID)
+    });
+
+  }
+
+  onChangeItem(e: MatSelectChange, i: number){        
+    let temp: number = this.updateItemSelected.indexOf(e.value)        
+    if(temp == -1){
+      this.updateItemSelected[i] = e.value
+      this.updateItem[i].itemPK.productID = e.value
+    } else {
+      alert("Material already selected")            
+      this.updateItem[i].itemPK.productID = null      
+      this.updateItemSelected[i] = 0
+    }    
+  }
+
+  addMoreItem(){
+
+    if(this.updateItem.length == this.productSelect.length){
+      alert("Added all fields for materials")
+    } else {
+      this.updateItem.push(new Item())    
+      this.updateItemSelected.push(0)
+    }
+
+  }
+
+  removeItemUpdate(i: number){   
+    if(this.updateItem.length == 1){
+      alert("Can't remove product, needs to be one")
+    } else {      
+      this.updateItem.splice(i, 1)      
+      this.updateItemSelected.splice(i, 1)      
+    }
+  }
+
+  updateItemUsedClickFinal(){
+
+    this.ordersService.updateItems(this.updateItem).subscribe((data: Orders)=>{
+
+      if(data != null)
+        alert('Successfully updated Orders')
+      else
+        alert('Not enough products to update')
+
+      this.ordersService.getAllOrders().subscribe((data: Orders[])=>{
+        this.orders = data
+      })
+      this.updateItemsBool = false
+      this.updateItem = null
+      this.updateItemSelected = null
+
+    })
+
+  }
 }

@@ -78,4 +78,51 @@ public class OrderServiceImplementation implements OrderService{
 
         return orderRepository.save(ordersDB);
     }
+
+    @Override
+    public Orders updateItems(List<Item> itemList) {
+
+        Orders orderDB = orderRepository.findById(itemList.get(0).getItemPK().getOrderID()).get();
+
+        for(Item item: orderDB.getItemList()){
+            Product product = productRepository.findById(item.getItemPK().getProductID()).get();
+            product.setCount(product.getCount() + item.getAmount());
+            productRepository.save(product);
+        }
+
+        boolean flag = true;
+        for(Item item: itemList){
+            Product product = productRepository.findById(item.getItemPK().getProductID()).get();
+            if(product.getCount() < item.getAmount()){
+                flag = false;
+                break;
+            }
+        }
+
+        if(!flag){
+
+            for(Item item: orderDB.getItemList()){
+                Product product = productRepository.findById(item.getItemPK().getProductID()).get();
+                product.setCount(product.getCount() - item.getAmount());
+                productRepository.save(product);
+            }
+            return null;
+        }
+
+        orderDB.setItemList(null);
+        orderRepository.saveAndFlush(orderDB);
+
+        for(Item item: itemList){
+
+            Product product = productRepository.findById(item.getItemPK().getProductID()).get();
+            product.setCount(product.getCount() - item.getAmount());
+            productRepository.save(product);
+
+            item.getItemPK().setOrderID(orderDB.getOrderID());
+            itemRepository.save(item);
+        }
+
+        orderDB.setItemList(itemList);
+        return orderRepository.save(orderDB);
+    }
 }

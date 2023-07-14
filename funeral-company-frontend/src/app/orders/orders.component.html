@@ -76,8 +76,8 @@
                         <li class="list-group-item">{{items.itemPK.productID}}</li>
                         <li class="list-group-item">{{items.amount}}</li>                                                
                     </ul>
-                    <button type="button" class="btn btn-primary">
-                        Update Material Used
+                    <button type="button" class="btn btn-primary" (click)="updateItemClick(order.itemList)">
+                        Update Items
                     </button>
                 </mat-panel-description>
             </mat-expansion-panel>
@@ -172,42 +172,42 @@
         </form>
     </div>
 
-    <!-- <div class="container" *ngIf="updateMaterialUsedBool">                
+    <div class="container" *ngIf="updateItemsBool">                
         <form>
             <fieldset class="mb-3 row">
                 <legend class="col-form-legend col-5">Update Material Used</legend>                    
             </fieldset>
-            <div class="mb-3 row" *ngFor="let matUsed of updateMaterialUsed; let i = index">
+            <div class="mb-3 row" *ngFor="let items of updateItem; let i = index">
                 <mat-form-field class="col-4">
-                    <mat-label for="inputName" class="col-4 col-form-label">Material</mat-label>
-                    <mat-select required name="category" id="category" [value]="matUsed.materialUsedPK.materialID"
-                    (selectionChange)="onChangeMaterialUpdate($event, i)">
-                        <mat-option *ngFor="let material of materialSelect" [value]="material.materialID">
-                            {{material.name}}
+                    <mat-label for="inputName" class="col-4 col-form-label">Product</mat-label>
+                    <mat-select required name="category" id="category" [(value)]="items.itemPK.productID"
+                    (selectionChange)="onChangeProduct($event, i)">
+                        <mat-option *ngFor="let product of productSelect" [value]="product.productID">
+                            {{product.productID}} {{product.height}}X{{product.width}}X{{product.depth}} {{product.model.name}}
                         </mat-option>
                     </mat-select>                        
                 </mat-form-field>
                 <mat-form-field class="col-4">
                     <mat-label for="inputName" class="col-4 col-form-label">Amount</mat-label>
-                    <input type="number" matInput min="1" [(ngModel)]="matUsed.amount" class="form-control" name="amount" id="amount" required>                        
+                    <input type="number" matInput min="1" [(ngModel)]="items.amount" class="form-control" name="amount" id="amount" required>                        
                 </mat-form-field>
                 <div class="col-3">
-                    <button type="submit" color="warn" mat-raised-button class="btn btn-primary" (click)="removeMaterialUpdate(i)">
-                        Remove Material
+                    <button type="submit" color="warn" mat-raised-button class="btn btn-primary" (click)="removeItemUpdate(i)">
+                        Remove Prodcut
                     </button>
-                </div> 
+                </div>            
             </div>                        
         </form>
         <div class="col-3">
-            <button type="submit" mat-raised-button class="btn btn-primary" (click)="addMoreUpdateMaterial()">Add More Materials</button>
+            <button type="submit" mat-raised-button class="btn btn-primary" (click)="addMoreItem()">Add More Materials</button>
         </div>                            
         <div class="mb-3 row">
             <div class="offset-sm-5 col-sm-8">
-                <button type="submit" mat-raised-button class="btn btn-primary" (click)="updateMaterialUsedClickFinal()">
+                <button type="submit" mat-raised-button class="btn btn-primary" (click)="updateItemUsedClickFinal()">
                     Update Material Used
                 </button>
             </div>
         </div>
-    </div> -->
+    </div>
 
 </app-main-nav>

@@ -38,4 +38,11 @@ export class OrdersService {
 
     return this.http.post(`${this.uri}/order/update`, data)
   }
+
+  updateItems(itemList){
+    const data = {      
+      itemList: itemList
+    }            
+    return this.http.post(`${this.uri}/order/product/update`, data)
+  }
 }
