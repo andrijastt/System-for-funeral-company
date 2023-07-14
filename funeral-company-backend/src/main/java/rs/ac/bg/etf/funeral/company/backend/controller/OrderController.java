@@ -44,4 +44,9 @@ public class OrderController {
     private Orders arrivedOrder(@Valid @PathVariable("contractID") Long contractID){
         return orderService.arrivedOrder(contractID);
     }
+
+    @DeleteMapping(path ="/order/delete/{orderID}")
+    private String removeOrder(@Valid @PathVariable("orderID") Long orderID){
+        return orderService.removeOrder(orderID);
+    }
 }

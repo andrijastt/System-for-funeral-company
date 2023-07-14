@@ -13,4 +13,5 @@ public interface OrderService {
     Orders updateOrder(Orders orders);
     Orders updateItems(List<Item> itemList);
     Orders arrivedOrder(Long orderID);
+    String removeOrder(Long orderID);
 }

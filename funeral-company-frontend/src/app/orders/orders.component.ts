@@ -234,4 +234,18 @@ export class OrdersComponent {
     })
 
   }
+
+  removeOrder(orderID){
+
+    this.ordersService.removeOrder(orderID).subscribe((data: string)=>{
+
+    },
+    (error)=>{
+      this.ordersService.getAllOrders().subscribe((data: Orders[])=>{
+        alert('Successfully deleted order')
+        this.orders = data
+      })
+    })
+
+  }
 }

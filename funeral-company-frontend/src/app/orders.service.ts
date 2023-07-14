@@ -52,4 +52,8 @@ export class OrdersService {
     }
     return this.http.post(`${this.uri}/order/arrived/${orderID}`, data)
   }
+
+  removeOrder(orderID){
+    return this.http.delete(`${this.uri}/order/delete/${orderID}`)
+  }
 }

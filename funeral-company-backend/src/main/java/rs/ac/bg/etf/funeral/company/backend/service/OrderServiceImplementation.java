@@ -132,4 +132,23 @@ public class OrderServiceImplementation implements OrderService{
         orders.setDateArrived(new Date());
         return orderRepository.save(orders);
     }
+
+    @Override
+    public String removeOrder(Long orderID) {
+
+        Orders order = orderRepository.findById(orderID).get();
+
+        List<Item> itemsDB = order.getItemList();
+        order.setItemList(null);
+
+        for(Item item: itemsDB){
+            Product product = productRepository.findById(item.getItemPK().getProductID()).get();
+            product.setCount(product.getCount() + item.getAmount());
+            productRepository.save(product);
+            itemRepository.delete(item);
+        }
+        orderRepository.delete(order);
+
+        return "Successfully deleted Order";
+    }
 }

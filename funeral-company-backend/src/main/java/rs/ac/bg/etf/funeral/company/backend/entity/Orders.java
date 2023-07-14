@@ -23,7 +23,7 @@ public class Orders {
     private String status;
 
     @ManyToOne(
-        cascade = CascadeType.REMOVE,
+        cascade = CascadeType.DETACH,
         fetch = FetchType.EAGER
     )
     @JoinColumn(
