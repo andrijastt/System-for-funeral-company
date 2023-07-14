@@ -51,9 +51,13 @@
                         <li class="list-group-item">
                             ContractID: {{order.contract.contractID}}
                         </li>
+                        <li class="list-group-item" *ngIf="order.dateArrived == null">
+                            <button mat-raised-button type="button" class="btn btn-primary" (click)="arrived(order.orderID)">
+                                Arrived
+                            </button>
+                        </li>
                         <li class="list-group-item">
-                            <button mat-raised-button type="button" class="btn btn-primary" color="primary" *ngIf="order.dateArrived == null"
-                            (click)="updateOrderButton(order)">
+                            <button mat-raised-button type="button" class="btn btn-primary" color="primary" (click)="updateOrderButton(order)">
                                 Update
                             </button>
                         </li>                        

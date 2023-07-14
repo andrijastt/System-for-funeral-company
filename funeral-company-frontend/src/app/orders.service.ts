@@ -45,4 +45,11 @@ export class OrdersService {
     }            
     return this.http.post(`${this.uri}/order/product/update`, data)
   }
+
+  orderArrived(orderID){
+    const data = {
+
+    }
+    return this.http.post(`${this.uri}/order/arrived/${orderID}`, data)
+  }
 }

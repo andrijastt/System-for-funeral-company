@@ -125,4 +125,11 @@ public class OrderServiceImplementation implements OrderService{
         orderDB.setItemList(itemList);
         return orderRepository.save(orderDB);
     }
+
+    @Override
+    public Orders arrivedOrder(Long orderID) {
+        Orders orders = orderRepository.findById(orderID).get();
+        orders.setDateArrived(new Date());
+        return orderRepository.save(orders);
+    }
 }

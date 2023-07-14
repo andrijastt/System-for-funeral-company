@@ -39,4 +39,9 @@ public class OrderController {
     private Orders updateItems(@Valid @RequestBody Orders order){
         return orderService.updateItems(order.getItemList());
     }
+
+    @PostMapping(path ="/order/arrived/{contractID}")
+    private Orders arrivedOrder(@Valid @PathVariable("contractID") Long contractID){
+        return orderService.arrivedOrder(contractID);
+    }
 }

@@ -223,4 +223,15 @@ export class OrdersComponent {
     })
 
   }
+
+  arrived(orderID){
+
+    this.ordersService.orderArrived(orderID).subscribe((data: Orders)=>{
+      alert('Order arrived!')
+      this.ordersService.getAllOrders().subscribe((data: Orders[])=>{
+        this.orders = data
+      })
+    })
+
+  }
 }
