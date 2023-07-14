@@ -6,6 +6,8 @@ import rs.ac.bg.etf.funeral.company.backend.entity.Category;
 import rs.ac.bg.etf.funeral.company.backend.entity.Material;
 import rs.ac.bg.etf.funeral.company.backend.repository.CategoryRepository;
 import rs.ac.bg.etf.funeral.company.backend.repository.MaterialRepository;
+import rs.ac.bg.etf.funeral.company.backend.repository.MaterialSupplyRepository;
+import rs.ac.bg.etf.funeral.company.backend.repository.MaterialUsedRepository;
 
 import java.util.List;
 
@@ -17,6 +19,12 @@ public class MaterialServiceImplementation implements MaterialService{
 
     @Autowired
     private CategoryRepository categoryRepository;
+
+    @Autowired
+    private MaterialSupplyRepository materialSupplyRepository;
+
+    @Autowired
+    private MaterialUsedRepository materialUsedRepository;
 
     @Override
     public List<Material> getAllMaterials() {
@@ -34,6 +42,14 @@ public class MaterialServiceImplementation implements MaterialService{
 
     @Override
     public String deleteMaterial(Long materialID) {
+
+        if(materialUsedRepository.findByMaterialUsedPK_MaterialID(materialID).size() > 0){
+            return "Can't delete!";
+        }
+        if(materialSupplyRepository.findByMaterialSupplyPK_MaterialID(materialID).size() > 0){
+            return "Can't delete!";
+        }
+
         Material materialDB = materialRepository.findById(materialID).get();
         materialDB.getCategory().removeMaterial(materialDB);
         materialDB.setCategory(null);

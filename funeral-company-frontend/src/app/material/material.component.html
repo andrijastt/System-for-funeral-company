@@ -150,7 +150,7 @@
             <div class="mb-3 row">
                 <mat-form-field>
                     <mat-label for="inputName" class="col-4 col-form-label">Category</mat-label>
-                    <mat-select required [(ngModel)]="updateCategoryID" name="category" id="category">
+                    <mat-select [(ngModel)]="updateCategoryID" name="updateCategory" id="updateCategory">
                         <mat-option *ngFor="let category of categories" [value]="category">{{category.name}}</mat-option>
                     </mat-select>                    
                 </mat-form-field>            

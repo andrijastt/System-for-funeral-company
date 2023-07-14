@@ -93,6 +93,12 @@ export class MaterialComponent {
         this.materialService.getAllMaterials().subscribe((data: Material[])=>{
           this.materials = data
         })
+        this.updateMaterialButton = false
+        this.updateMaterialID = null
+        this.updateName = null
+        this.updateUnit = null
+        this.updateCategoryID = null
+        this.updatePrice = null
       },
       (error)=>{
         alert("Material with that name already exists!")
@@ -108,8 +114,12 @@ export class MaterialComponent {
       })
     },
     (error)=>{
-      alert("Successfully deleted material")
       this.materialService.getAllMaterials().subscribe((data: Material[])=>{
+
+        if(this.materials.length == data.length)
+          alert("Can't delete material")
+        else
+          alert("Successfully deleted material")
         this.materials = data
       })
     }

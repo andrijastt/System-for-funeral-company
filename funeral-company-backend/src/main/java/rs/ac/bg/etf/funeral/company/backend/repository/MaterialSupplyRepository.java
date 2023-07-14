@@ -11,5 +11,6 @@ import java.util.List;
 public interface MaterialSupplyRepository extends JpaRepository<MaterialSupply, MaterialSupplyPK> {
 
     List<MaterialSupply> findByMaterialSupplyPK_SupplyID(Long supplyID);
+    List<MaterialSupply> findByMaterialSupplyPK_MaterialID(Long materialID);
     MaterialSupply findByMaterialSupplyPK_MaterialIDAndMaterialSupplyPK_SupplyID(Long materialID, Long supplyID);
 }
