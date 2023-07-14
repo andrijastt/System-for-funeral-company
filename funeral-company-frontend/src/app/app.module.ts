@@ -32,6 +32,7 @@ import { ContractComponent } from './contract/contract.component';
 import { SupplyComponent } from './supply/supply.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProductComponent } from './product/product.component';
+import { OrdersComponent } from './orders/orders.component';
 
 
 @NgModule({
@@ -48,7 +49,8 @@ import { ProductComponent } from './product/product.component';
     ContractComponent,
     SupplyComponent,
     ProfileComponent,
-    ProductComponent
+    ProductComponent,
+    OrdersComponent
   ],
   imports: [
     BrowserModule,
