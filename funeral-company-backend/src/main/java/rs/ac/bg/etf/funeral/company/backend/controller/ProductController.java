@@ -45,4 +45,9 @@ public class ProductController {
     public List<Product> searchProduct(@Valid @RequestParam("count") Boolean count, @Valid @RequestParam("modelID") Long modelID){
         return productService.searchProduct(count, modelID);
     }
+
+    @PostMapping(path = "/product/add/{productID}/{amount}")
+    public String addProduct(@Valid @PathVariable("productID") Long productID, @Valid @PathVariable("amount") Long amount){
+        return productService.addProduct(productID, amount);
+    }
 }

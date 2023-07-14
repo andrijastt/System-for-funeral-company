@@ -3,6 +3,7 @@ package rs.ac.bg.etf.funeral.company.backend.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import rs.ac.bg.etf.funeral.company.backend.entity.*;
+import rs.ac.bg.etf.funeral.company.backend.repository.MaterialRepository;
 import rs.ac.bg.etf.funeral.company.backend.repository.MaterialUsedRepository;
 import rs.ac.bg.etf.funeral.company.backend.repository.ModelRepository;
 import rs.ac.bg.etf.funeral.company.backend.repository.ProductRepository;
@@ -20,6 +21,9 @@ public class ProductServiceImplementation implements ProductService{
 
     @Autowired
     private ModelRepository modelRepository;
+
+    @Autowired
+    private MaterialRepository materialRepository;
 
     @Override
     public List<Product> getAllProducts() {
@@ -118,5 +122,33 @@ public class ProductServiceImplementation implements ProductService{
                 return productRepository.findByCountGreaterThanAndAndModel_ModelID(-1L, modelID);
             }
         }
+    }
+
+    @Override
+    public String addProduct(Long productID, Long amount) {
+
+        Product productDB = productRepository.findById(productID).get();
+
+        boolean flag = true;
+
+        for(MaterialUsed mu: productDB.getMaterialUsedList()){
+            Material temp = materialRepository.findById(mu.getMaterialUsedPK().getMaterialID()).get();
+            if(temp.getCount() < mu.getAmount() * amount){
+                flag = false;
+                break;
+            }
+        }
+
+        if(flag){
+            productDB.setCount(productDB.getCount() + amount);
+            for(MaterialUsed mu: productDB.getMaterialUsedList()){
+                Material temp = materialRepository.findById(mu.getMaterialUsedPK().getMaterialID()).get();
+                temp.setCount((int)(temp.getCount() - mu.getAmount() * amount));
+                materialRepository.save(temp);
+            }
+            return "Successfully added products!";
+        }
+
+        return "Not enough materials to" + amount + "that amount of product";
     }
 }

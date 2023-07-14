@@ -63,4 +63,11 @@ export class ProductService {
 
     return this.http.get(`${this.uri}/product/search`, {params: queryParams})
   }
+
+  addProduct(productID, addAmount){
+    const data = {      
+      
+    }            
+    return this.http.post(`${this.uri}/product/add/${productID}/${addAmount}`, data)
+  }
 }

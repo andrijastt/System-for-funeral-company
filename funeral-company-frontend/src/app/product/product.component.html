@@ -1,5 +1,5 @@
 <app-main-nav>        
-    
+    <br>
     <div class="row justify-content-center align-items-center g-2-x">                
         <fieldset class="mb-3 row">
             <legend class="col">Serach options</legend>                    
@@ -84,6 +84,25 @@
                         Update Material Used
                     </button>
                 </mat-panel-description>
+                <mat-action-row>
+                    <div class="row justify-content-center align-items-center g-2">
+                        <div class="col-3">
+                            Amount of product to add
+                        </div>
+                        <div class="col">
+                            <mat-form-field>
+                                <mat-label for="inputName" class="col-4 col-form-label">Amount</mat-label>
+                                <input type="number" matInput class="form-control" name="addProduct" id="addProduct" required 
+                                [(ngModel)] = "addAmount">                                            
+                            </mat-form-field>
+                        </div>
+                        <div class="col">
+                            <button type="button" class="btn btn-primary" (click)="addProduct(product.productID)">
+                                Add product
+                            </button>
+                        </div>
+                    </div>
+                </mat-action-row>
             </mat-expansion-panel>
             
         </mat-accordion>

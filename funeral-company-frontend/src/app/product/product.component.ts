@@ -284,4 +284,17 @@ export class ProductComponent {
       this.products = data
     })
   }
+
+  addAmount: number
+
+  addProduct(productID){
+
+    this.productService.addProduct(productID, this.addAmount).subscribe((data: String)=>{
+      alert(data)
+      this.productService.searchProduct(this.modelSearch, this.countFlag).subscribe((data: Product[])=>{
+        this.products = data
+      })
+    })
+
+  }
 }
