@@ -39,7 +39,6 @@ public class ProductServiceImplementation implements ProductService{
         }
 
         product.setMaterialUsedList(listTemp);
-
         return productRepository.save(product);
     }
 
@@ -84,7 +83,6 @@ public class ProductServiceImplementation implements ProductService{
 
     @Override
     public Product updateMaterialUsed(List<MaterialUsed> materialUsedList) {
-
         List<MaterialUsed> muListDB = materialUsedRepository.findByMaterialUsedPK_ProductID(
                 materialUsedList.get(0).getMaterialUsedPK().getProductID());
 
@@ -96,11 +94,11 @@ public class ProductServiceImplementation implements ProductService{
             materialUsedRepository.delete(mu);
         }
 
-        for(MaterialUsed mu: muListDB){
-            materialUsedRepository.save(mu);
+        for(MaterialUsed mu: materialUsedList){
+            mu.getMaterialUsedPK().setProductID(productDB.getProductID());
+            materialUsedRepository.saveAndFlush(mu);
         }
         productDB.setMaterialUsedList(materialUsedList);
-
         return productRepository.save(productDB);
     }
 }

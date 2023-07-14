@@ -260,7 +260,7 @@ export class ProductComponent {
       this.productService.getAllProducts().subscribe((data: Product[])=>{
         this.products = data
       })
-
+      this.updateMaterialUsedBool = false
       this.updateMaterialUsed = null
       this.updateMaterialSelected = null
 
