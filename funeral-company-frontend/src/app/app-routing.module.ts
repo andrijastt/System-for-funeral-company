@@ -11,6 +11,7 @@ import { ContractComponent } from './contract/contract.component';
 import { SupplyComponent } from './supply/supply.component';
 import { ProfileComponent } from './profile/profile.component';
 import { ProductComponent } from './product/product.component';
+import { OrdersComponent } from './orders/orders.component';
 
 const routes: Routes = [
   {path: "", component: LoginComponent},
@@ -23,7 +24,8 @@ const routes: Routes = [
   {path: "contract", component: ContractComponent},
   {path: "supply", component: SupplyComponent},
   {path: "profile", component: ProfileComponent},
-  {path: "product", component: ProductComponent}
+  {path: "product", component: ProductComponent},
+  {path: "orders", component: OrdersComponent}
 ];
 
 @NgModule({
