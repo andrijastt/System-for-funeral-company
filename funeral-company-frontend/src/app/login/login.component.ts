@@ -32,7 +32,7 @@ export class LoginComponent {
           this.dataNotFilled = true          
         } else {
           localStorage.setItem('User', JSON.stringify(data))
-          this.router.navigate(['home'])
+          this.router.navigate(['contract'])
         }        
         
       })

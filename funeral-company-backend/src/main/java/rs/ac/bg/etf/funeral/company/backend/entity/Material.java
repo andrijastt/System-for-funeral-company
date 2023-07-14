@@ -67,20 +67,18 @@ public class Material {
         }
     }
 
-//    @OneToMany
-//    @Transient
-//    @JsonIgnore
-//    List<Ma> productList;
-//
-//    public void addProduct(Product product){
-//        if(productList == null) productList = new ArrayList<>();
-//        productList.add(product);
-//        product.setMaterial(this);
-//    }
-//    public void removeProduct(Product product){
-//        if(productList != null){
-//            productList.remove(product);
-//            product.setMaterial(null);
-//        }
-//    }
+    @OneToMany
+    private List<MaterialUsed> materialUsedList;
+
+    public void addMaterialUsed(MaterialUsed materialUsed){
+        if(materialUsedList == null) materialUsedList = new ArrayList<>();
+        materialUsedList.add(materialUsed);
+        materialUsed.getMaterialUsedPK().setMaterialID(this.materialID);
+    }
+    public void removeMaterialUsed(MaterialUsed materialUsed){
+        if(materialUsedList != null){
+            materialUsedList.remove(materialUsed);
+            materialUsed.getMaterialUsedPK().setMaterialID(null);
+        }
+    }
 }

@@ -86,8 +86,12 @@ export class ClientComponent {
       })
     },
     (error)=>{      
-      this.clientService.getAllClients().subscribe((data: Client[])=>{        
-        alert("Successfully deleted client")
+      this.clientService.getAllClients().subscribe((data: Client[])=>{      
+        
+        if(data.length == this.clients.length)
+          alert("Couldn't delete client")
+        else 
+          alert("Successfully deleted client")
         this.clients = data              
       })
     }
