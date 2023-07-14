@@ -8,4 +8,5 @@ public interface OrderService {
 
     List<Orders> getAllOrders();
     Orders saveOrder(Orders orders);
+    List<Orders> getAllContractOrders(Long contractID);
 }

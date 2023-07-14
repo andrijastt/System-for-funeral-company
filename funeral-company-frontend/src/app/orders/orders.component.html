@@ -1,5 +1,5 @@
 <app-main-nav>        
-    <!-- <br>
+    <br>
     <div class="row justify-content-center align-items-center g-2-x">                
         <fieldset class="mb-3 row">
             <legend class="col">Serach options</legend>                    
@@ -7,21 +7,18 @@
         <div class="col-3">   
             <div class="d-grid gap-2">
                 <mat-form-field>
-                    <mat-label for="model" class="col-4 col-form-label">Model</mat-label>
-                    <mat-select name="model" id="model" [(ngModel)]="modelSearch">
-                        <mat-option *ngFor="let model of modelSelect" [value]="model.modelID">
-                            {{model.name}}
+                    <mat-label for="model" class="col-4 col-form-label">Contract</mat-label>
+                    <mat-select name="model" id="model" [(ngModel)]="contractSearch">
+                        <mat-option *ngFor="let contract of contractSelect" [value]="contract.contractID">
+                            {{contract.contractID}}.{{contract.client.name}}
                         </mat-option>
                     </mat-select>                                            
                 </mat-form-field>         
             </div>            
         </div>
-        <div class="col">            
-            <mat-checkbox color="primary" [(ngModel)]="countFlag">Count > 0</mat-checkbox>            
-        </div>
         <div class="col">
             <div class="d-grid gap-2">
-                <button type="button" class="btn btn-primary" (click)="getAllProducts()">Get All Products</button>   
+                <button type="button" class="btn btn-primary" (click)="getAllOrders()">Get All Products</button>   
             </div>            
         </div>
         <div class="col">
@@ -29,7 +26,7 @@
               <button type="button" name="" id="" class="btn btn-primary" (click)="search()">Search</button>
             </div>
         </div>
-    </div> -->
+    </div>
 
     <div class="card">
         <div class="card-header">

@@ -62,4 +62,9 @@ public class OrderServiceImplementation implements OrderService{
         orders.setItemList(itemList);
         return orderRepository.save(orders);
     }
+
+    @Override
+    public List<Orders> getAllContractOrders(Long contractID) {
+        return orderRepository.findByContract_ContractID(contractID);
+    }
 }

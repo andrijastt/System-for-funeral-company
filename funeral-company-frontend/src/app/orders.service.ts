@@ -14,6 +14,10 @@ export class OrdersService {
     return this.http.get(`${this.uri}/orders`)
   }
 
+  getAllContractOrders(contractID){
+    return this.http.get(`${this.uri}/orders/${contractID}`)
+  }
+
   saveOrder(contract, itemList){
 
     const data = {

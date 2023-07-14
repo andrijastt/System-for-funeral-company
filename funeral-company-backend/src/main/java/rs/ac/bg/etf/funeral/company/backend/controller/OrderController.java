@@ -20,6 +20,11 @@ public class OrderController {
         return orderService.getAllOrders();
     }
 
+    @GetMapping(path ="/orders/{contractID}")
+    private List<Orders> getAllContractOrders(@Valid @PathVariable("contractID") Long contractID){
+        return orderService.getAllContractOrders(contractID);
+    }
+
     @PostMapping(path = "/order")
     private Orders saveOrder(@Valid @RequestBody Orders order){
         return orderService.saveOrder(order);

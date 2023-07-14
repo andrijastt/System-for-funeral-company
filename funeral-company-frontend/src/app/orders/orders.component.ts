@@ -33,6 +33,12 @@ export class OrdersComponent {
     })
   }
 
+  getAllOrders(){
+    this.ordersService.getAllOrders().subscribe((data: Orders[])=>{
+      this.orders = data
+    })
+  }
+
   addOrdersButton: boolean = false
   addContract: Contract
 
@@ -112,4 +118,10 @@ export class OrdersComponent {
 
   }
 
+  contractSearch: number
+  search(){
+    this.ordersService.getAllContractOrders(this.contractSearch).subscribe((data: Orders[])=>{
+      this.orders = data
+    })
+  }
 }
