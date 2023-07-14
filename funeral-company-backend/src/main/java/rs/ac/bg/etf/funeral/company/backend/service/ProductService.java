@@ -13,4 +13,5 @@ public interface ProductService {
     String deleteProduct(Long productID);
 
     Product updateMaterialUsed(List<MaterialUsed> materialUsedList);
+    List<Product> searchProduct(boolean count, Long modelID);
 }

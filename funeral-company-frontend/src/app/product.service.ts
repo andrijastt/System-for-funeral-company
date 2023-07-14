@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Model } from './models/Model';
 
@@ -53,5 +53,14 @@ export class ProductService {
       materialUsedList: materialUsed
     }            
     return this.http.post(`${this.uri}/product/material/update`, data)
+  }
+
+  searchProduct(model, count){
+
+    let queryParams: HttpParams = new HttpParams()
+    queryParams = queryParams.append("count", count)
+    queryParams = queryParams.append("modelID", model)        
+
+    return this.http.get(`${this.uri}/product/search`, {params: queryParams})
   }
 }

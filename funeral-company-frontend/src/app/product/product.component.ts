@@ -7,6 +7,7 @@ import { Model } from '../models/Model';
 import { ModelService } from '../model.service';
 import { MaterialUsed } from '../models/MaterialUsed';
 import { MatSelectChange } from '@angular/material/select';
+import { count } from 'rxjs';
 
 @Component({
   selector: 'app-product',
@@ -268,4 +269,19 @@ export class ProductComponent {
 
   }
 
+
+  modelSearch: number = 0
+  countFlag: boolean = false
+
+  getAllProducts(){
+    this.productService.getAllProducts().subscribe((data: Product[])=>{
+      this.products = data
+    })
+  }
+
+  search(){
+    this.productService.searchProduct(this.modelSearch, this.countFlag).subscribe((data: Product[])=>{
+      this.products = data
+    })
+  }
 }

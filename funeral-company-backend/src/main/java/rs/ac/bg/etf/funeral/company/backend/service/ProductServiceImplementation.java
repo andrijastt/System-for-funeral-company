@@ -101,4 +101,22 @@ public class ProductServiceImplementation implements ProductService{
         productDB.setMaterialUsedList(materialUsedList);
         return productRepository.save(productDB);
     }
+
+    @Override
+    public List<Product> searchProduct(boolean count, Long modelID) {
+
+        if(modelID == 0){
+            if(count){
+                return productRepository.findByCountGreaterThan(0L);
+            } else {
+                return productRepository.findByCountGreaterThan(-1L);
+            }
+        } else {
+            if(count){
+                return productRepository.findByCountGreaterThanAndAndModel_ModelID(0L, modelID);
+            } else {
+                return productRepository.findByCountGreaterThanAndAndModel_ModelID(-1L, modelID);
+            }
+        }
+    }
 }

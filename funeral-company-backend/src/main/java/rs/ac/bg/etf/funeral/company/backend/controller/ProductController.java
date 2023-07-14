@@ -40,4 +40,9 @@ public class ProductController {
     public Product updateMaterialUsed(@Valid @RequestBody Product product){
         return productService.updateMaterialUsed(product.getMaterialUsedList());
     }
+
+    @GetMapping(path = "/product/search")
+    public List<Product> searchProduct(@Valid @RequestParam("count") Boolean count, @Valid @RequestParam("modelID") Long modelID){
+        return productService.searchProduct(count, modelID);
+    }
 }
