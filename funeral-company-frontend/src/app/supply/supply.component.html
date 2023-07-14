@@ -86,7 +86,7 @@
             <div class="mb-3 row" *ngFor="let materials of materialSupply; let i = index">
                 <mat-form-field class="col-3">
                     <mat-label for="inputName" class="col-4 col-form-label">Material</mat-label>
-                    <mat-select required name="category" id="category" [(value)]="materialSupply[i].materialID" 
+                    <mat-select required name="category" id="category" [(value)]="materials.materialID" 
                     (selectionChange)="onChangeMaterial($event, i)">
                         <mat-option *ngFor="let material of materialSelect" [value]="material.materialID">
                             {{material.name}}
@@ -95,11 +95,11 @@
                 </mat-form-field>
                 <mat-form-field class="col-3">
                     <mat-label for="inputName" class="col-4 col-form-label">Amount</mat-label>
-                    <input type="number" matInput min="1" [(ngModel)]="materialSupply[i].amount" class="form-control" name="amount" id="amount" required>                        
+                    <input type="number" matInput min="1" [(ngModel)]="materials.amount" name="amount" id="amount" required >                        
                 </mat-form-field>
                 <mat-form-field class="col-3">
                     <mat-label for="inputName" class="col-4 col-form-label">Price</mat-label>
-                    <input type="number" matInput min="1" [(ngModel)]="materialSupply[i].price" class="form-control" name="price" id="price" required>                        
+                    <input type="number" matInput min="1" [(ngModel)]="materials.price" class="form-control" name="price" id="price" required>                        
                 </mat-form-field>
                 <div class="col-3">
                     <button type="submit" color="warn" mat-raised-button class="btn btn-primary" (click)="removeMaterial(i)">

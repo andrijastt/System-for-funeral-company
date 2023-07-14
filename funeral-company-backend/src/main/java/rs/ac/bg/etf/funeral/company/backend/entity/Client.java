@@ -29,7 +29,7 @@ public class Client {
     private String city;
 
     @OneToMany(
-            mappedBy = "category",
+            mappedBy = "client",
             fetch = FetchType.EAGER,
             cascade = CascadeType.ALL,
             orphanRemoval = true

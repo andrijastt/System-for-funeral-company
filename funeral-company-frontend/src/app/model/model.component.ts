@@ -87,8 +87,14 @@ export class ModelComponent {
       })
     },
     (error)=>{
-      alert("Successfully deleted material")
+      
       this.modelService.getAllModels().subscribe((data: Model[])=>{
+
+        if(this.models.length == data.length)
+          alert("Can't delete model")
+        else
+          alert("Successfully deleted model")
+
         this.models = data
       })
     }
