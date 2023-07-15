@@ -164,8 +164,10 @@ export class SupplyComponent {
   updateMaterialSupplyBool: boolean = false
   updateMaterialSelected: number[] = []
   updateMaterialSupply: MaterialSupply[] = []  
+  updateMaterialSupplySupplyID: number
 
   updateMaterialSupplyClick(materialSupplyList){
+    this.updateMaterialSupplySupplyID = materialSupplyList[0].materialSupplyPK.supplyID
     this.updateMaterialSupplyBool = true        
     this.updateMaterialSupply = materialSupplyList            
     this.updateMaterialSelected = []
@@ -205,7 +207,7 @@ export class SupplyComponent {
   }
 
   updateMaterialSupplyClickFinal(){        
-    this.supplyService.updateMaterialSupply(this.updateMaterialSupply).subscribe((data: Supply)=>{
+    this.supplyService.updateMaterialSupply(this.updateMaterialSupply, this.updateMaterialSupplySupplyID).subscribe((data: Supply)=>{
       alert("Successfully updated Material Supply")
       this.supplyService.getAllSupplies().subscribe((data: Supply[])=>{
         this.supplies = data

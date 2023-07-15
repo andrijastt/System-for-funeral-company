@@ -160,9 +160,10 @@ export class OrdersComponent {
 
   updateItem: Item[]
   updateItemSelected: number[]
+  updateItemOrderID: number
 
   updateItemClick(itemList){
-
+    this.updateItemOrderID = itemList[0].itemPK.orderID
     this.updateItemsBool = true        
     this.updateItem = itemList            
     this.updateItemSelected = []
@@ -206,7 +207,7 @@ export class OrdersComponent {
 
   updateItemUsedClickFinal(){
 
-    this.ordersService.updateItems(this.updateItem).subscribe((data: Orders)=>{
+    this.ordersService.updateItems(this.updateItem, this.updateItemOrderID).subscribe((data: Orders)=>{
 
       if(data != null)
         alert('Successfully updated Orders')

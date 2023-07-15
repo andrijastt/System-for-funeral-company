@@ -179,13 +179,13 @@
     <div class="container" *ngIf="updateItemsBool">                
         <form>
             <fieldset class="mb-3 row">
-                <legend class="col-form-legend col-5">Update Material Used</legend>                    
+                <legend class="col-form-legend col-5">Update Items</legend>                    
             </fieldset>
             <div class="mb-3 row" *ngFor="let items of updateItem; let i = index">
                 <mat-form-field class="col-4">
                     <mat-label for="inputName" class="col-4 col-form-label">Product</mat-label>
                     <mat-select required name="category" id="category" [(value)]="items.itemPK.productID"
-                    (selectionChange)="onChangeProduct($event, i)">
+                    (selectionChange)="onChangeItem($event, i)">
                         <mat-option *ngFor="let product of productSelect" [value]="product.productID">
                             {{product.productID}} {{product.height}}X{{product.width}}X{{product.depth}} {{product.model.name}}
                         </mat-option>
@@ -203,7 +203,7 @@
             </div>                        
         </form>
         <div class="col-3">
-            <button type="submit" mat-raised-button class="btn btn-primary" (click)="addMoreItem()">Add More Materials</button>
+            <button type="submit" mat-raised-button class="btn btn-primary" (click)="addMoreItem()">Add More Items</button>
         </div>                            
         <div class="mb-3 row">
             <div class="offset-sm-5 col-sm-8">

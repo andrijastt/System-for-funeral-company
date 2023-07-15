@@ -40,9 +40,10 @@ export class SupplyService {
     return this.http.post(`${this.uri}/supply/update`, data)
   }
 
-  updateMaterialSupply(materialSupply){
+  updateMaterialSupply(materialSupply, supplyID){
     const data = {      
-      materialSupplyList: materialSupply
+      materialSupplyList: materialSupply,
+      supplyID: supplyID
     }            
     return this.http.post(`${this.uri}/supply/material/update`, data)
   }

@@ -39,9 +39,10 @@ export class OrdersService {
     return this.http.post(`${this.uri}/order/update`, data)
   }
 
-  updateItems(itemList){
+  updateItems(itemList, orderID){
     const data = {      
-      itemList: itemList
+      itemList: itemList,
+      orderID: orderID
     }            
     return this.http.post(`${this.uri}/order/product/update`, data)
   }
