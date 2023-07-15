@@ -80,7 +80,7 @@
                         <li class="list-group-item">{{items.itemPK.productID}}</li>
                         <li class="list-group-item">{{items.amount}}</li>                                                
                     </ul>
-                    <button type="button" class="btn btn-primary" (click)="updateItemClick(order.itemList)">
+                    <button type="button" class="btn btn-primary" (click)="updateItemClick(order.itemList)" *ngIf="order.dateArrived == null">
                         Update Items
                     </button>
                 </mat-panel-description>
