@@ -215,5 +215,19 @@ export class SupplyComponent {
       this.updateMaterialSupply = []
     })
   }
+
+  searchName: string = ""
+
+  getAllSupplies(){
+    this.supplyService.getAllSupplies().subscribe((data: Supply[])=>{
+      this.supplies = data
+    })
+  }
+
+  search(){
+    this.supplyService.searchSupply(this.searchName).subscribe((data: Supply[])=>{
+      this.supplies = data
+    })
+  }
 }
 

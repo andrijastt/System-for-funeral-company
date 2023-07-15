@@ -74,6 +74,9 @@ export class CategoryComponent {
       this.categoryService.getAllCategories().subscribe((data: Category[])=>{
         this.categories = data
       })
+      this.updateCategoryBool = false
+      this.updateCategoryName = null
+      this.updateCategoryID = null
     })
 
   }

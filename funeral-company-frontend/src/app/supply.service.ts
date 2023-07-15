@@ -46,4 +46,8 @@ export class SupplyService {
     }            
     return this.http.post(`${this.uri}/supply/material/update`, data)
   }
+
+  searchSupply(name){
+    return this.http.get(`${this.uri}/supplies/search/${name}`)
+  }
 }

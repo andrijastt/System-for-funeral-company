@@ -37,7 +37,7 @@ public class OrderController {
 
     @PostMapping(path = "/order/product/update")
     private Orders updateItems(@Valid @RequestBody Orders order){
-        return orderService.updateItems(order.getItemList());
+        return orderService.updateItems(order.getItemList(), order.getOrderID());
     }
 
     @PostMapping(path ="/order/arrived/{contractID}")

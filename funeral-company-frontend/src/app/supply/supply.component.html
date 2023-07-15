@@ -1,4 +1,29 @@
 <app-main-nav>            
+    <br>
+    <div class="row justify-content-center align-items-center g-2-x">                
+        <fieldset class="mb-3 row">
+            <legend class="col">Serach options</legend>                    
+        </fieldset>
+        <div class="col-3">   
+            <div class="d-grid gap-2">
+                <mat-form-field>
+                    <mat-label for="inputName" class="col-4 col-form-label">Supplier name</mat-label>
+                    <input type="text" matInput class="form-control" name="name" id="name" required [(ngModel)]="searchName">                                            
+                </mat-form-field>         
+            </div>            
+        </div>
+        <div class="col">
+            <div class="d-grid gap-2">
+                <button type="button" class="btn btn-primary" (click)="getAllSupplies()">Get All Supplies</button>   
+            </div>            
+        </div>
+        <div class="col">
+            <div class="d-grid gap-2">
+              <button type="button" name="" id="" class="btn btn-primary" (click)="search()">Search</button>
+            </div>
+        </div>
+    </div>
+
     <div class="card">
         <div class="card-header">
             Supply

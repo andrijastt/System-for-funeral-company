@@ -13,5 +13,6 @@ public interface SupplyService {
     Supply updateSupply(Supply supply);
     Supply supplyArrived(Long supplyID);
     String removeSupply(Long supplyID);
-    Supply updateMaterialSupply(List<MaterialSupply> materialSupplyList);
+    Supply updateMaterialSupply(List<MaterialSupply> materialSupplyList, Long supplyID);
+    List<Supply> searchSupply(String name);
 }

@@ -80,9 +80,9 @@ public class OrderServiceImplementation implements OrderService{
     }
 
     @Override
-    public Orders updateItems(List<Item> itemList) {
+    public Orders updateItems(List<Item> itemList, Long orderID) {
 
-        Orders orderDB = orderRepository.findById(itemList.get(0).getItemPK().getOrderID()).get();
+        Orders orderDB = orderRepository.findById(orderID).get();
 
         for(Item item: orderDB.getItemList()){
             Product product = productRepository.findById(item.getItemPK().getProductID()).get();

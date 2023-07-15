@@ -21,6 +21,11 @@ public class SupplyController {
         return supplyService.getAllSupplies();
     }
 
+    @GetMapping(path = "/supplies/search/{name}")
+    public List<Supply> searchSupply(@Valid @PathVariable("name") String name){
+        return supplyService.searchSupply(name);
+    }
+
     @PostMapping(path = "/supply")
     public Supply saveSupply(@Valid @RequestBody Supply supply){
         return supplyService.saveSupply(supply);
@@ -33,7 +38,7 @@ public class SupplyController {
 
     @PostMapping(path = "/supply/material/update")
     public Supply updateMaterialSupply(@Valid @RequestBody Supply materialSupply){
-        return supplyService.updateMaterialSupply(materialSupply.getMaterialSupplyList());
+        return supplyService.updateMaterialSupply(materialSupply.getMaterialSupplyList(), materialSupply.getSupplyID());
     }
 
     @PostMapping(path = "/supply/arrived/{supplyID}")

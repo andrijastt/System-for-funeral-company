@@ -84,12 +84,11 @@ public class SupplyServiceImplementation implements SupplyService{
     }
 
     @Override
-    public Supply updateMaterialSupply(List<MaterialSupply> materialSupplyList) {
+    public Supply updateMaterialSupply(List<MaterialSupply> materialSupplyList, Long supplyID) {
 
-        List<MaterialSupply> msListDB = materialSupplyRepository.findByMaterialSupplyPK_SupplyID(
-                materialSupplyList.get(0).getMaterialSupplyPK().getSupplyID());
+        List<MaterialSupply> msListDB = materialSupplyRepository.findByMaterialSupplyPK_SupplyID(supplyID);
 
-        Supply supplyDB = supplyRepository.findById(materialSupplyList.get(0).getMaterialSupplyPK().getSupplyID()).get();
+        Supply supplyDB = supplyRepository.findById(supplyID).get();
         supplyDB.setMaterialSupplyList(null);
         supplyRepository.saveAndFlush(supplyDB);
 
@@ -98,9 +97,15 @@ public class SupplyServiceImplementation implements SupplyService{
         }
 
         for(MaterialSupply ms: materialSupplyList){
+            ms.getMaterialSupplyPK().setSupplyID(supplyDB.getSupplyID());
             materialSupplyRepository.save(ms);
         }
         supplyDB.setMaterialSupplyList(materialSupplyList);
         return supplyRepository.save(supplyDB);
+    }
+
+    @Override
+    public List<Supply> searchSupply(String name) {
+        return supplyRepository.findByNameContaining(name);
     }
 }

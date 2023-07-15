@@ -11,7 +11,7 @@ public interface OrderService {
     Orders saveOrder(Orders orders);
     List<Orders> getAllContractOrders(Long contractID);
     Orders updateOrder(Orders orders);
-    Orders updateItems(List<Item> itemList);
+    Orders updateItems(List<Item> itemList, Long orderID);
     Orders arrivedOrder(Long orderID);
     String removeOrder(Long orderID);
 }
