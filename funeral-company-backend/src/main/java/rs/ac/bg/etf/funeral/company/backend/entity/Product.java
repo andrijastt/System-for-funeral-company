@@ -54,4 +54,19 @@ public class Product {
             materialUsed.getMaterialUsedPK().setProductID(null);
         }
     }
+
+    @OneToMany
+    List<Item> itemList;
+
+    public void addItem(Item item){
+        if(itemList == null) itemList = new ArrayList<>();
+        itemList.add(item);
+        item.getItemPK().setProductID(this.productID);
+    }
+    public void removeItem(Item item){
+        if(itemList != null){
+            itemList.remove(item);
+            item.getItemPK().setProductID(null);
+        }
+    }
 }
