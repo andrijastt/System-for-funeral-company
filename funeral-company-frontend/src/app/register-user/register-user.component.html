@@ -38,8 +38,8 @@
             </div>
         </div>
         <div class="mb-3 row">
-            <div class="offset-sm-5 col-sm-8">
-                {{message}}
+            <div class="alert alert-primary" role="alert" *ngIf="message">
+                <strong>{{message}}</strong>
             </div>
         </div>
         <div class="mb-3 row">

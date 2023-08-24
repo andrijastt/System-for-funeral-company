@@ -17,7 +17,7 @@ export class RegisterUserComponent {
   firstname: string
   lastname: string
 
-  message: string
+  message: string = null
 
   register(){    
     if(this.username == null || this.password == null || this.firstname == null || this.lastname == null){
