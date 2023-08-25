@@ -35,24 +35,19 @@
                 </mat-form-field>    
             </div>            
         </div>                           
-        <div class="col-2">
-            <div class="d-grid gap-2">
-                <button type="button" class="btn btn-primary" (click)="getAllContracts()">Get All Contracts</button>   
-            </div>                                    
-        </div>
-        <div class="col-2">
+        <div class="col-3">
             <div class="d-grid gap-2">
                 <button type="button" class="btn btn-primary" (click)="getAllContractsByClient(clientSearch)">Get All Client Contracts</button>   
             </div>                                    
         </div>
-        <div class="col-2">
+        <div class="col-3">
             <div class="d-grid gap-2">
                 <button type="button" class="btn btn-primary" (click)="getNewestContractByClient(clientSearch)">
                     Get Newest Valid Client Contracts
                 </button>   
             </div>                                    
         </div>
-        <div class="col-2">
+        <div class="col-3">
             <div class="d-grid gap-2">
                 <button type="button" class="btn btn-primary" (click)="getSumOfAllContractsByClient(clientSearch)">
                     Get Sum Money of Client Contracts
