@@ -1,6 +1,7 @@
 package rs.ac.bg.etf.funeral.company.backend.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Min;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
@@ -19,18 +20,23 @@ public class Product {
     private Long productID;
 
     @Column(nullable = false)
+    @Min(value = 1)
     private Long height;
 
     @Column(nullable = false)
+    @Min(value = 1)
     private Long width;
 
     @Column(nullable = false)
+    @Min(value = 1)
     private Long depth;
 
     @Column(nullable = false)
+    @Min(value = 0)
     private Long count;
 
     @Column(nullable = false)
+    @Min(value = 1)
     private Float price;
 
     @ManyToOne
