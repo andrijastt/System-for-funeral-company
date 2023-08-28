@@ -71,18 +71,12 @@
                     <ul class="list-group list-group-numbered">
                         <li class="list-group-item">Material name</li>
                         <li class="list-group-item">Amount</li>
-                        <li class="list-group-item">Price per unit (RSD)</li>
-                        <!-- <li class="list-group-item" *ngIf="supply.dateArrived == null">
-                            <button type="button" class="btn btn-primary" disabled>Update Material Supply</button>
-                        </li> -->
+                        <li class="list-group-item">Price per unit (RSD)</li>                        
                     </ul>
                     <ul class="list-group list-group-numbered" *ngFor="let matSupply of supply.materialSupplyList">
                         <li class="list-group-item">{{printName(matSupply.materialSupplyPK.materialID)}}</li>
                         <li class="list-group-item">{{matSupply.amount}}</li>
-                        <li class="list-group-item">{{matSupply.price}}</li>
-                        <!-- <li class="list-group-item" *ngIf="supply.dateArrived == null">
-                            <button type="button" class="btn btn-primary">Update</button>
-                        </li> -->
+                        <li class="list-group-item">{{matSupply.price}}</li>                        
                     </ul>
                     <button type="button" class="btn btn-primary" *ngIf="supply.dateArrived == null" 
                     (click)="updateMaterialSupplyClick(supply.materialSupplyList)">
