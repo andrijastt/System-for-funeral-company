@@ -16,37 +16,37 @@ public class OrderController {
     private OrderService orderService;
 
     @GetMapping(path ="/orders")
-    private List<Orders> getAllOrders(){
+    public List<Orders> getAllOrders(){
         return orderService.getAllOrders();
     }
 
     @GetMapping(path ="/orders/{contractID}")
-    private List<Orders> getAllContractOrders(@Valid @PathVariable("contractID") Long contractID){
+    public List<Orders> getAllContractOrders(@Valid @PathVariable("contractID") Long contractID){
         return orderService.getAllContractOrders(contractID);
     }
 
     @PostMapping(path = "/order")
-    private Orders saveOrder(@Valid @RequestBody Orders order){
+    public Orders saveOrder(@Valid @RequestBody Orders order){
         return orderService.saveOrder(order);
     }
 
     @PostMapping(path = "/order/update")
-    private Orders updateOrder(@Valid @RequestBody Orders order){
+    public Orders updateOrder(@Valid @RequestBody Orders order){
         return orderService.updateOrder(order);
     }
 
     @PostMapping(path = "/order/product/update")
-    private Orders updateItems(@Valid @RequestBody Orders order){
+    public Orders updateItems(@Valid @RequestBody Orders order){
         return orderService.updateItems(order.getItemList(), order.getOrderID());
     }
 
     @PostMapping(path ="/order/arrived/{contractID}")
-    private Orders arrivedOrder(@Valid @PathVariable("contractID") Long contractID){
+    public Orders arrivedOrder(@Valid @PathVariable("contractID") Long contractID){
         return orderService.arrivedOrder(contractID);
     }
 
     @DeleteMapping(path ="/order/delete/{orderID}")
-    private String removeOrder(@Valid @PathVariable("orderID") Long orderID){
+    public String removeOrder(@Valid @PathVariable("orderID") Long orderID){
         return orderService.removeOrder(orderID);
     }
 }
